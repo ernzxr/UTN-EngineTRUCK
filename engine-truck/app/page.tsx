@@ -17,7 +17,6 @@ import {
   Modal,
   Navbar,
   Pagination,
-  Progress,
   Rating,
   Sidebar as FlowbiteSidebar,
   Spinner,
@@ -258,14 +257,6 @@ function HomePage(): JSX.Element {
           </h2>
         </header>
         <PaginationExample />
-      </section>
-      <section>
-        <header>
-          <h2 className="mt-9 mb-3 text-4xl font-bold dark:text-gray-200">
-            Progress
-          </h2>
-        </header>
-        <ProgressExample />
       </section>
       <section>
         <header>
@@ -820,17 +811,6 @@ function PaginationExample(): JSX.Element {
         totalPages={1000}
       />
     </div>
-  );
-}
-
-function ProgressExample(): JSX.Element {
-  return (
-    <Progress
-      progress={45}
-      label="Flowbite"
-      labelPosition="outside"
-      labelProgress
-    />
   );
 }
 
