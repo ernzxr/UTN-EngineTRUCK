@@ -71,7 +71,7 @@ const Header: FC<Record<string, never>> = function () {
           <Navbar.Link href="/">Motores</Navbar.Link>
           <Navbar.Link href="/">Repuestos</Navbar.Link>
           <Navbar.Link href="/">Nosotros</Navbar.Link>
-          <Navbar.Link href="/">Contactanos</Navbar.Link>
+          <Navbar.Link href="/contacto">Contactanos</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>
