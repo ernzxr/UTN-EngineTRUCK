@@ -1,16 +1,14 @@
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
 import { FC } from "react";
-import { useSidebarContext } from "../context/SidebarContext";
+/*import { useSidebarContext } from "../context/SidebarContext";*/
 
 const Header: FC<Record<string, never>> = function () {
-  const { isOpenOnSmallScreens, isPageWithSidebar, setOpenOnSmallScreens } =
-    useSidebarContext();
+  /*const { isOpenOnSmallScreens, isPageWithSidebar, setOpenOnSmallScreens } =
+    useSidebarContext();*/
 
-  return (
-    <header className="sticky top-0 z-20">
-      <Navbar fluid>
-        {isPageWithSidebar && (
+  /*
+  {isPageWithSidebar && (
           <button
             aria-controls="sidebar"
             aria-expanded="true"
@@ -46,6 +44,11 @@ const Header: FC<Record<string, never>> = function () {
             )}
           </button>
         )}
+        */
+
+  return (
+    <header className="sticky top-0 z-20">
+      <Navbar fluid>
         <Navbar.Brand href="/">
           <Image
             alt="Flowbite logo"
@@ -54,7 +57,7 @@ const Header: FC<Record<string, never>> = function () {
             width="24"
           />
           <span className="self-center whitespace-nowrap px-3 text-xl font-semibold dark:text-white">
-            Flowbite
+            EngineTRUCK
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
@@ -63,12 +66,12 @@ const Header: FC<Record<string, never>> = function () {
         </div>
         <Navbar.Collapse>
           <Navbar.Link href="/" active>
-            Home
+          Inicio
           </Navbar.Link>
-          <Navbar.Link href="/">About</Navbar.Link>
-          <Navbar.Link href="/">Services</Navbar.Link>
-          <Navbar.Link href="/">Pricing</Navbar.Link>
-          <Navbar.Link href="/">Contact</Navbar.Link>
+          <Navbar.Link href="/">Motores</Navbar.Link>
+          <Navbar.Link href="/">Repuestos</Navbar.Link>
+          <Navbar.Link href="/">Nosotros</Navbar.Link>
+          <Navbar.Link href="/">Contactanos</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>
