@@ -68,9 +68,9 @@ const Header: FC<Record<string, never>> = function () {
           <Navbar.Link href="/" active>
           Inicio
           </Navbar.Link>
-          <Navbar.Link href="/">Motores</Navbar.Link>
-          <Navbar.Link href="/">Repuestos</Navbar.Link>
-          <Navbar.Link href="/">Nosotros</Navbar.Link>
+          <Navbar.Link href="/motores">Motores</Navbar.Link>
+          <Navbar.Link href="/repuestos">Repuestos</Navbar.Link>
+          <Navbar.Link href="/nosotros">Nosotros</Navbar.Link>
           <Navbar.Link href="/contacto">Contactanos</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
