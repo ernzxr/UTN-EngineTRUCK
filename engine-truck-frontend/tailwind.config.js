@@ -7,7 +7,11 @@ module.exports = {
     "./public/**/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        raleway: ['Raleway, sans-serif']
+      }
+    },
   },
   plugins: [
     require("flowbite/plugin")
