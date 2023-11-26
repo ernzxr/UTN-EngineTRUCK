@@ -24,11 +24,12 @@ export default function Index(): JSX.Element {
           <Carousel />
         </div>
       </section>
-      <section className="relative w-[1000px] h-[600px]">
-        <NavCard width="150px" height="300px"/>
-        <div className="absolute left-[1000px]">
-        <NavCard width="300px" height="200px" />
-        </div>
+      <section className="relative h-[750px] w-[1440px] border-black border-2 m-auto">
+        <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px]"><NavCard texto="Motores"/></div>
+        <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px]"><NavCard texto="Repuestos"/></div>
+        <div className="absolute top-[50px] left-[900px] w-[300px] h-[650px]"><NavCard texto="Contacto"/></div>
+        
+      
         
       </section>
       
