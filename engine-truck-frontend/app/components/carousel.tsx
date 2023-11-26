@@ -41,13 +41,13 @@ const Carousel = () => {
 
     return (
     <>
-    <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="h-[90%] w-[95%] m-auto rounded-[100px] border-2 border-black bg-center bg-cover duration-500"></div>
+    <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="h-[90%] w-[95%] m-auto rounded-[20px] shadow-lg bg-center bg-cover duration-500"></div>
     <div onClick={prevSlide} className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'> <BsChevronCompactLeft size={30}/></div>
     <div onClick={nextSlide} className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'> <BsChevronCompactRight size={30}/></div>
     <div className="flex top-4 justify-center py-2">
       {slides.map((slide, slideIndex) => (
         // eslint-disable-next-line react/jsx-key
-        <div key={slideIndex} onClick={() => goToSlide(slideIndex)}className="text-2xl cursor-pointer">
+        <div key={slideIndex} onClick={() => goToSlide(slideIndex)}className="text-2xl cursor-pointer text-gray-400 dark:text-white">
           <RxDotFilled />
         </div>
       ))}
