@@ -1,11 +1,27 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
+const NavCard = (props: any) => {
+  const [cardHover, setCardHover] = useState(false);
 
-const navCard = (props: any) => {
   return (
-    <div className="flex w-full h-full bg-gray-500 items-center justify-center">{props.texto}</div>
-  )
-}
+    <div
+      style={{ backgroundImage: `url("${props.imagen}")` }}
+      className="flex w-full h-full items-center justify-center shadow-lg bg-cover bg-center dark:text-white hover:brightness-50 hover:duration-300 cursor-pointer"
+      onMouseEnter={() => setCardHover(true)}
+      onMouseLeave={() => setCardHover(false)}
+    >
+      {cardHover ? (
+        <>
+          <div className="text-white text-center">
+            <h2 className="text-2xl font-bold mb-2">{props.title}</h2>
+            <p>{props.description}</p>
+          </div>
+        </>
+      ) : (
+        <h2></h2>
+      )}
+    </div>
+  );
+};
 
-export default navCard
-
+export default NavCard;

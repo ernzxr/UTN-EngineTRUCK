@@ -10,10 +10,10 @@ const Header: FC<Record<string, never>> = function () {
           <Image
             alt="Flowbite logo"
             height="24"
-            src="/favicon.png"
-            width="24"
+            src="/et_png_logo.png"
+            width="54"
           />
-          <span className="self-center whitespace-nowrap px-3 text-xl font-semibold dark:text-white">
+          <span className="self-center whitespace-nowrap px-3 text-xl font-semibold dark:text-white ml-3">
             EngineTRUCK
           </span>
         </Navbar.Brand>
