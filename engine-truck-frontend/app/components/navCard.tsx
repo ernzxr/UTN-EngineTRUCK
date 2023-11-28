@@ -6,7 +6,7 @@ const NavCard = (props: any) => {
   return (
     <div
       style={{ backgroundImage: `url("${props.imagen}")` }}
-      className="flex w-full h-full items-center justify-center shadow-lg bg-cover bg-center dark:text-white hover:brightness-50 hover:duration-300 cursor-pointer"
+      className="flex w-full h-full items-center justify-center shadow-lg bg-cover bg-center  dark:text-white hover:brightness-50 hover:duration-300 cursor-pointer rounded-[10px] "
       onMouseEnter={() => setCardHover(true)}
       onMouseLeave={() => setCardHover(false)}
     >

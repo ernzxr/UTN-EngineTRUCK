@@ -19,24 +19,24 @@ export default function Index(): JSX.Element {
         </div>
       </section>
       <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
-        <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px]">
+        <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px] text-justify">
           <NavCard
             title="Motores"
-            description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum tenetur excepturi! Mollitia consectetur perspiciatis labore, sit ipsa hic ullam ex laborum libero repudiandae rerum similique accusamus quasi voluptatum accusantium."
+            description=" ¡No retifique más! Elija algunas de nuestras opciones de mejor calidad "
             imagen="./motor_2.jpg"
           />
         </div>
-        <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px]">
+        <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px] text-justify">
           <NavCard
             title="Repuestos"
-            description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum tenetur excepturi! Mollitia consectetur perspiciatis labore, sit ipsa hic ullam ex laborum libero repudiandae rerum similique accusamus quasi voluptatum accusantium."
+            description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
             imagen="./repuesto_2.jpg"
           />
         </div>
-        <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px]">
+        <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px] text-justify">
           <NavCard
             title="Contacto"
-            description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum tenetur excepturi! Mollitia consectetur perspiciatis labore, sit ipsa hic ullam ex laborum libero repudiandae rerum similique accusamus quasi voluptatum accusantium."
+            description="Contacto directo y atención en el momento"
             imagen="./contacto_1.jpg"
           />
         </div>

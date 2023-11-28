@@ -4,20 +4,20 @@ import { RxDotFilled } from "react-icons/rx";
 
 const Carousel = () => {
   const slides = [
-    {
+   /**  {
       url: "/motor_1.jpg",
     },
     {
       url: "/repuesto_1.png",
+    },*/
+    {
+      url: "/opcar3.jpg",
     },
     {
-      url: "/motor_2.jpg",
+      url: "/opcar2.jpg",
     },
     {
-      url: "/p_340_750_1.jpg",
-    },
-    {
-      url: "/ejemplo_fromatoimg.jpg",
+      url: "/opcar1.jpg",
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
