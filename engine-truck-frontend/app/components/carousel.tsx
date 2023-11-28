@@ -10,6 +10,15 @@ const Carousel = () => {
     {
       url: "/repuesto_1.png",
     },
+    {
+      url: "/motor_2.jpg",
+    },
+    {
+      url: "/p_340_750_1.jpg",
+    },
+    {
+      url: "/ejemplo_fromatoimg.jpg",
+    },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
