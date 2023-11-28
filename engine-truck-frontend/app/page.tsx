@@ -12,6 +12,7 @@ import ChatWindow from "./components/chatWindow";
 export default function Index(): JSX.Element {
   return (
     <main className="relative dark:bg-gray-700">
+      <Header />
       <section className="flex box-border h-[900px] w-full mx-auto my-auto mt-[20px]">
         <div className="relative group box-border h-full w-full mx-auto my-auto">
           <Carousel />
