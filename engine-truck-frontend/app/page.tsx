@@ -13,12 +13,12 @@ export default function Index(): JSX.Element {
   return (
     <main className="relative dark:bg-gray-700">
       <Header />
-      <section className="flex box-border h-[900px] w-full mx-auto my-auto mt-[20px]">
+      <section className="flex box-border h-[600px] w-full mx-auto my-auto">
         <div className="relative group box-border h-full w-full mx-auto my-auto">
           <Carousel />
         </div>
       </section>
-      <section className="relative h-[750px] w-[1440px] m-auto mt-[10px]">
+      <section className="relative h-[750px] w-[1440px] m-auto mt-[100px]">
         <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px] text-justify">
           <NavCard
             title="Motores"
