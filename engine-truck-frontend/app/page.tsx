@@ -13,12 +13,12 @@ export default function Index(): JSX.Element {
   return (
     <main className="relative dark:bg-gray-700">
       <Header />
-      <section className="flex box-border h-[600px] w-full mx-auto my-auto">
+      <section className="flex box-border h-[700px] w-full mx-auto my-auto">
         <div className="relative group box-border h-full w-full mx-auto my-auto">
           <Carousel />
         </div>
       </section>
-      <section className="relative h-[750px] w-[1440px] m-auto mt-[100px]">
+      <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
         <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px] text-justify">
           <NavCard
             title="Motores"
@@ -41,8 +41,11 @@ export default function Index(): JSX.Element {
           />
         </div>
       </section>
-      <section className="relative h-[750px] w-[1440px] border-2 border-black m-auto"><ChatWindow /></section>
-      
+      <section className="relative h-[640px] w-[1440px] border-2 border-black m-auto mt-[220px]">
+        <div className="absolute left-[40px] top-[20px]"><ChatWindow review="Caught Somewhere in Time. Iron Maiden"/></div>
+        <div className="absolute left-[700px] top-[250px]"><ChatWindow review="Altes Fleisch. Lindemann"/></div>
+        <div className="absolute left-[40px] top-[470px]"><ChatWindow review="No Way. Korn"/></div>
+        </section>
     </main>
   );
 }
