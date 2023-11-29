@@ -50,18 +50,18 @@ const Carousel = () => {
     <>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="h-[90%] w-[95%] m-auto rounded-[20px] shadow-lg bg-center bg-cover duration-500"
+        className="h-[60%] w-full m-auto shadow-lg bg-center bg-cover duration-500"
       ></div>
       <div
         onClick={prevSlide}
-        className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
+        className="hidden group-hover:block absolute top-[30%] -translate-x-0 translate-y-[-50%] left-[50px] text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
       >
         {" "}
         <BsChevronCompactLeft size={30} />
       </div>
       <div
         onClick={nextSlide}
-        className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
+        className="hidden group-hover:block absolute top-[30%] -translate-x-0 translate-y-[-50%] right-[50px] text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
       >
         {" "}
         <BsChevronCompactRight size={30} />

@@ -18,7 +18,7 @@ export default function Index(): JSX.Element {
           <Carousel />
         </div>
       </section>
-      <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
+      <section className="relative h-[750px] w-[1440px] m-auto mt-[10px]">
         <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px] text-justify">
           <NavCard
             title="Motores"
