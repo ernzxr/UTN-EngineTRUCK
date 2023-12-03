@@ -21,7 +21,19 @@ module.exports = {
       },
       password: {
         allowNull: false,
+        type: Sequelize.TEXT
+      },
+      name: {
+        allowNull: false,
         type: Sequelize.STRING(45)
+      },
+      last_name: {
+        allowNull: false,
+        type: Sequelize.STRING(45)
+      },
+      type_user: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +41,9 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
         type: Sequelize.DATE
       }
     });
