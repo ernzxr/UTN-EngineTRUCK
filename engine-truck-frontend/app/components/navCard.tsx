@@ -13,10 +13,23 @@ const NavCard = (props: any) => {
     >
       <img
         alt={props.title}
-        src={cardHover ? props.imagen2 : props.imagen}
-        className={cardHover ? "w-full h-full rounded-[10px] object-cover brightness-50 hover:duration-300" : "w-full h-full rounded-[10px] object-cover"}
+        src={cardHover ? props.imagenFlip : props.imagen}
+        className={
+          cardHover
+            ? "w-full h-full rounded-[10px] object-cover brightness-50 duration-500"
+            : "w-full h-full rounded-[10px] object-cover"
+        }
       />
-      {cardHover ? (<div className="absolute text-center text-white">{props.description}</div>) : (<h2></h2>)}
+      {cardHover ? (
+        <>
+          <div className="absolute pb-[60px] text-center text-white text-5xl font-semibold">{props.title}</div>
+          <div className="absolute pt-[40px] text-center text-white text-xl font-semibold">
+            {props.description}
+          </div>
+        </>
+      ) : (
+        <h2></h2>
+      )}
     </div>
   );
 };
