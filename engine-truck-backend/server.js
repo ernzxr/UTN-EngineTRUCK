@@ -15,16 +15,16 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.listen(port, () => {
     console.log("Server running http://localhost:"+port);
-})
+});
 
 app.get('/', (req, res) => {
     res.send("Hello world."); /* Send to front */
 
-})
+});
 
 app.post('/test', (req, res) => {
     res.json({message:"Test Path"});
-})
+});
 
 app.use('/engines', enginesRouter);
-app.use('/users', isAdmin, usersRouter);
+app.use('/users', usersRouter);
