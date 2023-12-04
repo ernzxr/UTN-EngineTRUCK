@@ -2,8 +2,6 @@ const db = require("../models");
 const Bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 
-/* QUERY PARAMS req.query */
-
 const getUsers = async (req, res) => {
     try {
         const excludedAttributes = ['deletedAt','password'];
@@ -81,10 +79,10 @@ const updateUser = async (req, res) => {
                     body.password = Bcrypt.hashSync(body.password, 10);
                 }
                 await db.user.update(body, {where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:"UPDATE users.id "+id});
+                res.status(200).json({'error':false, data:null, message:`UPDATE users.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:"DELETE users.id "+id});
+                res.status(200).json({'error':false, data:null, message:`DELETE users.id ${id}`});
             }
         })
     }
@@ -99,10 +97,10 @@ const deleteUser = async (req, res) => {
         await db.user.findAll({where:{id:id}}).then(async (result) => {
             if(result.length) {
                 await db.user.destroy({where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:"DELETE users.id "+id});
+                res.status(200).json({'error':false, data:null, message:`DELETE users.id ${id}`});
             }
             else {
-                res.status(404).json({'error':true, data:null, message:'users.id '+id+' not found'});
+                res.status(404).json({'error':true, data:null, message:`users.id ${id} not found`});
             }
         })
     }
@@ -117,5 +115,3 @@ const filterUser = (req, res) => {
 };
 
 module.exports = {getUsers, createUser, updateUser, deleteUser, filterUser};
-
-/* REDUX */
