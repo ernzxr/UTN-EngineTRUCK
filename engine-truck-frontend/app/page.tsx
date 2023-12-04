@@ -19,27 +19,29 @@ export default function Index(): JSX.Element {
         </div>
       </section>
       <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
-        <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px] text-justify z-40">
+        <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px]">
           <NavCard
             title="Motores"
             description=" ¡No retifique más! Elija algunas de nuestras opciones de mejor calidad "
             imagen="./motor_2.jpg"
-            imagen2 = "./repuesto_2.jpg"
+            imagenFlip = "./repuesto_2.jpg"
           />
         </div>
-        <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px] text-justify">
+        <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px]">
           <NavCard
             title="Repuestos"
             description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
             imagen="./repuesto_2.jpg"
+            imagenFlip="./motor_2.jpg"
           
           />
         </div>
-        <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px] text-justify">
+        <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px]">
           <NavCard
             title="Contacto"
             description="Contacto directo y atención en el momento"
             imagen="./contacto_1.jpg"
+            imagenFlip="./repuesto_2.jpg"
        
           />
         </div>
