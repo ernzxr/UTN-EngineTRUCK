@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {getEngines, createEngine, updateEngine, deleteEngine, filterEngine} = require('../controllers/engines.controller')
+const {getEngines, createEngine, updateEngine, deleteEngine} = require('../controllers/engines.controller');
+const validateEngine = require('../request/engine.request');
 
 router.get('/', getEngines);
 
-router.post('/', createEngine);
+router.post('/', validateEngine, createEngine);
 
-router.put('/', updateEngine);
+router.put('/:id', updateEngine);
 
-router.delete('/', deleteEngine);
-
-router.get('/:id/:name', filterEngine)
+router.delete('/:id', deleteEngine);
 
 module.exports = router;

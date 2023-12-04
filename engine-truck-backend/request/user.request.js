@@ -29,7 +29,7 @@ const validateUser = (req, res, next) => {
             "string.max":"El maximo de caracteres es 45"
         }),
         type_user: Joi.number().integer().required().messages({
-            "number.base":"El valor debe ser un numero"
+            "number.base":"El valor debe ser numérico"
         })
     });
 

@@ -1,7 +1,7 @@
 const db = require("../models");
 const { Op } = require("sequelize");
 
-const getEngines = async (req, res) => {
+const getBrands = async (req, res) => {
     try {
         const excludedAttributes = ['deletedAt'];
         let query = req.query;
@@ -12,10 +12,10 @@ const getEngines = async (req, res) => {
             }
         };
 
-        if(query.model) {
+        if(query.brand) {
             optionsSql.push({
-                model:{
-                    [Op.like]:`%${query.model}%`
+                brand:{
+                    [Op.like]:`%${query.brand}%`
                 }
             });
         }
@@ -31,37 +31,37 @@ const getEngines = async (req, res) => {
             };
         }
 
-        const engine = await db.engine.findAll(filter);
+        const brand = await db.brand.findAll(filter);
          
-        res.status(200).json({'error':false, data:engine});
+        res.status(200).json({'error':false, data:brand});
     }
     catch(e) {
         res.status(400).json({'error':true, message:e});
     }
 };
 
-const createEngine = async (req, res) => {
+const createBrand = async (req, res) => {
     try {
         let body = req.body;
-        const engine = await db.engine.create(body);
-        res.status(200).json({'error':false, data:engine});
+        const brand = await db.brand.create(body);
+        res.status(200).json({'error':false, data:brand});
     }
     catch(e) {
         res.status(400).json({'error':true, message:e});
     }
 };
 
-const updateEngine = async (req, res) => {
+const updateBrand = async (req, res) => {
     try {
         let id = req.params.id;
-        await db.engine.findAll({where:{id:id}}).then(async (result) => {
+        await db.brand.findAll({where:{id:id}}).then(async (result) => {
             if(result.lenght) {
                 let body = req.body;
-                await db.engine.update(body, {where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`UPDATE engines.id ${id}`});
+                await db.brand.update(body, {where:{id:id}});
+                res.status(200).json({'error':false, data:null, message:`UPDATE brands.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE engines.id ${id}`});
+                res.status(200).json({'error':false, data:null, message:`DELETE brands.id ${id}`});
             }
         })
     }
@@ -70,16 +70,16 @@ const updateEngine = async (req, res) => {
     }
 };
 
-const deleteEngine = async (req, res) => {
+const deleteBrand = async (req, res) => {
     try {
         let id = req.params.id;
-        await db.engine.findAll({where:{id:id}}).then(async (result) => {
+        await db.brand.findAll({where:{id:id}}).then(async (result) => {
             if(result.length) {
-                await db.engine.destroy({where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`DELETE engines.id ${id}`});
+                await db.brand.destroy({where:{id:id}});
+                res.status(200).json({'error':false, data:null, message:`DELETE brands.id ${id}`});
             }
             else {
-                res.status(404).json({'error':true, data:null, message:`engines.id ${id} not found`});
+                res.status(404).json({'error':true, data:null, message:`brands.id ${id} not found`});
             }
         })
     }
@@ -88,4 +88,4 @@ const deleteEngine = async (req, res) => {
     }
 };
 
-module.exports = {getEngines, createEngine, updateEngine, deleteEngine};
+module.exports = {getBrands, createBrand, updateBrand, deleteBrand};

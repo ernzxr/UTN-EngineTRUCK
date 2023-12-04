@@ -1,7 +1,7 @@
 const db = require("../models");
 const { Op } = require("sequelize");
 
-const getEngines = async (req, res) => {
+const getFeatureDetails = async (req, res) => {
     try {
         const excludedAttributes = ['deletedAt'];
         let query = req.query;
@@ -31,37 +31,37 @@ const getEngines = async (req, res) => {
             };
         }
 
-        const engine = await db.engine.findAll(filter);
+        const feature_detail = await db.feature_detail.findAll(filter);
          
-        res.status(200).json({'error':false, data:engine});
+        res.status(200).json({'error':false, data:feature_detail});
     }
     catch(e) {
         res.status(400).json({'error':true, message:e});
     }
 };
 
-const createEngine = async (req, res) => {
+const createFeatureDetail = async (req, res) => {
     try {
         let body = req.body;
-        const engine = await db.engine.create(body);
-        res.status(200).json({'error':false, data:engine});
+        const feature_detail = await db.feature_detail.create(body);
+        res.status(200).json({'error':false, data:feature_detail});
     }
     catch(e) {
         res.status(400).json({'error':true, message:e});
     }
 };
 
-const updateEngine = async (req, res) => {
+const updateFeatureDetail = async (req, res) => {
     try {
         let id = req.params.id;
-        await db.engine.findAll({where:{id:id}}).then(async (result) => {
+        await db.feature_detail.findAll({where:{id:id}}).then(async (result) => {
             if(result.lenght) {
                 let body = req.body;
-                await db.engine.update(body, {where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`UPDATE engines.id ${id}`});
+                await db.feature_detail.update(body, {where:{id:id}});
+                res.status(200).json({'error':false, data:null, message:`UPDATE feature_details.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE engines.id ${id}`});
+                res.status(200).json({'error':false, data:null, message:`DELETE feature_details.id ${id}`});
             }
         })
     }
@@ -70,16 +70,16 @@ const updateEngine = async (req, res) => {
     }
 };
 
-const deleteEngine = async (req, res) => {
+const deleteFeatureDetail = async (req, res) => {
     try {
         let id = req.params.id;
-        await db.engine.findAll({where:{id:id}}).then(async (result) => {
+        await db.feature_detail.findAll({where:{id:id}}).then(async (result) => {
             if(result.length) {
-                await db.engine.destroy({where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`DELETE engines.id ${id}`});
+                await db.feature_detail.destroy({where:{id:id}});
+                res.status(200).json({'error':false, data:null, message:`DELETE feature_details.id ${id}`});
             }
             else {
-                res.status(404).json({'error':true, data:null, message:`engines.id ${id} not found`});
+                res.status(404).json({'error':true, data:null, message:`feature_details.id ${id} not found`});
             }
         })
     }
@@ -88,4 +88,4 @@ const deleteEngine = async (req, res) => {
     }
 };
 
-module.exports = {getEngines, createEngine, updateEngine, deleteEngine};
+module.exports = {getFeatureDetails, createFeatureDetail, updateFeatureDetail, deleteFeatureDetail};
