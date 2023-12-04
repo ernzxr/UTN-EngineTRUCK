@@ -19,7 +19,7 @@ const NavCard = (props: any) => {
         className={
           cardHover
             ? "w-full h-full rounded-[10px] object-cover brightness-50 duration-500"
-            : "w-full h-full rounded-[10px] object-cover"
+            : "w-full h-full rounded-[10px] object-cover duration-500"
         }
       />
       {cardHover ? (

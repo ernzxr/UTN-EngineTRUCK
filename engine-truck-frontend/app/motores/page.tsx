@@ -7,6 +7,7 @@ export default function page() {
     return (
       <main className="relative dark:bg-gray-700">
         <Header />
+        <div className="text-8xl flex justify-center">Fancy Titulo/Descripcion de Motores</div>
         <div className="flex flex-wrap justify-start h-full w-[1200px] border-black border-2 m-auto mt-[100px] px-1">
         <EngineCard />
         <EngineCard />
