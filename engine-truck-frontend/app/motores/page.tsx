@@ -1,15 +1,26 @@
 "use client";
 
 import Header from "../components/header";
+import EngineCard from "../components/engineCard";
 
 export default function page() {
     return (
-      <main>
+      <main className="relative dark:bg-gray-700">
         <Header />
+        <div className="flex flex-wrap justify-start h-full w-[1200px] border-black border-2 m-auto mt-[100px]">
+        <EngineCard />
+        <EngineCard />
+        <EngineCard />
+        <EngineCard />
+        <EngineCard />
+        <EngineCard />
+        <EngineCard />
         
-        <div className="flex dark:bg-gray-900">
-          <main className="order-2 mx-4 mt-4 mb-24 flex-[1_0_16rem]">
-          </main>
+
+        
+        
+        
+
         </div>
       </main>
     );

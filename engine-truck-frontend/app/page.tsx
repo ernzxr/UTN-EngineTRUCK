@@ -56,7 +56,7 @@ export default function Index(): JSX.Element {
         <div className="absolute left-[40px] top-[590px]"><ChatWindow review="Muy atento, gracias por todo."/></div>
         <div className="absolute left-[740px] top-[380px]"><ChatWindow review="5 estrellas"/></div>
         </section>
-        <footer className="w-full h-[200px] bg-slate-600 mt-[50px]">
+        <footer className="w-full h-[150px] bg-slate-600 mt-[50px]">
           <Footer />
         </footer>
     </main>
