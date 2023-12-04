@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { Http2ServerRequest } from "http2";
 import React, { useState } from "react";
+import Link from "next/link";
 
 const NavCard = (props: any) => {
   const [cardHover, setCardHover] = useState(false);
 
   return (
+    <Link href={`/${props.title.toLowerCase()}`} passHref>
     <div
       className="flex w-full h-full items-center justify-center shadow-lg bg-center dark:text-white cursor-pointer rounded-[10px] relative"
       onMouseEnter={() => setCardHover(true)}
@@ -31,6 +33,7 @@ const NavCard = (props: any) => {
         <h2></h2>
       )}
     </div>
+    </Link>
   );
 };
 
