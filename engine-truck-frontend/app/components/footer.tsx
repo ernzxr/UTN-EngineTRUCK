@@ -5,26 +5,19 @@ import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="w-[50%] h-full bg-gray-500 m-auto relative">
-      <div className="absolute top-[45%] left-[18%]">
-        <Image
-          alt="Flowbite logo"
-          height="24"
-          src="/et_png_logo.png"
-          width="96"
-        />
-      </div>
-      <div className="flex flex-col items-center">
+    <div className="flex w-[100%] h-full bg-blue-950 m-auto justify-center">
+      
+      <div className="flex  items-center">
         <div className="flex space-x-20 font-raleway font-bold text-white text-xl justify-center mt-4">
           <Link href={"/motores"}>Motores</Link>
           <Link href={"/repuestos"}>Repuestos</Link>
           <Link href={"/nosotros"}>Nosotros</Link>
           <Link href={"/contacto"}>Contacto</Link>
         </div>
-        <div className="flex text-white justify-center space-x-20 mt-[20px] cursor-pointer">
-          <FaFacebook size={50} />
-          <FaLinkedin size={50} />
-          <FaInstagram size={50} />
+        <div className="flex text-white space-x-20 mt-[20px] ml-[400px] cursor-pointer">
+          <FaFacebook size={40} />
+          <FaLinkedin size={40} />
+          <FaInstagram size={40} />
         </div>
       </div>
     </div>
