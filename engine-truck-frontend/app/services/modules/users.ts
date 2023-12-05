@@ -8,7 +8,7 @@ export const getUser = (data:LoginUsers) => {
     return get("/api/users", data);
 }
 
-export const userRegister = (data:LoginUsers) => {
+export const userLogin = (data:LoginUsers) => {
     return post("/api/users", data);
 }
 

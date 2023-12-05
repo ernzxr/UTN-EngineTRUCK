@@ -1,9 +1,9 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
 import { LoginUsers } from '../services/interfaces/users';
-import { getUser, userRegister } from '../services/modules/users';
+import { getUser } from '../services/modules/users';
 
-const Component = () => {
+const Form = () => {
   const loginFormik = useFormik({
     initialValues: {
       user:'',
@@ -44,4 +44,4 @@ const Component = () => {
   );
 }
 
-export default Component;
+export default Form;
