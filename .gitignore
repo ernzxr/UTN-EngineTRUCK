@@ -1,8 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # folders
-engine-truck-backend/public/videos
-engine-truck-backend/public/images
+engine-truck-backend/public/videos/.mp4
+engine-truck-backend/public/videos/.avi
+engine-truck-backend/public/videos/.mkv
+engine-truck-backend/public/images/.png
+engine-truck-backend/public/images/.jpg
+engine-truck-backend/public/images/.jpeg
+engine-truck-backend/public/images/.webp
 
 # dependencies
 engine-truck-frontend/node_modules
