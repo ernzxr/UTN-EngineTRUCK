@@ -1,4 +1,4 @@
 export interface EnginesCards {
-    url: string,
+    file: string,
     model: string
 }

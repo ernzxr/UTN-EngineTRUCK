@@ -1,4 +1,4 @@
-import { Engines, EnginesCards } from "../interfaces/engines";
+import { EnginesCards } from "../interfaces/engines";
 import { post } from "../config";
 import { get } from "../config";
 import { update } from "../config";

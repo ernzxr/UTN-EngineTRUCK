@@ -8,7 +8,7 @@ router.get('/', getEngines);
 
 router.post('/', verifyToken, validateEngine, createEngine);
 
-router.put('/:id', verifyToken, updateEngine);
+router.put('/:id', /*verifyToken,*/ updateEngine);
 
 router.delete('/:id', verifyToken, deleteEngine);
 
