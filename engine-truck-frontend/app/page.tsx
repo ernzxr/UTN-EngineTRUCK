@@ -25,7 +25,7 @@ export default function Index(): JSX.Element {
             title="Motores"
             description=" ¡No retifique más! Elija algunas de nuestras opciones de mejor calidad "
             imagen="./mot_t1.jpg"
-            imagenFlip = "./repuesto_2.jpg"
+            imagenFlip = "./mot_t2.jpg"
           />
         </div>
         <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px]">
@@ -33,7 +33,7 @@ export default function Index(): JSX.Element {
             title="Repuestos"
             description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
             imagen="./rep_t1.jpg"
-            imagenFlip="./motor_2.jpg"
+            imagenFlip="./rep_t2.jpg"
           
           />
         </div>
@@ -42,7 +42,7 @@ export default function Index(): JSX.Element {
             title="Contacto"
             description="Contacto directo y atención en el momento"
             imagen="./cont_1.jpg"
-            imagenFlip="./repuesto_2.jpg"
+            imagenFlip="./cont_2.jpg"
        
           />
         </div>
@@ -56,7 +56,7 @@ export default function Index(): JSX.Element {
         <div className="absolute left-[40px] top-[590px]"><ChatWindow review="Muy atento, gracias por todo."/></div>
         <div className="absolute left-[740px] top-[380px]"><ChatWindow review="5 estrellas"/></div>
         </section>
-        <footer className="w-full h-[100px]  mt-[50px]">
+        <footer className="w-full ">
           <Footer />
         </footer>
     </main>

@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const Header: FC<Record<string, never>> = function () {
   return (
-    <header className="sticky top-0 z-20 border-b-[1px] border-gray-400 dark:border-white">
+    <header className="sticky top-0 z-20 bg-blue-800 border-b-[1px] border-gray-400 dark:border-white">
       <Navbar fluid>
         <Navbar.Brand href="/">
           <Image
