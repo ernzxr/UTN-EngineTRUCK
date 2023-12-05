@@ -70,7 +70,7 @@ const updateEngine = async (req, res) => {
                 res.status(200).json({'error':false, data:null, message:`UPDATE engines.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE engines.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`engines.id ${id} not found`});
             }
         })
     }

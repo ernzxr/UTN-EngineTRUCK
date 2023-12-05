@@ -64,7 +64,7 @@ const updateManufacturer = async (req, res) => {
                 res.status(200).json({'error':false, data:null, message:`UPDATE manufacturers.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE manufacturers.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`manufacturers.id ${id} not found`});
             }
         })
     }

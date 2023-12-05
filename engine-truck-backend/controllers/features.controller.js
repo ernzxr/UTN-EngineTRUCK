@@ -64,7 +64,7 @@ const updateFeature = async (req, res) => {
                 res.status(200).json({'error':false, data:null, message:`UPDATE features.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE features.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`features.id ${id} not found`});
             }
         })
     }

@@ -16,7 +16,7 @@ const verifyToken = (req, res, next) => {
                 let user = await db.user.findByPk(decode.id);
                 
                 if(user.type_user != 1) {
-
+                    return res.status(403).json({'error':true, message:'Accesso denegado'});
                 }
                 else {
                     req.UserId = decode.indexOf;

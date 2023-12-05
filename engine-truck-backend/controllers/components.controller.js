@@ -57,16 +57,16 @@ const createComponent = async (req, res) => {
 const updateComponent = async (req, res) => {
     try {
         let id = req.params.id;
-        await db.component.findAll({where:{id:id}}).then(async (result) => {
-            if(result.lenght) {
+        await db.component.findByPk(id).then(async (component) => {
+            if(component) {
                 let body = req.body;
                 await db.component.update(body, {where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`UPDATE components.id ${id}`});
+                res.status(200).json({'error':false, data:null, message:`UPDATE component.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE components.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`component.id ${id} not found`});
             }
-        })
+        });
     }
     catch(e) {
         res.status(400).json({'error':true, message:e});

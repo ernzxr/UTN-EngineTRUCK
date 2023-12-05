@@ -64,7 +64,7 @@ const updateCompatibleComponent = async (req, res) => {
                 res.status(200).json({'error':false, data:null, message:`UPDATE compatible_components.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE compatible_components.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`compatible_components.id ${id} not found`});
             }
         })
     }
