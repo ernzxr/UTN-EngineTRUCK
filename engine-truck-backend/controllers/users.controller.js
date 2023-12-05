@@ -82,7 +82,7 @@ const updateUser = async (req, res) => {
                 res.status(200).json({'error':false, data:null, message:`UPDATE users.id ${id}`});
             }
             else {
-                res.status(200).json({'error':false, data:null, message:`DELETE users.id ${id}`});
+                res.status(404).json({'error':true, data:null, message:`users.id ${id} not found`});
             }
         })
     }
@@ -109,9 +109,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-const filterUser = (req, res) => {
-    console.log(req.params);
-    res.json({message:"Dynamic Router"});
-};
-
-module.exports = {getUsers, createUser, updateUser, deleteUser, filterUser};
+module.exports = {getUsers, createUser, updateUser, deleteUser};

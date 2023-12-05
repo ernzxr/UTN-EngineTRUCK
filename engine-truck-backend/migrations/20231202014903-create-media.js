@@ -12,7 +12,7 @@ module.exports = {
       url: {
         type: Sequelize.STRING
       },
-      type: {
+      media_type: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },

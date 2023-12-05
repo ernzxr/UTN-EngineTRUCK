@@ -40,4 +40,6 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.engine.hasMany(db.feature_detail, {as:'feature_detail'});
+
 module.exports = db;

@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# folders
+engine-truck-backend/public/videos
+engine-truck-backend/public/images
+
 # dependencies
 engine-truck-frontend/node_modules
 engine-truck-frontend/.pnp

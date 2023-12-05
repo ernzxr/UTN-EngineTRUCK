@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const capitalizeFirstLetters = require('../utils/capitalizeFirstLetters');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -17,8 +18,18 @@ module.exports = (sequelize, DataTypes) => {
     user: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.TEXT,
-    name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
+    name: {
+      type:DataTypes.STRING,
+      set(value) {
+        this.setDataValue('name', capitalizeFirstLetters(value));
+      }
+    },
+    last_name: {
+      type:DataTypes.STRING,
+      set(value) {
+        this.setDataValue('last_name', capitalizeFirstLetters(value));
+      }
+    },
     type_user: DataTypes.INTEGER
   }, {
     sequelize,

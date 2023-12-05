@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   media.init({
     url: DataTypes.STRING,
-    type: DataTypes.INTEGER,
+    file: DataTypes.STRING,
+    media_type: DataTypes.INTEGER,
     engine_id: DataTypes.INTEGER,
     component_id: DataTypes.INTEGER
   }, {

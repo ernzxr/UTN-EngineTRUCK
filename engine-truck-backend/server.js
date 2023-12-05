@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const port = 5500;
+const bodyParser = require('body-parser');
 
 const enginesRouter = require('./routers/engines.routers');
 const usersRouter = require('./routers/users.routers');
@@ -13,12 +13,13 @@ const featuresRouter = require('./routers/features.routers');
 const featureDetailsRouter = require('./routers/feature_details.routers');
 const compatibleComponentsRouter = require('./routers/compatible_components.routers');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-
 app.listen(port, () => {
     console.log("Server running http://localhost:"+port);
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('public'));
 
 app.use('/api/engines', enginesRouter);
 app.use('/api/components', componentsRouter);

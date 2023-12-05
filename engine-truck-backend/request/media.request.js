@@ -3,17 +3,18 @@ const validateRequest = require('../middlewares/validateRequest');
 
 const validateMedia = (req, res, next) => {
     const Schema = Joi.object({
-        url: Joi.string().required().messages({
-            "any.required":"La url es requerida",
-            "string.empty":"El campo no puede quedar vacio"
-        }),
+        url: Joi.string(),
+        file: Joi.string(),
         engine_id: Joi.number().integer().required().messages({
+            "any.required":"Campo requerido",
             "number.base":"El valor debe ser numérico"
         }),
         component_id: Joi.number().integer().required().messages({
+            "any.required":"Campo requerido",
             "number.base":"El valor debe ser numérico"
         }),
-        type: Joi.number().integer().required().messages({
+        media_type: Joi.number().integer().required().messages({
+            "any.required":"Indicar si es video o image es requerido",
             "number.base":"El valor debe ser numérico"
         })
     });
