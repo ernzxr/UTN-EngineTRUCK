@@ -40,6 +40,28 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.engine.hasMany(db.feature_detail, {as:'feature_detail'});
+db.engine.hasMany(db.feature_detail, {as:'features_details',foreignKey:"engine_id"});
+db.feature_detail.belongsTo(db.engine, {as:'engine', foreignKey:"id"});
+
+db.engine.hasMany(db.compatible_component, {as:'compatibles_components',foreignKey:"engine_id"});
+db.compatible_component.belongsTo(db.engine, {as:'engine', foreignKey:"id"});
+
+db.engine.hasMany(db.media, {as:'media',foreignKey:"engine_id"});
+db.media.belongsTo(db.engine, {as:'engine', foreignKey:"id"});
+
+db.manufacturer.hasMany(db.engine, {as:'engines',foreignKey:"manufacturer_id"});
+db.engine.belongsTo(db.manufacturer, {as:'manufacturer', foreignKey:"id"});
+
+db.brand.hasMany(db.engine, {as:'engines',foreignKey:"brand_id"});
+db.engine.belongsTo(db.brand, {as:'brand', foreignKey:"id"});
+
+db.feature.hasMany(db.feature_detail, {as:'features_details',foreignKey:"feature_id"});
+db.feature_detail.belongsTo(db.feature, {as:'feature', foreignKey:"id"});
+
+db.component.hasMany(db.compatible_component, {as:'compatibles_components',foreignKey:"component_id"});
+db.compatible_component.belongsTo(db.component, {as:'component', foreignKey:"id"});
+
+db.component.hasMany(db.media, {as:'media',foreignKey:"component_id"});
+db.media.belongsTo(db.component, {as:'component', foreignKey:"id"});
 
 module.exports = db;

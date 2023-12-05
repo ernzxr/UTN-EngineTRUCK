@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const validateRequest = require('../middlewares/validateRequest');
+const validateRequest = require('../middlewares/validate.request.middleware');
 
 const validateEngine = (req, res, next) => {
     const Schema = Joi.object({

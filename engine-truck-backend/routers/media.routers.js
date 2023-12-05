@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getMedia, createMedia, updateMedia, deleteMedia } = require('../controllers/media.controller');
 const validateMedia = require('../request/media.request');
-const uploadSingleFile = require('../middlewares/uploadSingleFile');
+const uploadSingleFile = require('../middlewares/upload.single.middleware');
 
 router.get('/', getMedia);
 
