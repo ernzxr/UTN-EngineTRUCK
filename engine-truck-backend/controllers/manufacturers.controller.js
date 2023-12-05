@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const getManufacturers = async (req, res) => {
     try {
         const excludedAttributes = ['deletedAt'];
-        const associations = ['engines']
+        const associations = ['engines'];
         let query = req.query;
         let optionsSql = [];
         let filter = {
@@ -29,7 +29,8 @@ const getManufacturers = async (req, res) => {
                 },
                 attributes:{
                     exclude:excludedAttributes
-                }
+                },
+                include:associations
             };
         }
 

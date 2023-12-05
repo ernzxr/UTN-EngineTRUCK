@@ -6,10 +6,10 @@ const verifyToken = require('../middlewares/auth.jwt.middleware');
 
 router.get('/', getEngines);
 
-router.post('/', verifyToken, validateEngine, createEngine);
+router.post('/', /*verifyToken,*/ validateEngine, createEngine);
 
 router.put('/:id', /*verifyToken,*/ updateEngine);
 
-router.delete('/:id', verifyToken, deleteEngine);
+router.delete('/:id', /*verifyToken,*/ deleteEngine);
 
 module.exports = router;

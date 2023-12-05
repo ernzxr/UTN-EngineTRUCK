@@ -6,7 +6,7 @@ const filesRoot = 'public/'
 const getMedia = async (req, res) => {
     try {
         const excludedAttributes = ['deletedAt'];
-        const associations = ['engine','component']
+        const associations = ['engine','component'];
         let query = req.query;
         let optionsSql = [];
         let filter = {
@@ -47,7 +47,8 @@ const getMedia = async (req, res) => {
                 },
                 attributes:{
                     exclude:excludedAttributes
-                }
+                },
+                include:associations
             };
         }
 
