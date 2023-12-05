@@ -64,7 +64,7 @@ const updateEngine = async (req, res) => {
     try {
         let id = req.params.id;
         await db.engine.findAll({where:{id:id}}).then(async (result) => {
-            if(result.lenght) {
+            if(result.length) {
                 let body = req.body;
                 await db.engine.update(body, {where:{id:id}});
                 res.status(200).json({'error':false, data:null, message:`UPDATE engines.id ${id}`});

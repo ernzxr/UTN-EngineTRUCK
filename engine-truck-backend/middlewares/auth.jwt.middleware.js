@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const db = require("../models");
-
+const key = process.env.KEY || 'ABCD'
 const verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'];
 
@@ -8,7 +8,7 @@ const verifyToken = (req, res, next) => {
         return res.status(403).json({'error':true, message:'Token error'});
     }
     else {
-        jwt.verify(token, 'ABCD', async (error, decode) => {
+        jwt.verify(token, key, async (error, decode) => {
             if(error) {
                 return res.status(403).json({'error':true, message:'Token error'});
             }
@@ -19,7 +19,7 @@ const verifyToken = (req, res, next) => {
                     return res.status(403).json({'error':true, message:'Accesso denegado'});
                 }
                 else {
-                    req.UserId = decode.indexOf;
+                    req.UserId = decode.id;
                     next();
                 }
             }

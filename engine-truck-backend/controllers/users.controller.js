@@ -73,7 +73,7 @@ const updateUser = async (req, res) => {
     try {
         let id = req.params.id;
         await db.user.findAll({where:{id:id}}).then(async (result) => {
-            if(result.lenght) {
+            if(result.length) {
                 let body = req.body;
                 if(body.password) {
                     body.password = Bcrypt.hashSync(body.password, 10);

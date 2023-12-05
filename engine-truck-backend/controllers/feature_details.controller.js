@@ -58,7 +58,7 @@ const updateFeatureDetail = async (req, res) => {
     try {
         let id = req.params.id;
         await db.feature_detail.findAll({where:{id:id}}).then(async (result) => {
-            if(result.lenght) {
+            if(result.length) {
                 let body = req.body;
                 await db.feature_detail.update(body, {where:{id:id}});
                 res.status(200).json({'error':false, data:null, message:`UPDATE feature_details.id ${id}`});

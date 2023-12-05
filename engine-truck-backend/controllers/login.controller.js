@@ -2,6 +2,7 @@ const db = require("../models");
 const Bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { Op } = require("sequelize");
+const key = process.env.KEY || 'ABCD'
 
 const login = async (req, res) => {
     try {
@@ -17,13 +18,13 @@ const login = async (req, res) => {
             });
         }
 
-        if(body.email) {
+        /*if(body.email) {
             optionsSql.push({
                 email:{
                     [Op.eq]:`${body.email}`
                 }
             });
-        }
+        }*/
 
         let filter = {
             where:{
@@ -46,7 +47,7 @@ const login = async (req, res) => {
                 return res.status(401).json({'error':true, message:'Los datos ingresados no son validos'});
             }
             else {
-                let token = jwt.sign({id:user.id}, 'ABCD', {expiresIn:'1h'});
+                let token = jwt.sign({id:user.id}, key, {expiresIn:'1h'});
                 let data = {token, user};
 
                 res.status(200).json({'error':false, data:data});

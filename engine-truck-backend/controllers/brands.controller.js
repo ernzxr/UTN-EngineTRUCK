@@ -58,7 +58,7 @@ const updateBrand = async (req, res) => {
     try {
         let id = req.params.id;
         await db.brand.findAll({where:{id:id}}).then(async (result) => {
-            if(result.lenght) {
+            if(result.length) {
                 let body = req.body;
                 await db.brand.update(body, {where:{id:id}});
                 res.status(200).json({'error':false, data:null, message:`UPDATE brands.id ${id}`});
