@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 5500;
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const enginesRouter = require('./routers/engines.routers');
 const usersRouter = require('./routers/users.routers');
 const mediaRouter = require('./routers/media.routers');
@@ -17,6 +17,7 @@ app.listen(port, () => {
     console.log("Server running http://localhost:"+port);
 });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
