@@ -9,7 +9,7 @@ export const getUser = (data:LoginUsers) => {
 }
 
 export const userLogin = (data:LoginUsers) => {
-    return post("/api/users", data);
+    return post("/api/login", data);
 }
 
 export const updateUser = (data:LoginUsers) => {

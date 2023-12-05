@@ -1,9 +1,12 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
 import { LoginUsers } from '../services/interfaces/users';
-import { getUser } from '../services/modules/users';
+import { userLogin } from '../services/modules/users';
+import { useRouter } from 'next/navigation';
 
 const Form = () => {
+
+  const router = useRouter();
 
   const loginFormik = useFormik({
     initialValues: {
@@ -17,8 +20,10 @@ const Form = () => {
   }); 
 
   const login = (values:LoginUsers) => {
-        getUser(values).then((data) => {
-        console.log(data)
+        userLogin(values).then((data:any) => {
+        localStorage.setItem('user', JSON.stringify(data.data.user));
+        localStorage.setItem('token', data.data.token);
+        router.push('/admin/dashboard');
       }).catch((error) => { console.log(error)}); 
   }
 
