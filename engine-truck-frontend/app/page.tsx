@@ -14,17 +14,17 @@ export default function Index(): JSX.Element {
   return (
     <main className="relative dark:bg-gray-700">
       <Header />
-      <section className="flex box-border h-[700px] w-full mx-auto my-auto">
+      <section className="flex box-border h-[800px] w-full mx-auto my-auto">
         <div className="relative group box-border h-full w-full mx-auto my-auto">
           <Carousel />
         </div>
       </section>
-      <section className="relative h-[1200px] w-[1440px] m-auto mt-[220px]">
+      <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
         <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px]">
           <NavCard
             title="Motores"
             description=" ¡No retifique más! Elija algunas de nuestras opciones de mejor calidad "
-            imagen="./motor_2.jpg"
+            imagen="./mot_t1.jpg"
             imagenFlip = "./repuesto_2.jpg"
           />
         </div>
@@ -32,7 +32,7 @@ export default function Index(): JSX.Element {
           <NavCard
             title="Repuestos"
             description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
-            imagen="./repuesto_2.jpg"
+            imagen="./rep_t1.jpg"
             imagenFlip="./motor_2.jpg"
           
           />
@@ -41,7 +41,7 @@ export default function Index(): JSX.Element {
           <NavCard
             title="Contacto"
             description="Contacto directo y atención en el momento"
-            imagen="./contacto_1.jpg"
+            imagen="./cont_1.jpg"
             imagenFlip="./repuesto_2.jpg"
        
           />
