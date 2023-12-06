@@ -30,7 +30,7 @@ const NavCard = (props: any) => {
           </div>
         </>
       ) : (
-        <div className="absolute pt-[2%] pl-[2%] pr-[2%] pb-[2%] outline-stone-200 text-center backdrop-opacity-30 rounded backdrop-invert bg-white text-blue-800 font-raleway text-5xl font-semibold">{props.title}</div>
+        <div className="absolute pt-[2%] pl-[2%] pr-[2%] pb-[2%] outline-stone-200 text-center backdrop-opacity-30 rounded backdrop-invert bg-slate-900/30 dark:bg-slate-900/10 text-white font-raleway text-5xl font-semibold">{props.title}</div>
       )}
     </div>
     </Link>
