@@ -47,14 +47,14 @@ export default function Index(): JSX.Element {
           />
         </div>
       </section>
-      <section className="relative h-[840px] w-[1440px] m-auto mt-[220px]">
-        <div className="text-center pt-[45px] text-6xl font-semibold dark:text-white"> Reseña de nuestros clientes </div>
-        <div className="absolute left-[40px] top-[160px]"><ChatWindow review="Muy buena predisposición por parte de la empresa, buena atención. Gracias!"/></div>
-        <div className="absolute left-[740px] top-[160px]"><ChatWindow review="Gracias por la buena atención.Todo llegó en tiempo y forma. Muchas gracias."/></div>
-        <div className="absolute left-[40px] top-[380px]"><ChatWindow review="Muy buena atención, llegó todo cigueñal y block a tiempo, Muchísimas gracias.-"/></div>
-        <div className="absolute left-[740px] top-[590px]"><ChatWindow review="Muy buena atención y seriedad. Recibí todos los repuestos en tiempo y forma. Muchas gracias."/></div>
-        <div className="absolute left-[40px] top-[590px]"><ChatWindow review="Muy atento, gracias por todo."/></div>
-        <div className="absolute left-[740px] top-[380px]"><ChatWindow review="5 estrellas"/></div>
+      <section className="relative h-[840px] w-[1440px] m-auto mt-[220px] bg-blue-100 dark:bg-white rounded-[1%] shadow-lg">
+        <div className="text-center pt-[45px] text-4xl font-semibold-raleway mb-[10px] text-blue-900  "> COMENTARIOS DE NUESTROS CLIENTES </div>
+        <div className="absolute left-[40px] top-[160px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Muy buena predisposición por parte de la empresa, buena atención. Gracias!"/></div>
+        <div className="absolute left-[740px] top-[160px] bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Gracias por la buena atención.Todo llegó en tiempo y forma. Muchas gracias."/></div>
+        <div className="absolute left-[40px] top-[380px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Muy buena atención, llegó todo cigueñal y block a tiempo, Muchísimas gracias.-"/></div>
+        <div className="absolute left-[740px] top-[590px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Muy buena atención y seriedad. Recibí todos los repuestos en tiempo y forma. Muchas gracias."/></div>
+        <div className="absolute left-[40px] top-[590px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Muy atento, gracias por todo."/></div>
+        <div className="absolute left-[740px] top-[380px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="5 estrellas"/></div>
         </section>
         <footer className="w-full ">
           <Footer />
