@@ -1,18 +1,24 @@
 "use client";
 
 import Header from "../components/header";
+import Footer from "../components/footer";
 import EngineCard from "../components/engineCard";
 
 export default function page() {
     return (
-      <main className="relative dark:bg-gray-700">
-        <div className="text-8xl flex justify-center">Fancy Titulo/Descripcion de Motores</div>
-        <div className="flex flex-wrap justify-start h-full w-[1200px] border-black border-2 m-auto mt-[100px] px-1">
+    <main className="relative dark:bg-gray-700">
+      <Header />
+        <div className="mt-[3%] mb-[1%] font-raleway-bold text-6xl flex justify-center">NUESTROS SEMI ARMADOS</div>
+        <div className="mb-[1%] font-raleway text-xl flex justify-center">La mejor selección de semi armados y semi armados enchavetados</div>
+        <div className="flex flex-wrap justify-start h-full w-[1200px] bg-blue-100 rounded-[1%] shadow-lg m-auto mt-[100px] px-1">
         <EngineCard />
         <EngineCard />
         <EngineCard />
         <EngineCard />
         </div>
-      </main>
+      <footer className="w-full ">
+          <Footer />
+        </footer>
+    </main>
     );
   }
