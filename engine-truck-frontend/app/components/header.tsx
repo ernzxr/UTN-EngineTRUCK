@@ -5,8 +5,8 @@ import { FC } from "react";
 
 const Header: FC<Record<string, never>> = function () {
   return (
-    <header className="sticky top-0 z-20 bg-blue-800 border-b-[1px] border-gray-400 dark:border-white">
-      <Navbar fluid>
+    <header className="sticky top-0 z-20 border-b-[1px] border-gray-700 dark:border-blue-700 ">
+      <Navbar fluid className="bg-blue-950 ">
         <Navbar.Brand href="/">
           <Image className="ml-[20%] mr-[15%]"
             alt="Flowbite logo"
@@ -24,12 +24,12 @@ const Header: FC<Record<string, never>> = function () {
           <DarkThemeToggle />
         </div>
         <Navbar.Collapse>
-          <div className="flex space-x-20 font-raleway font-bold ">
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/" /*active*/ >INICIO</Navbar.Link>
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/motores">MOTORES</Navbar.Link>
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/repuestos">REPUESTOS</Navbar.Link>
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/nosotros" >NOSOTROS</Navbar.Link>
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/contacto">CONTACTO</Navbar.Link>
+          <div className="flex space-x-20 font-raleway font-bold  ">
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/" /*active*/ >INICIO</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/motores">MOTORES</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/repuestos">REPUESTOS</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/nosotros" >NOSOTROS</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/contacto">CONTACTO</Navbar.Link>
           </div>
         </Navbar.Collapse>
       </Navbar>
