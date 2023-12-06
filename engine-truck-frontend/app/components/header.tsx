@@ -5,8 +5,8 @@ import { FC } from "react";
 
 const Header: FC<Record<string, never>> = function () {
   return (
-    <header className="sticky top-0 z-20 bg-blue-800 border-b-[1px] border-gray-400 dark:border-white">
-      <Navbar fluid>
+    <header className="sticky top-0 z-20 border-b-[1px] border-gray-400 dark:border-white">
+      <Navbar fluid className="bg-blue-300">
         <Navbar.Brand href="/">
           <Image
             alt="Flowbite logo"
@@ -24,7 +24,7 @@ const Header: FC<Record<string, never>> = function () {
         </div>
         <Navbar.Collapse>
           <div className="flex space-x-20 font-raleway font-bold ">
-          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/" /*active*/ >INICIO</Navbar.Link>
+          <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/">INICIO</Navbar.Link>
           <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/motores">MOTORES</Navbar.Link>
           <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/repuestos">REPUESTOS</Navbar.Link>
           <Navbar.Link className="hover:border-black hover:border-b-[1px] hover:dark:border-white" href="/nosotros" >NOSOTROS</Navbar.Link>
