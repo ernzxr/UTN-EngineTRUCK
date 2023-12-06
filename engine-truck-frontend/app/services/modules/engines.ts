@@ -1,21 +1,18 @@
-import { EnginesCards } from "../interfaces/engines";
-import { post } from "../config";
-import { get } from "../config";
-import { update } from "../config";
-import { eliminate } from "../config";
+import { Engine } from "../interfaces/engines";
+import { post, get, update, eliminate } from "../config";
 
-export const getEngineCard = (data:EnginesCards) => {
-    return get("/api/engines", data);
+export const getEngines = () => {
+    return get("/api/engines");
 }
 
-export const postEngineCard = (data:EnginesCards) => {
+export const createEngine = (data:Engine) => {
     return post("/api/engines", data);
 }
 
-export const updateEngineCard = (data:EnginesCards) => {
-    return update("/api/engines", data);
+export const updateEngine = (data:Engine, id:number) => {
+    return update("/api/engines/"+id, data);
 }
 
-export const deleteEngineCard = (data:EnginesCards) => {
-    return eliminate("/api/engines", data);
+export const deleteEngine = (id:number) => {
+    return eliminate("/api/engines/"+id);
 }

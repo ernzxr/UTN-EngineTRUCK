@@ -1,8 +1,5 @@
 import { LoginUsers } from "../interfaces/users";
-import { post } from "../config";
-import { get } from "../config";
-import { update } from "../config";
-import { eliminate } from "../config";
+import { post, get, update, eliminate } from "../config";
 
 export const getUser = (data:LoginUsers) => {
     return get("/api/users", data);
