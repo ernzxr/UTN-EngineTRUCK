@@ -22,7 +22,7 @@ export default function Index(): JSX.Element {
       <section className="relative h-[750px] w-[1440px] m-auto mt-[220px]">
         <div className="absolute top-[50px] left-[70px] w-[800px] h-[300px] rounded-[100px]">
           <NavCard
-            title="Motores"
+            title="MOTORES"
             description=" ¡No retifique más! Elija algunas de nuestras opciones de mejor calidad "
             imagen="./mot_t1.jpg"
             imagenFlip = "./mot_t2.jpg"
@@ -30,7 +30,7 @@ export default function Index(): JSX.Element {
         </div>
         <div className="absolute top-[400px] left-[70px] w-[800px] h-[300px]">
           <NavCard
-            title="Repuestos"
+            title="REPUESTOS"
             description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
             imagen="./rep_t1.jpg"
             imagenFlip="./rep_t2.jpg"
@@ -39,7 +39,7 @@ export default function Index(): JSX.Element {
         </div>
         <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px]">
           <NavCard
-            title="Contacto"
+            title="CONTACTO"
             description="Contacto directo y atención en el momento"
             imagen="./cont_1.jpg"
             imagenFlip="./cont_2.jpg"

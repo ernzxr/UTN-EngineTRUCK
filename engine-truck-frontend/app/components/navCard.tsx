@@ -18,19 +18,19 @@ const NavCard = (props: any) => {
         src={cardHover ? props.imagenFlip : props.imagen}
         className={
           cardHover
-            ? "w-full h-full rounded-[10px] object-cover brightness-50 duration-500"
-            : "w-full h-full rounded-[10px] object-cover duration-500"
+            ? "w-full h-full rounded-[10px] object-cover brightness-50 duration-1000"
+            : "w-full h-full rounded-[10px] object-cover duration-1000"
         }
       />
       {cardHover ? (
         <>
-          <div className="absolute pb-[60px] text-center text-white text-5xl font-semibold">{props.title}</div>
-          <div className="absolute pt-[40px] text-center text-white text-xl font-semibold">
+          <div className="absolute pb-[60px] text-center text-white font-raleway text-4xl font-semibold">{props.title}</div>
+          <div className="absolute pt-[40px] text-center text-white font-raleway text-xl font-semibold">
             {props.description}
           </div>
         </>
       ) : (
-        <h2></h2>
+        <div className="absolute pt-[2%] outline-stone-200 text-center text-blue-900 font-raleway text-5xl font-semibold">{props.title}</div>
       )}
     </div>
     </Link>
