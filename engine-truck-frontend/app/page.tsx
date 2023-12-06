@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Carousel from "./components/carousel";
 import NavCard from "./components/navCard";
+import LogoCard from "./components/LogoCard";
 import ChatWindow from "./components/chatWindow";
 
 
@@ -47,7 +48,17 @@ export default function Index(): JSX.Element {
           />
         </div>
       </section>
-      <section className="relative h-[840px] w-[1440px] m-auto mt-[220px] bg-blue-100 dark:bg-white rounded-[1%] shadow-lg">
+      
+      <section className=" w-[1440px] h-[400px] border-black border-2 m-auto mt-[180px]">
+      <p className="text-center text-4xl font-semibold-raleway mb-[60px] mt-[40px]">PRINCIPALES EMPRESAS QUE CONFIAN EN ENGINETRUCK</p>
+       <div className="flex justify-around items-center">
+        <LogoCard />
+        <LogoCard />
+        <LogoCard />
+        <LogoCard />
+        </div>
+      </section>
+      <section className="relative h-[840px] w-[1440px] m-auto mt-[180px] bg-blue-100 dark:bg-white rounded-[1%] shadow-lg">
         <div className="text-center pt-[45px] text-4xl font-semibold-raleway mb-[10px] text-blue-900  "> COMENTARIOS DE NUESTROS CLIENTES </div>
         <div className="absolute left-[40px] top-[160px]  bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Muy buena predisposición por parte de la empresa, buena atención. Gracias!"/></div>
         <div className="absolute left-[740px] top-[160px] bg-white text-blue-900 dark:text-blue-900  dark:bg-blue-100  rounded-[10px]"><ChatWindow review="Gracias por la buena atención.Todo llegó en tiempo y forma. Muchas gracias."/></div>
