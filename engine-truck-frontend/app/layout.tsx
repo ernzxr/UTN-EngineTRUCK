@@ -7,6 +7,7 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
     <html lang="en">
       <body>
+        <Header />
         <FlowbiteContext>{children}</FlowbiteContext>
       </body>
     </html>
