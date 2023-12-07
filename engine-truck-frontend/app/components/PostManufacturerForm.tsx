@@ -2,7 +2,7 @@
 
 import { useFormik } from 'formik';
 import { Button, Label, TextInput } from 'flowbite-react';
-import { ErrorInputs } from '@/app/components/errors';
+import { ErrorInputs } from '@/app/components/Errors';
 import { createManufacturer } from '@/app/services/modules/manufacturers';
 import { Manufacturer } from '@/app/services/interfaces/manufacturers';
 

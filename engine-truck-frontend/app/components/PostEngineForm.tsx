@@ -3,7 +3,7 @@
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import { Button, Label, TextInput, Select } from 'flowbite-react';
-import { ErrorInputs } from '@/app/components/errors';
+import { ErrorInputs } from '@/app/components/Errors';
 import { createEngine } from '@/app/services/modules/engines';
 import { Engine } from '@/app/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +13,12 @@ import { fetchBrands } from '../redux/features/brandsSlice';
 export const PostEngineForm = () => {
   const dispatch = useDispatch();
 
-  const brandsList = useSelector((state) => state.brands.brandsList);
-  const manufacturersList = useSelector((state) => state.manufacturers.manufacturersList);
+  const brandsList = useSelector((state:any) => state.brands.brandsList);
+  const manufacturersList = useSelector((state:any) => state.manufacturers.manufacturersList);
 
   useEffect(() => {
-    dispatch(fetchManufacturers());
-    dispatch(fetchBrands());
+    dispatch(fetchManufacturers() as any);
+    dispatch(fetchBrands() as any);
   }, [dispatch]);
 
   const validate = (values: any) => {
@@ -44,7 +44,7 @@ export const PostEngineForm = () => {
     },
     validate,
     onSubmit: (values) => {
-      const engineData = {
+      const engineData:any = {
         model: values.model,
         manufacturer_id: values.manufacturer_id,
         brand_id: values.brand_id,
@@ -55,7 +55,7 @@ export const PostEngineForm = () => {
     },
   });
 
-  const postEngine = (values: Engine) => {
+  const postEngine = (values:Engine) => {
     createEngine(values).then((data) => {
       formik.resetForm();
     }).catch((err) => {
@@ -85,7 +85,7 @@ export const PostEngineForm = () => {
           required
         >
           <option value="" label="Selecciona un fabricante" />
-          {manufacturersList.map((manufacturer) => (
+          {manufacturersList.map((manufacturer:any) => (
             <option key={manufacturer.id} value={manufacturer.id}>
               {manufacturer.manufacturer}
             </option>
@@ -111,7 +111,7 @@ export const PostEngineForm = () => {
           required
         >
           <option value="" label="Selecciona una marca" />
-          {brandsList.map((brand) => (
+          {brandsList.map((brand:any) => (
             <option key={brand.id} value={brand.id}>
               {brand.brand}
             </option>

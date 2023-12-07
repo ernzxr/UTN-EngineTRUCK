@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default function page() {
+export default function Page() {
 
   const router = useRouter();
 
@@ -11,7 +11,7 @@ export default function page() {
     if(!localStorage.getItem('token')) {
       router.push('/admin');
     }
-  });
+  }, [router]);
 
   return (
     <main className="relative dark:bg-gray-700">

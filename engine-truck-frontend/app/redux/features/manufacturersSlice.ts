@@ -30,6 +30,9 @@ const manufacturersSlice = createSlice({
     builder.addCase(fetchManufacturers.fulfilled, (state, action) => {
       state.manufacturersList = action.payload;
     });
+    builder.addCase(fetchManufacturers.rejected, (state, action) => {
+      console.error("Error al obtener los datos:", action.error);
+    });
   }
 });
 

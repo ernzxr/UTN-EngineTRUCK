@@ -30,6 +30,9 @@ const brandsSlice = createSlice({
     builder.addCase(fetchBrands.fulfilled, (state, action) => {
       state.brandsList = action.payload;
     });
+    builder.addCase(fetchBrands.rejected, (state, action) => {
+      console.error("Error al obtener los datos:", action.error);
+    });
   }
 });
 
