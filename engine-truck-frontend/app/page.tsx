@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Carousel from "./components/carousel";
-import NavCard from "./components/navCard";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Carousel from "./components/Carousel";
+import NavCard from "./components/NavCard";
 import LogoCard from "./components/LogoCard";
-import ChatWindow from "./components/chatWindow";
+import ChatWindow from "./components/ChatWindow";
 
 
 export default function Index(): JSX.Element {

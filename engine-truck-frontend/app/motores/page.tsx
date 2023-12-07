@@ -1,10 +1,10 @@
 "use client";
 
-import Header from "../components/header";
-import Footer from "../components/footer";
-import EngineCard from "../components/engineCard";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import EngineCard from "../components/EngineCard";
 
-export default function page() {
+export default function Page() {
     return (
     <main className="relative dark:bg-gray-700">
       <Header />

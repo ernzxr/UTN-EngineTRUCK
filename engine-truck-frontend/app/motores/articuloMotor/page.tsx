@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import Header from "@/app/components/header";
+import Header from "@/app/components/Header";
 
-export default function page() {
+export default function Page() {
     return (
       <main className="relative dark:bg-gray-700">
         <Header />

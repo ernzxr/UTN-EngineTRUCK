@@ -1,18 +1,18 @@
-import { Brands } from "../interfaces/brands";
+import { Brand } from "../interfaces/brands";
 import { post, get, update, eliminate } from "../config";
 
-export const getEngineCard = (data:Brands) => {
-    return get("/api/brands", data);
+export const getBrands = () => {
+    return get("/api/brands");
 }
 
-export const postEngineCard = (data:Brands) => {
+export const createBrand = (data:Brand) => {
     return post("/api/brands", data);
 }
 
-export const updateEngineCard = (data:Brands) => {
-    return update("/api/brands", data);
+export const updateBrand = (data:Brand, id:number) => {
+    return update("/api/brands/"+id, data);
 }
 
-export const deleteEngineCard = (data:Brands) => {
-    return eliminate("/api/brands", data);
+export const deleteBrand = (id:number) => {
+    return eliminate("/api/brands/"+id);
 }
