@@ -1,4 +1,4 @@
-import { getBrands } from "@/app/services/modules/brands";
+import { getBrands } from "../../services/modules/brands";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const brandState = {

@@ -1,6 +1,6 @@
 import FlowbiteContext from "./context/FlowbiteContext";
-import { Providers } from "./redux/provider";
-import "./globals.css";
+import { Providers } from "../lib/redux/provider";
+import "./styles/globals.css";
 
 
 export default function RootLayout(props: React.PropsWithChildren) {
