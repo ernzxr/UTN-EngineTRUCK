@@ -1,19 +1,16 @@
-import { FC, PropsWithChildren } from "react";
 import FlowbiteContext from "./context/FlowbiteContext";
+import { Providers } from "./redux/provider";
 import "./globals.css";
-import Providers from "./redux/provider"
 
 
-const RootLayout: FC<PropsWithChildren> = function ({ children }) {
+export default function RootLayout(props: React.PropsWithChildren) {
   return (
-      <html lang="en">
-        <Providers>
-          <body>
-            <FlowbiteContext>{children}</FlowbiteContext>
-          </body>
-        </Providers>
+    <Providers>
+      <html lang="es">
+        <body>
+          <FlowbiteContext>{props.children}</FlowbiteContext>
+        </body>
       </html>
+    </Providers>
   );
 };
-
-export default RootLayout;
