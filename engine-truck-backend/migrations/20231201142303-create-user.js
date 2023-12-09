@@ -23,14 +23,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING(45)
-      },
-      last_name: {
-        allowNull: false,
-        type: Sequelize.STRING(45)
-      },
       type_user: {
         allowNull: false,
         type: Sequelize.INTEGER

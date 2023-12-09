@@ -13,22 +13,6 @@ const getUsers = async (req, res) => {
             }
         };
 
-        if(query.name) {
-            optionsSql.push({
-                name:{
-                    [Op.like]:`%${query.name}%`
-                }
-            });
-        }
-
-        if(query.last_name) {
-            optionsSql.push({
-                last_name:{
-                    [Op.like]:`%${query.last_name}%`
-                }
-            });
-        }
-
         if(query.email) {
             optionsSql.push({
                 email:{

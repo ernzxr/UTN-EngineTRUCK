@@ -18,16 +18,6 @@ const validateUser = (req, res, next) => {
             "any.required":"Las contraseña es requerida",
             "string.empty":"El campo no puede quedar vacio"
         }),
-        name: Joi.string().max(45).required().messages({
-            "any.required":"El nombre es requerido",
-            "string.empty":"El campo no puede quedar vacio",
-            "string.max":"El maximo de caracteres es 45"
-        }),
-        last_name: Joi.string().max(45).required().messages({
-            "any.required":"El apellido es requerido",
-            "string.empty":"El campo no puede quedar vacio",
-            "string.max":"El maximo de caracteres es 45"
-        }),
         type_user: Joi.number().integer().required().messages({
             "number.base":"El valor debe ser numérico"
         })
