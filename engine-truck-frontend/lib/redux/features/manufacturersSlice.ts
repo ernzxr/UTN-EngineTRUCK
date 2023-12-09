@@ -1,4 +1,4 @@
-import { getManufacturers } from "@/app/services/modules/manufacturers";
+import { getManufacturers } from "../../services/modules/manufacturers";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const manufacturerState = {
@@ -22,9 +22,6 @@ const manufacturersSlice = createSlice({
   name: "manufacturers",
   initialState: manufacturerState,
   reducers: {
-    setManufacturersList: (state, action) => {
-      state.manufacturersList = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchManufacturers.fulfilled, (state, action) => {
