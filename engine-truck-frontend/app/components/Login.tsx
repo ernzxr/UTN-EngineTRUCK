@@ -1,30 +1,30 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
-import { LoginUsers } from '../services/interfaces/users';
-import { userLogin } from '../services/modules/users';
+import { userLogin } from '../../lib/services/modules/users';
+import { LoginUser } from '../../lib/services/interfaces/users';
 import { useRouter } from 'next/navigation';
 
-const Form = () => {
+const Login = () => {
 
   const router = useRouter();
 
   const loginFormik = useFormik({
     initialValues: {
-      user:'',
-      password:'',
+      user: '',
+      password: '',
     },
     onSubmit: values => {
       console.log(values);
       login(values);
     }
-  }); 
+  });
 
-  const login = (values:LoginUsers) => {
-        userLogin(values).then((data:any) => {
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-        localStorage.setItem('token', data.data.token);
-        router.push('/admin/dashboard');
-      }).catch((error) => { console.log(error)}); 
+  const login = (values: LoginUser) => {
+    userLogin(values).then((data: any) => {
+      localStorage.setItem('user', JSON.stringify(data.data.user));
+      localStorage.setItem('token', data.data.token);
+      router.push('/admin/dashboard');
+    }).catch((error) => { console.log(error) });
   }
 
   return (
@@ -37,9 +37,9 @@ const Form = () => {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password" value="Your password"/>
+          <Label htmlFor="password" value="Your password" />
         </div>
-        <TextInput id="password" type="password" name="password" required onChange={loginFormik.handleChange} value={loginFormik.values.password}/>
+        <TextInput id="password" type="password" name="password" required onChange={loginFormik.handleChange} value={loginFormik.values.password} />
       </div>
       <div className="flex items-center gap-2">
         <Checkbox id="remember" />
@@ -50,4 +50,4 @@ const Form = () => {
   );
 }
 
-export default Form;
+export default Login;

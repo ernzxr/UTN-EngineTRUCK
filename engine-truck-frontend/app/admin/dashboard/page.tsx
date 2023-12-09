@@ -8,7 +8,7 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    if(!localStorage.getItem('token')) {
+    if (!localStorage.getItem('token')) {
       router.push('/admin');
     }
   }, [router]);
@@ -26,16 +26,16 @@ export default function Page() {
           </tr>
         </thead>
         <tbody className="text-center">
-        <tr className="flex flex-row list-none border-b justify-evenly text-center items-center">
-        <th className="w-[20%]">1</th>
-        <th className="w-[20%]">Imagen de Motor</th>
-        <th className="w-[20%]">MotorRePro</th>
-        <th className="w-[20%]">230-450</th>
-        <th className="w-[20%]">45 Disponibles</th>
-        </tr>
+          <tr className="flex flex-row list-none border-b justify-evenly text-center items-center">
+            <th className="w-[20%]">1</th>
+            <th className="w-[20%]">Imagen de Motor</th>
+            <th className="w-[20%]">MotorRePro</th>
+            <th className="w-[20%]">230-450</th>
+            <th className="w-[20%]">45 Disponibles</th>
+          </tr>
         </tbody>
       </table>
-      
+
     </main>
   );
 }

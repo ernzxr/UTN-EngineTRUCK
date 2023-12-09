@@ -20,3 +20,4 @@ export const updateUser = (data: User, id: number) => {
 export const deleteUser = (id: number) => {
   return eliminate("/api/users" + id);
 };
+
