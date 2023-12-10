@@ -3,12 +3,16 @@
 
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 
 export default function Page() {
   return (
     <main className="relative dark:bg-gray-700">
       <Header />
-      <section className="flex w-[1200px] h-[600px] m-auto mt-[100px] bg-blue-100 rounded-[30px] shadow-lg">
+      <div className="absolute left-[89%] top-[40%] text-blue-400">
+      <MdKeyboardDoubleArrowDown size={200}/>
+      </div>
+      <section className="flex w-[1200px] h-[600px] m-auto mt-[10px] bg-blue-100 rounded-[30px] shadow-lg">
         <img
           src="../motor_2.jpg"
           alt="Motor"
@@ -33,15 +37,15 @@ export default function Page() {
             </tbody>
           </table>
         </div>
-        <div className="absolute top-[670px] left-[20%] m-auto w-[58%] border-blue-300 border-2"></div>
-        <button className="absolute top-[700px] left-[20%] mt-auto ml-4 px-4 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+        <div className="absolute top-[580px] left-[20%] m-auto w-[58%] border-blue-300 border-2"></div>
+        <button className="absolute top-[600px] left-[20%] mt-auto ml-4 px-4 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
           Volver
         </button>
-        <button className="absolute top-[700px] left-[65%] mt-auto ml-4 px-12 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+        <button className="absolute top-[600px] left-[65%] mt-auto ml-4 px-12 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
           Consultar
         </button>
       </section>
-      <section className="w-[800px] h-full m-auto mt-[100px] p-5 bg-blue-100 rounded-[30px] shadow-lg">
+      <section className="w-[800px] h-full m-auto mt-[20px] p-5 bg-blue-100 rounded-[30px] shadow-lg">
         <p className="py-[5px]">Informacion Tecnica</p>
         <div className="w-full border-2 border-blue-300"></div>
         <p className="p-[10px] my-[10px]">

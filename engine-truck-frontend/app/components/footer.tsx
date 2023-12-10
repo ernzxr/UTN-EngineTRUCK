@@ -15,7 +15,7 @@ const Footer = () => {
           <Link href={"/nosotros"}>NOSOTROS</Link>
           <Link href={"/contacto"}>CONTACTO</Link>
         </div>
-        <div className="flex text-white mt-[3%] mb-[3%] cursor-pointer">
+        <div className="flex text-white space-x-20 mt-[3%] mb-[3%] cursor-pointer">
           <FaFacebook size={30} />
           <FaLinkedin size={30} />
           <FaInstagram size={30} />
