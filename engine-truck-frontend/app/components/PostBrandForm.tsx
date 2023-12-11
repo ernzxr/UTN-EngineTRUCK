@@ -3,8 +3,8 @@
 import { useFormik } from 'formik';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
-import { createBrand } from '@/app/services/modules/brands';
-import { Brand } from '@/app/services/interfaces/brands';
+import { createBrand } from '@/lib/services/modules/brands';
+import { Brand } from '@/lib/services/interfaces/brands';
 
 export const PostBrandForm = () => {
     const validate = (values:any) => {
@@ -28,6 +28,7 @@ export const PostBrandForm = () => {
     const postBrand = (values:Brand) => {
         createBrand(values).then((data) => {
             formik.resetForm();
+            location.reload(); //refresca
         }).catch((err) => {
             console.log(err)
         });

@@ -3,8 +3,8 @@
 import { useFormik } from 'formik';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
-import { createManufacturer } from '@/app/services/modules/manufacturers';
-import { Manufacturer } from '@/app/services/interfaces/manufacturers';
+import { createManufacturer } from '@/lib/services/modules/manufacturers';
+import { Manufacturer } from '@/lib/services/interfaces/manufacturers';
 
 export const PostManufacturerForm = () => {
     const validate = (values:any) => {

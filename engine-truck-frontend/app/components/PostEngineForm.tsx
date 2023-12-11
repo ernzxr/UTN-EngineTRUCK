@@ -4,11 +4,11 @@ import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import { Button, Label, TextInput, Select } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
-import { createEngine } from '@/app/services/modules/engines';
-import { Engine } from '@/app/services/interfaces/engines';
+import { createEngine } from '@/lib/services/modules/engines';
+import { Engine } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchManufacturers } from '../redux/features/manufacturersSlice';
-import { fetchBrands } from '../redux/features/brandsSlice';
+import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
+import { fetchBrands } from '@/lib/redux/features/brandsSlice';
 
 export const PostEngineForm = () => {
   const dispatch = useDispatch();
