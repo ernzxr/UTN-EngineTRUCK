@@ -17,9 +17,6 @@ export default function Page() {
           <ComponentCard />
           <ComponentCard />
         </section>
-        
-        
-
       </main>
     );
   }
