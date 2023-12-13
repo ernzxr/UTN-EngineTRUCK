@@ -48,14 +48,13 @@ export default function Index(): JSX.Element {
           />
         </div>
       </section>
-      
-      <section className=" w-[1440px] h-[400px] border-black border-2 m-auto mt-[180px]">
-      <p className="text-center text-4xl font-semibold-raleway mb-[60px] mt-[40px]">PRINCIPALES EMPRESAS QUE CONFIAN EN ENGINETRUCK</p>
-       <div className="flex justify-around items-center">
-        <LogoCard />
-        <LogoCard />
-        <LogoCard />
-        <LogoCard />
+      <section className="w-[1440px] h-[400px] border-black border-2 m-auto mt-[180px]">
+        <p className="text-center text-4xl font-semibold-raleway mb-[60px] mt-[40px]">EMPRESAS QUE TRABAJARON CON ENGINETRUCK</p>
+        <div className="flex justify-around items-center">
+          <LogoCard /**por alguna razon no lo esta tomando, revisar**/ imagen="/la_serenisima_logo.jpg" />
+          <LogoCard imagen="/puma_logo.jpg" />
+          <LogoCard imagen="/tempranera_logo.jpg" />
+          <LogoCard imagen="/valagro_logo.jpg" /> 
         </div>
       </section>
       <section className="relative h-[840px] w-[1440px] m-auto mt-[180px] bg-blue-100 dark:bg-white rounded-[1%] shadow-lg">
