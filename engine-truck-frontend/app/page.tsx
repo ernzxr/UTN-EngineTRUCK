@@ -52,7 +52,7 @@ export default function Index(): JSX.Element {
         <p className="text-center text-4xl font-semibold-raleway mb-[60px] mt-[40px]">EMPRESAS QUE TRABAJARON CON ENGINETRUCK</p>
         <div className="flex justify-around items-center">
           <LogoCard /**por alguna razon no lo esta tomando, revisar**/ imagen="/la_serenisima_logo.jpg" />
-          <LogoCard imagen="/puma_logo.jpg" />
+          <LogoCard imagen="/puma_logo.jpg"/>
           <LogoCard imagen="/tempranera_logo.jpg" />
           <LogoCard imagen="/valagro_logo.jpg" /> 
         </div>

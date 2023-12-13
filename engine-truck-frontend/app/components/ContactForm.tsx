@@ -10,7 +10,7 @@ const ContactForm = () => {
         <Label htmlFor="name" value="Ingrese su Nombre" />
       </div>
       <div className='w-[70%]'>
-      <TextInput id="name" type="name" sizing="sm" required />
+      <TextInput id="name" type="text" sizing="sm" required />
       </div>
     </div>
     <div>
@@ -18,7 +18,7 @@ const ContactForm = () => {
         <Label htmlFor="email" value="Ingrese su Correo Electronico" />
       </div>
       <div className='w-[70%]'>
-      <TextInput id="email" type="email" sizing="sm" required />
+      <TextInput id="email" type="text" sizing="sm" required />
       </div>
     </div>
     <div>
@@ -26,7 +26,7 @@ const ContactForm = () => {
         <Label htmlFor="phone" value="Ingrese su Numero" />
       </div>
       <div className='w-[70%]'>
-      <TextInput id="phone" type="phone" sizing="sm" required />
+      <TextInput id="phone" type="text" sizing="sm" required />
       </div>
     </div>
     <div>
