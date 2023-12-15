@@ -1,62 +1,62 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # folders
-engine-truck-backend/public/videos/*.mp4
-engine-truck-backend/public/videos/*.avi
-engine-truck-backend/public/videos/*.mkv
-engine-truck-backend/public/images/*.png
-engine-truck-backend/public/images/*.jpg
-engine-truck-backend/public/images/*.jpeg
-engine-truck-backend/public/images/*.webp
+engine_truck_backend/public/videos/*.mp4
+engine_truck_backend/public/videos/*.avi
+engine_truck_backend/public/videos/*.mkv
+engine_truck_backend/public/images/*.png
+engine_truck_backend/public/images/*.jpg
+engine_truck_backend/public/images/*.jpeg
+engine_truck_backend/public/images/*.webp
 
 # dependencies
-engine-truck-frontend/node_modules
-engine-truck-frontend/.pnp
-engine-truck-frontend/.pnp.js
-engine-truck-frontend/.yarn/install-state.gz
-engine-truck-backend/node_modules
-engine-truck-backend/.pnp
-engine-truck-backend/.pnp.js
-engine-truck-backend/.yarn/install-state.gz
+engine_truck_frontend/node_modules
+engine_truck_frontend/.pnp
+engine_truck_frontend/.pnp.js
+engine_truck_frontend/.yarn/install-state.gz
+engine_truck_backend/node_modules
+engine_truck_backend/.pnp
+engine_truck_backend/.pnp.js
+engine_truck_backend/.yarn/install-state.gz
 
 # testing
-engine-truck-frontend/coverage
-engine-truck-backend/coverage
+engine_truck_frontend/coverage
+engine_truck_backend/coverage
 
 # next.js
-engine-truck-frontend/.next/
-engine-truck-frontend/out/
-engine-truck-backend/.next/
-engine-truck-backend/out/
+engine_truck_frontend/.next/
+engine_truck_frontend/out/
+engine_truck_backend/.next/
+engine_truck_backend/out/
 
 # production
-engine-truck-frontend/build
-engine-truck-backend/build
+engine_truck_frontend/build
+engine_truck_backend/build
 
 # misc
-engine-truck-frontend/.DS_Store
-engine-truck-frontend/*.pem
-engine-truck-backend/.DS_Store
-engine-truck-backend/*.pem
+engine_truck_frontend/.DS_Store
+engine_truck_frontend/*.pem
+engine_truck_backend/.DS_Store
+engine_truck_backend/*.pem
 
 # debug
-engine-truck-frontend/npm-debug.log*
-engine-truck-frontend/yarn-debug.log*
-engine-truck-frontend/yarn-error.log*
-engine-truck-backend/npm-debug.log*
-engine-truck-backend/yarn-debug.log*
-engine-truck-backend/yarn-error.log*
+engine_truck_frontend/npm-debug.log*
+engine_truck_frontend/yarn-debug.log*
+engine_truck_frontend/yarn-error.log*
+engine_truck_backend/npm-debug.log*
+engine_truck_backend/yarn-debug.log*
+engine_truck_backend/yarn-error.log*
 
 # local env files
-engine-truck-frontend/.env*.local
-engine-truck-backend/.env*.local
+engine_truck_frontend/.env*.local
+engine_truck_backend/.env*.local
 
 # vercel
-engine-truck-frontend/.vercel
-engine-truck-backend/.vercel
+engine_truck_frontend/.vercel
+engine_truck_backend/.vercel
 
 # typescript
-engine-truck-frontend/*.tsbuildinfo
-engine-truck-frontend/next-env.d.ts
-engine-truck-backend/*.tsbuildinfo
-engine-truck-backend/next-env.d.ts
+engine_truck_frontend/*.tsbuildinfo
+engine_truck_frontend/next-env.d.ts
+engine_truck_backend/*.tsbuildinfo
+engine_truck_backend/next-env.d.ts
