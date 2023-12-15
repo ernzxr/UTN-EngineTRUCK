@@ -1,4 +1,4 @@
-import { Manufacturer, ManufacturerCreate } from "../interfaces/manufacturers";
+import { ManufacturerCreate, ManufacturerResponse } from "../interfaces/manufacturers";
 import { post, get, update, eliminate } from "../config";
 
 export const getManufacturers = () => {
@@ -9,7 +9,7 @@ export const createManufacturer = (data: ManufacturerCreate) => {
   return post("/api/manufacturers", data);
 };
 
-export const updateManufacturer = (data: Manufacturer) => {
+export const updateManufacturer = (data: ManufacturerResponse) => {
   return update("/api/manufacturers/" + data.id, data);
 };
 

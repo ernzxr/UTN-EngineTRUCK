@@ -36,9 +36,9 @@ export const addManufacturer = createAsyncThunk(
 
 export const modifiedManufacturer = createAsyncThunk(
   "manufacturers/modifiedManufacturer",
-  async (data:Manufacturer) => {
-      const response = await updateManufacturer(data);
-      return response;
+  async (data:ManufacturerResponse) => {
+      await updateManufacturer(data);
+      return data;
   }
 );
 
@@ -101,8 +101,12 @@ const manufacturersSlice = createSlice({
     })
     .addCase(modifiedManufacturer.fulfilled, (state, action) => {
       const data:any = action.payload;
-      const index = state.manufacturersList.findIndex(manufacturer => manufacturer.id === data.id);
-      state.manufacturersList[index] = data;
+      const index = state.manufacturersList.findIndex((manufacturer) => {
+        return manufacturer.id === data.id
+      });
+      if (index !== -1){
+        state.manufacturersList[index] = data;
+      }
       state.loading = false;
       state.response = "Update";
     })

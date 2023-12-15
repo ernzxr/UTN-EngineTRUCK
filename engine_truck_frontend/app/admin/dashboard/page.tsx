@@ -4,10 +4,9 @@ import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { ManufacturerCRUD } from '../../components/dashboard/manufacturers/ManufacturerCRUD';
 import AdminHeader from '@/app/components/dashboard/AdminHeader';
-import { ManufacturerPanel } from '@/app/components/dashboard/manufacturersCRUD/ManufacturerPanel';
 
-ManufacturerPanel
 export default function Page() {
   const router = useRouter();
 
@@ -26,7 +25,7 @@ export default function Page() {
       <Tabs.Item title="Components" icon={HiAdjustments}>
       </Tabs.Item>
       <Tabs.Item title="Manufacturers" icon={MdDashboard}>
-        <ManufacturerPanel />
+        <ManufacturerCRUD />
       </Tabs.Item>
       <Tabs.Item title="Brands" icon={HiClipboardList}>
       </Tabs.Item>

@@ -2,6 +2,7 @@
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
 import { FC } from "react";
+import Link from 'next/link';
 
 const Header: FC<Record<string, never>> = function () {
   return (
@@ -25,11 +26,11 @@ const Header: FC<Record<string, never>> = function () {
         </div>
         <Navbar.Collapse>
           <div className="flex space-x-20 font-raleway font-bold  ">
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/"  >INICIO</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/motores">MOTORES</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/repuestos">REPUESTOS</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/nosotros" >NOSOTROS</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/contacto">CONTACTO</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " as={Link} href="/" >INICIO</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " as={Link} href="/motores">MOTORES</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " as={Link} href="/repuestos">REPUESTOS</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " as={Link} href="/nosotros" >NOSOTROS</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " as={Link} href="/contacto">CONTACTO</Navbar.Link>
           </div>
         </Navbar.Collapse>
       </Navbar>
