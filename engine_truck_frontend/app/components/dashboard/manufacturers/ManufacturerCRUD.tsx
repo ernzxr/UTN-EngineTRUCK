@@ -40,16 +40,10 @@ export const ManufacturerCRUD = () => {
 
     return (
         <div className="overflow-x-auto flex flex-col md:flex-row">
-            <div className="overflow-x-auto md:w-3/4">
-                <Table>
+            <div className="block overflow-x-auto pr-28 md:w-3/4">
+                <Table className='w-[70%]'>
                     <Table.Head>
                         <Table.HeadCell>Fabricante</Table.HeadCell>
-                        <Table.HeadCell>
-                            <span className="sr-only">Edit</span>
-                        </Table.HeadCell>
-                        <Table.HeadCell>
-                            <span className="sr-only">Delete</span>
-                        </Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
                         {manufacturersList.map((object: ManufacturerResponse) => (
@@ -97,7 +91,7 @@ export const ManufacturerCRUD = () => {
                     </Table.Body>
                 </Table>
             </div>
-            <div className="overflow-x-auto md:w-1/4">
+            <div className="overflow-x-auto mr-16 md:w-1/4">
                 <ManufacturerCreateForm />
             </div>
         </div>

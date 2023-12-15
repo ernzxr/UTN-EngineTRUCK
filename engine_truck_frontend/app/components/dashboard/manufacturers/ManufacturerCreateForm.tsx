@@ -32,6 +32,7 @@ export const ManufacturerCreateForm = () => {
         validate,
         onSubmit: (values) => {
             handleCreateManufacturer(values);
+            formik.resetForm();
         }
     });
 

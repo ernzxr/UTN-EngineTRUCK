@@ -1,16 +1,16 @@
-import { Engine } from "../interfaces/engines";
+import { EngineCreate, EngineResponse } from "../interfaces/engines";
 import { post, get, update, eliminate } from "../config";
 
 export const getEngines = () => {
   return get("/api/engines");
 };
 
-export const createEngine = (data: Engine) => {
+export const createEngine = (data: EngineCreate) => {
   return post("/api/engines", data);
 };
 
-export const updateEngine = (data: Engine, id: number) => {
-  return update("/api/engines/" + id, data);
+export const updateEngine = (data: EngineResponse) => {
+  return update("/api/engines/" + data.id, data);
 };
 
 export const deleteEngine = (id: number) => {
