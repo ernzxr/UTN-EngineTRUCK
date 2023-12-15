@@ -1,7 +1,7 @@
 import "./styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
-import { Providers } from "../lib/redux/provider";
+import { ReduxProvider } from "@/lib/redux/ReduxProvider";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
-    <Providers>
+    <ReduxProvider>
       <html lang="es">
         <head>
           <ThemeModeScript />
@@ -25,7 +25,7 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
           <Flowbite theme={{ theme: flowbiteTheme }}>{children}</Flowbite >
         </body>
       </html>
-    </Providers>
+    </ReduxProvider>
  );
 };
 

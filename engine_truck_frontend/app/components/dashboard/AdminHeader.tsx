@@ -25,11 +25,9 @@ const Header: FC<Record<string, never>> = function () {
         </div>
         <Navbar.Collapse>
           <div className="flex space-x-20 font-raleway font-bold  ">
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/" /*active*/ >INICIO</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/motores">MOTORES</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/repuestos">REPUESTOS</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/nosotros" >NOSOTROS</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/contacto">CONTACTO</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/" /*active*/ >DASHBOARD</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/motores">PANEL DE CONTROL</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/contacto">SALIR</Navbar.Link>
           </div>
         </Navbar.Collapse>
       </Navbar>

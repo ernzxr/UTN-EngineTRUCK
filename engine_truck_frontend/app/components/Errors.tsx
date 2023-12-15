@@ -8,10 +8,10 @@ interface ErrorInputsProps {
     message: any;
 }
 
-export const ErrorInputs: React.FC<ErrorInputsProps> = ({ type, title, message }) => {
+export const ErrorInputs: React.FC<ErrorInputsProps> = ({ type, message }) => {
     return (
         <Alert color={type} rounded>
-            <span className="font-medium">{title}</span> {message}
+            {message}
         </Alert>
     )
 }
