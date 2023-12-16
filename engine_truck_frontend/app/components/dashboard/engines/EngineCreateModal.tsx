@@ -45,7 +45,8 @@ const EngineCreateModal = () => {
         validate,
         onSubmit: (values) => {
             handleCreateEngine(values);
-            console.log(enginesList);
+            setHiddenToggle(0);
+            setAvailableToggle(0);
             formik.resetForm();
         }
     });
@@ -57,6 +58,8 @@ const EngineCreateModal = () => {
     const [createModal, setCreateModal] = useState(false);
     
     const openCreateModal = () => {
+        setHiddenToggle(0);
+        setAvailableToggle(0);
         setCreateModal(true);
       };
       
@@ -67,14 +70,14 @@ const EngineCreateModal = () => {
       const [hiddenToggle, setHiddenToggle] = useState(0);
 
       const handleHiddenToggleChange = () => {
-        setHiddenToggle((prevToggle) => (prevToggle === 0 ? 1 : 0));
+        setHiddenToggle((prevToggle) => (prevToggle === 1 ? 0 : 1));
         formik.setFieldValue('hidden', hiddenToggle === 0 ? 1 : 0);
     };
 
     const [availableToggle, setAvailableToggle] = useState(0);
 
     const handleAvailableToggleChange = () => {
-        setAvailableToggle((prevToggle) => (prevToggle === 0 ? 1 : 0));
+        setAvailableToggle((prevToggle) => (prevToggle === 1 ? 0 : 1));
         formik.setFieldValue('available', availableToggle === 0 ? 1 : 0);
     };
 
@@ -117,17 +120,20 @@ const EngineCreateModal = () => {
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="avalaible" value="Disponibilidad:"/>
-                            <ToggleSwitch checked={hiddenToggle === 1} label={hiddenToggle === 0 ? "No disponible" : "Disponible"} onChange={handleHiddenToggleChange} />
+                            <ToggleSwitch checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="hidden" value="Visibilidad:"/>
-                            <ToggleSwitch checked={availableToggle === 1} label={availableToggle === 0 ? "No visible" : "Visible"} onChange={handleAvailableToggleChange} />
+                            <ToggleSwitch checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
                         </div>
                     </div>
                     <div className="w-full">
                         <Button type="submit">Crear</Button>
+                    </div>
+                    <div className="w-full absolute left-[75%] bottom-[5%]">
+                        <Button type="submit" onClick={closeCreateModal}>Salir</Button>
                     </div>
                 </form>
             </Modal.Body>

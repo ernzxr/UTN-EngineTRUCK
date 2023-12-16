@@ -27,6 +27,6 @@ export interface EngineResponse {
   featured_details: [];
   compatibles_components: [];
   media: [];
-  manufacturer: [];
-  brand: [];
+  manufacturer: [] | string;
+  brand: [] | string;
 }

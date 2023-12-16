@@ -65,10 +65,10 @@ export const EngineCRUD = () => {
                 {object.model}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {object.brand?.brand}
+                {object.brand.brand}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {object.manufacturer?.manufacturer}
+                {object.manufacturer.manufacturer}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               <ToggleSwitch checked={object.available} onChange={(checked) => { (checked === 1 ? setSwitchAvailable(true) : setSwitchAvailable(false));
