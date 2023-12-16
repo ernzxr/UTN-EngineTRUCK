@@ -8,6 +8,7 @@ import { ManufacturerCRUD } from '../../components/dashboard/manufacturers/Manuf
 import AdminHeader from '@/app/components/dashboard/AdminHeader';
 import BrandCRUD from '@/app/components/dashboard/brands/BrandCRUD';
 import EngineCRUD from '@/app/components/dashboard/engines/EngineCRUD';
+import EngineCreateModal from '@/app/components/dashboard/engines/EngineCreateModal';
 
 export default function Page() {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function Page() {
     <AdminHeader />
     <Tabs aria-label="Tabs with icons" style="underline">
       <Tabs.Item active title="Engines" icon={HiUserCircle}>
+        <EngineCreateModal />
         <EngineCRUD />
       </Tabs.Item>
       <Tabs.Item title="Components" icon={HiAdjustments}>
