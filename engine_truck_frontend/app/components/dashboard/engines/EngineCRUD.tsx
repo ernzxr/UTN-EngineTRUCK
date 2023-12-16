@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { fetchEngines, modifiedEngine, removeEngine } from '@/lib/redux/features/enginesSlice';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { AppDispatch } from '@/lib/redux/store';
+import EngineCreateModal from './EngineCreateModal';
 
 export const EngineCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +15,14 @@ export const EngineCRUD = () => {
   const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
   const [switchAvailable, setSwitchAvailable] = useState(false);
   const [switchHidden, setSwitchHidden] = useState(false);
+
+  const ToggleOnHidden = () => {
+    setSwitchHidden(true);
+  }
+  
+  const ToggleOfHidden = () => {
+    setSwitchHidden(false);
+  }
 
   useEffect(() => {
     dispatch(fetchEngines());
@@ -63,16 +72,14 @@ export const EngineCRUD = () => {
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               <ToggleSwitch checked={object.available} onChange={(checked) => { (checked === 1 ? setSwitchAvailable(true) : setSwitchAvailable(false));
-              console.log(checked);
                   }} />
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              <ToggleSwitch checked={object.hidden} onChange={(checked) => { (checked === 1 ? setSwitchHidden(true) : setSwitchHidden(false));
-              console.log(checked);
+              <ToggleSwitch checked={object.hidden} onChange={(checked) => {(checked === 1 ? ToggleOnHidden() : ToggleOfHidden());
                   }}  />
               </Table.Cell>
               <Table.Cell>
-                <Button>Crear</Button>
+                <EngineCreateModal />
               </Table.Cell>
               <Table.Cell>
                 <Button color="blue" onClick={() => {
