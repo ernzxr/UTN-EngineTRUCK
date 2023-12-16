@@ -80,9 +80,9 @@ const EngineCreateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="brand_id" value="Seleccione Marca"/>
                         </div>
-                        <Select id="brands" required>
+                        <Select id="brands" required onChange={formik.handleChange} value={formik.values.brand_id}>
                         {brandsList.map((object: EngineResponse) => (
-                            <option value={object.brand}>{object.brand}</option>
+                            <option key={object.id} value={object.id}>{object.brand}</option>
                         ))}
                         </Select>
                     </div>
@@ -90,9 +90,9 @@ const EngineCreateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="manufacturer_id" value="Seleccione Fabricante"/>
                         </div>
-                        <Select id="manufacturer" required>
+                        <Select id="manufacturer" required onChange={formik.handleChange} value={formik.values.manufacturer_id}>
                         {manufacturersList.map((object: EngineResponse) => (
-                            <option value={object.manufacturer}>{object.manufacturer}</option>
+                            <option key={object.id} value={object.id}>{object.manufacturer}</option>
                         ))}
                         </Select>
                     </div>
