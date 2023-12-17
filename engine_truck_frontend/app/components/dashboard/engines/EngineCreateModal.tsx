@@ -10,6 +10,8 @@ import { EngineCreate, EngineResponse } from '@/lib/services/interfaces/engines'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
 import { useFormik } from 'formik';
+import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
+import { BrandResponse } from '@/lib/services/interfaces/brands';
 
 const EngineCreateModal = () => {
 
@@ -24,12 +26,16 @@ const EngineCreateModal = () => {
         dispatch(fetchManufacturers());
     }, [dispatch]);
 
-    console.log(enginesList);
-
     const validate = (values: any) => {
         const errors: any = {};
         if (!values.model) {
             errors.model = 'El modelo es requerido'
+        }
+        else if (!values.manufacturer_id) {
+            errors.manufacturer_id = 'El fabricante es requerido'
+        }
+        else if (!values.brand_id) {
+            errors.brand_id = 'La marca es requerida'
         }
         return errors;
     }
@@ -85,7 +91,8 @@ const EngineCreateModal = () => {
 
     return (
     <>
-     <Button onClick={openCreateModal}>Crear</Button><Modal show={createModal} size="md" onClose={closeCreateModal} popup>
+     <Button onClick={openCreateModal}>Crear</Button>
+     <Modal show={createModal} size="md" onClose={closeCreateModal} popup>
         <Modal.Header />
             <Modal.Body>
                 <form className="space-y-6" onSubmit={formik.handleSubmit}>
@@ -102,7 +109,8 @@ const EngineCreateModal = () => {
                             <Label htmlFor="brand_id" value="Seleccione Marca:"/>
                         </div>
                         <Select id="brands" name="brand_id" required onChange={formik.handleChange} value={formik.values.brand_id}>
-                        {brandsList.map((object: EngineResponse) => (
+                        {formik.errors.brand_id ? <ErrorInputs type={'failure'} message={formik.errors.brand_id} title={undefined} /> : null}
+                        {brandsList.map((object: BrandResponse) => (
                             <option key={object.id} value={object.id}>{object.brand}</option>
                         ))}
                         </Select>
@@ -112,7 +120,8 @@ const EngineCreateModal = () => {
                             <Label htmlFor="manufacturer_id" value="Seleccione Fabricante:"/>
                         </div>
                         <Select id="manufacturer" name="manufacturer_id" required onChange={formik.handleChange} value={formik.values.manufacturer_id}>
-                        {manufacturersList.map((object: EngineResponse) => (
+                        {formik.errors.manufacturer_id ? <ErrorInputs type={'failure'} message={formik.errors.manufacturer_id} title={undefined} /> : null}
+                        {manufacturersList.map((object: ManufacturerResponse) => (
                             <option key={object.id} value={object.id}>{object.manufacturer}</option>
                         ))}
                         </Select>

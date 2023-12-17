@@ -6,6 +6,7 @@ import { fetchEngines, modifiedEngine, removeEngine } from '@/lib/redux/features
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { AppDispatch } from '@/lib/redux/store';
 import EngineCreateModal from './EngineCreateModal';
+import EngineUpdateModal from './EngineUpdateModal';
 
 export const EngineCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,24 +29,11 @@ export const EngineCRUD = () => {
     dispatch(fetchEngines());
   }, [dispatch]);
 
-  const onCloseModal = () => {
-    setModalStates({});
-    setEngineName('');
-  }
 
   const handleDelete = (id: number) => {
     dispatch(removeEngine(id));
   }
 
-  const handleUpdate = (data: EngineResponse) => {
-    dispatch(modifiedEngine(data));
-    setModalStates({});
-  }
-
-  const handleEditClick = (object: EngineResponse) => {
-    setModalStates((prevStates) => ({ ...prevStates, [object.id]: true }));
-    setEngineName(object.model);
-  };
 
 
   return (
@@ -79,34 +67,7 @@ export const EngineCRUD = () => {
                   }}  />
               </Table.Cell>
               <Table.Cell>
-                <Button color="blue" onClick={() => {
-                  handleEditClick(object);
-                }}>Editar</Button>
-                <Modal show={modalStates[object.id]} size="md" onClose={onCloseModal} popup>
-                  <Modal.Header />
-                  <Modal.Body>
-                    <div className="space-y-6">
-                      <h3 className="text-xl font-medium text-gray-900 dark:text-white">Editar</h3>
-                      <div>
-                        <div className="mb-2 block">
-                          <Label htmlFor="name" value="Marca" />
-                        </div>
-                        <TextInput id="name" type="text" value={engineName} onChange={(e) => { setEngineName(e.target.value) }} />
-                      </div>
-                      <div className="w-full">
-                        <Button onClick={() => {
-                          if (engineName !== object.model) {
-                            const updatedObject = { ...object, engine: engineName }
-                            handleUpdate(updatedObject);
-                          }
-                          else {
-                            console.log('Sin cambios')
-                          }
-                        }}>Actualizar</Button>
-                      </div>
-                    </div>
-                  </Modal.Body>
-                </Modal>
+                <EngineUpdateModal />
               </Table.Cell>
               <Table.Cell>
                 <Button color="failure" onClick={() => {
