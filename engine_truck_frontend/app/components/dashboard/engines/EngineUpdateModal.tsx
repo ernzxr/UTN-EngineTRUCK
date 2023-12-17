@@ -20,8 +20,6 @@ const EngineUpdateModal = () => {
 
     useEffect(() => {
         dispatch(fetchEngines());
-        dispatch(fetchBrands());
-        dispatch(fetchManufacturers());
     }, [dispatch]);
 
     const onCloseModal = () => {
@@ -80,7 +78,7 @@ const EngineUpdateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="brand_id" value="Seleccione Marca:"/>
                         </div>
-                        <Select id="brands" name="brand_id">
+                        <Select id="brand_id" name="brand_id">
                         {brandsList.map((object: BrandResponse) => (
                             <option key={object.id} value={object.id}>{object.brand}</option>
                         ))}
@@ -90,7 +88,7 @@ const EngineUpdateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="manufacturer_id" value="Seleccione Fabricante:"/>
                         </div>
-                        <Select id="manufacturer" name="manufacturer_id">
+                        <Select id="manufacturer_id" name="manufacturer_id">
                         {manufacturersList.map((object: ManufacturerResponse) => (
                             <option key={object.id} value={object.id}>{object.manufacturer}</option>
                         ))}
@@ -98,14 +96,14 @@ const EngineUpdateModal = () => {
                     </div>
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="avalaible" value="Disponibilidad:"/>
-                            <ToggleSwitch checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
+                            <Label htmlFor="available" value="Disponibilidad:"/>
+                            <ToggleSwitch id="available" checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="hidden" value="Visibilidad:"/>
-                            <ToggleSwitch checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
+                            <ToggleSwitch id="hidden" checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
                         </div>
                     </div>
                     <div className="w-full">

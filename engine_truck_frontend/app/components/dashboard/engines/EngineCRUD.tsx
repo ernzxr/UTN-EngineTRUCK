@@ -9,8 +9,8 @@ import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { AppDispatch } from '@/lib/redux/store';
 import EngineCreateModal from './EngineCreateModal';
 import EngineUpdateModal from './EngineUpdateModal';
-import { BrandResponse } from '@/lib/services/interfaces/brands';
-import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
+import { Brand } from '@/lib/services/interfaces/brands';
+import { Manufacturer } from '@/lib/services/interfaces/manufacturers';
 
 export const EngineCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -54,16 +54,15 @@ export const EngineCRUD = () => {
         </Table.Head>
         <Table.Body className="divide-y">
           {enginesList.map((object: EngineResponse) => (
-            
             <Table.Row key={object.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 {object.model}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {brandsList.find((objectBrand: BrandResponse) => objectBrand.id === object.brand_id)?.brand || 'marca no encontrada'}
+              {brandsList.find((objectBrand: Brand) => objectBrand.id === object.brand_id)?.brand || 'marca no encontrada'}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {manufacturersList.find((objectManufacturer: ManufacturerResponse) => objectManufacturer.id === object.manufacturer_id)?.manufacturer || 'fabricante no encontrado'}
+              {manufacturersList.find((objectManufacturer: Manufacturer) => objectManufacturer.id === object.manufacturer_id)?.manufacturer || 'fabricante no encontrado'}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               <ToggleSwitch checked={object.available} onChange={(checked) => { (checked === 1 ? setSwitchAvailable(true) : setSwitchAvailable(false));

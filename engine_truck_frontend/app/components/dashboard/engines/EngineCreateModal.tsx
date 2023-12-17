@@ -22,8 +22,6 @@ const EngineCreateModal = () => {
 
     useEffect(() => {
         dispatch(fetchEngines());
-        dispatch(fetchBrands());
-        dispatch(fetchManufacturers());
     }, [dispatch]);
 
     const validate = (values: any) => {
@@ -108,8 +106,9 @@ const EngineCreateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="brand_id" value="Seleccione Marca:"/>
                         </div>
-                        <Select id="brands" name="brand_id" required onChange={formik.handleChange} value={formik.values.brand_id}>
+                        <Select id="brand_id" name="brand_id" required onChange={formik.handleChange} value={formik.values.brand_id}>
                         {formik.errors.brand_id ? <ErrorInputs type={'failure'} message={formik.errors.brand_id} title={undefined} /> : null}
+                        <option value="">Seleccione Marca</option>
                         {brandsList.map((object: BrandResponse) => (
                             <option key={object.id} value={object.id}>{object.brand}</option>
                         ))}
@@ -119,23 +118,24 @@ const EngineCreateModal = () => {
                         <div className="mb-2 block">
                             <Label htmlFor="manufacturer_id" value="Seleccione Fabricante:"/>
                         </div>
-                        <Select id="manufacturer" name="manufacturer_id" required onChange={formik.handleChange} value={formik.values.manufacturer_id}>
+                        <Select id="manufacturer_id" name="manufacturer_id" required onChange={formik.handleChange} value={formik.values.manufacturer_id}>
                         {formik.errors.manufacturer_id ? <ErrorInputs type={'failure'} message={formik.errors.manufacturer_id} title={undefined} /> : null}
-                        {manufacturersList.map((object: ManufacturerResponse) => (
+                        <option value="">Seleccione Fabricante</option>
+                        {manufacturersList.map((object: ManufacturerResponse) => (   
                             <option key={object.id} value={object.id}>{object.manufacturer}</option>
                         ))}
                         </Select>
                     </div>
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="avalaible" value="Disponibilidad:"/>
-                            <ToggleSwitch checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
+                            <Label htmlFor="available" value="Disponibilidad:"/>
+                            <ToggleSwitch id="available" checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="hidden" value="Visibilidad:"/>
-                            <ToggleSwitch checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
+                            <ToggleSwitch id="hidden" checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
                         </div>
                     </div>
                     <div className="w-full">
