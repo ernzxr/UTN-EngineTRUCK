@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
 import { BrandCreate } from '@/lib/services/interfaces/brands';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addBrand } from '@/lib/redux/features/brandsSlice';
 import { AppDispatch } from '@/lib/redux/store';
 
@@ -14,10 +14,10 @@ export const BrandCreateForm = () => {
     const validate = (values: any) => {
         const errors: any = {};
         if (!values.brand) {
-            errors.brand = 'La marca es requerida!!'
+            errors.brand = 'La marca es requerida'
         }
         else if(values.brand.length > 45) {
-          errors.brand = "Maximo 45 Caracteres!!"
+          errors.brand = "Maximo 45 caracteres"
         }
         return errors;
     }

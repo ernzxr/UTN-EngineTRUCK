@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch } from 'flowbite-react'
-import { addEngine, fetchEngines } from '@/lib/redux/features/enginesSlice';
+import { addEngine } from '@/lib/redux/features/enginesSlice';
 import { ErrorInputs } from '../../Errors';
 import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,15 +11,16 @@ import { useFormik } from 'formik';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 
-const EngineCreateModal = () => {
+interface EngineCreateModalProps {
+    manufacturersList: ManufacturerResponse[];
+    brandsList: BrandResponse[];
+  }
+
+const EngineCreateModal: React.FC<EngineCreateModalProps> = ({manufacturersList, brandsList}) => {
 
     const dispatch = useDispatch<AppDispatch>();
-    const { brandsList } = useSelector((state: any) => state.brandsReducers);
-    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
-
-    useEffect(() => {
-        dispatch(fetchEngines());
-    }, [dispatch]);
+    /*const { brandsList } = useSelector((state: any) => state.brandsReducers);
+    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
 
     const validate = (values: any) => {
         const errors: any = {};

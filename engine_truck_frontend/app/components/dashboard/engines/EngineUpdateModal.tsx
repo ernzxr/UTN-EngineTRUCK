@@ -2,25 +2,26 @@ import { AppDispatch } from '@/lib/redux/store';
 import { Button, Modal, Label, TextInput, Select, ToggleSwitch } from 'flowbite-react';
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEngines, modifiedEngine } from '@/lib/redux/features/enginesSlice';
+import { modifiedEngine } from '@/lib/redux/features/enginesSlice';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 
-const EngineUpdateModal = () => {
+interface EngineUpdateModalProps {
+    manufacturersList: ManufacturerResponse[];
+    brandsList: BrandResponse[];
+  }
+
+const EngineUpdateModal: React.FC<EngineUpdateModalProps> = ({manufacturersList, brandsList}) => {
     const dispatch = useDispatch<AppDispatch>();
-    const { brandsList } = useSelector((state: any) => state.brandsReducers);
-    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
+    /*const { brandsList } = useSelector((state: any) => state.brandsReducers);
+    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
 
     const [engineName, setEngineName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
     const [updateModal, setUpdateModal] = useState(false);
     const [availableToggle, setAvailableToggle] = useState(0);
     const [hiddenToggle, setHiddenToggle] = useState(0);
-
-    useEffect(() => {
-        dispatch(fetchEngines());
-    }, [dispatch]);
 
     const onCloseModal = () => {
         setModalStates({});

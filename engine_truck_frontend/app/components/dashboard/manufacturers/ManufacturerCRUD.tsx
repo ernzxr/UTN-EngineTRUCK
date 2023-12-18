@@ -8,10 +8,13 @@ import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { AppDispatch } from '@/lib/redux/store';
 import { ManufacturerCreateForm } from './ManufacturerCreateForm';
 
-export const ManufacturerCRUD = () => {
-    const dispatch = useDispatch<AppDispatch>();
+interface ManufacturerCRUDProps {
+    manufacturersList: ManufacturerResponse[];
+  }
 
-    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
+export const ManufacturerCRUD: React.FC<ManufacturerCRUDProps> = ({ manufacturersList }) => {
+    const dispatch = useDispatch<AppDispatch>();
+    /*const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
 
     const [manufacturerName, setManufacturerName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
@@ -35,6 +38,49 @@ export const ManufacturerCRUD = () => {
         setManufacturerName(object.manufacturer);
     };
 
+    const Mapeado = manufacturersList.map((object: ManufacturerResponse) => (
+        <Table.Row key={object.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {object.manufacturer}
+            </Table.Cell>
+            <Table.Cell>
+                <Button color="blue" onClick={() => {
+                    handleEditClick(object);
+                }}>Editar</Button>
+                <Modal show={modalStates[object.id]} size="md" onClose={onCloseModal} popup>
+                    <Modal.Header />
+                    <Modal.Body>
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Editar</h3>
+                            <div>
+                                <div className="mb-2 block">
+                                    <Label htmlFor="name" value="Fabricante" />
+                                </div>
+                                <TextInput id="name" type="text" value={manufacturerName} onChange={(e) => { setManufacturerName(e.target.value) }} />
+                            </div>
+                            <div className="w-full">
+                                <Button onClick={() => {
+                                    if (manufacturerName !== object.manufacturer) {
+                                        const updatedObject = { ...object, manufacturer: manufacturerName }
+                                        handleUpdate(updatedObject);
+                                    }
+                                    else {
+                                        console.log('Sin cambios')
+                                    }
+                                }}>Actualizar</Button>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            </Table.Cell>
+            <Table.Cell>
+                <Button color="failure" onClick={() => {
+                    handleDelete(object.id);
+                }}>Borrar</Button>
+            </Table.Cell>
+        </Table.Row>
+    ))
+
     return (
         <>
             <Table className='w-[70%]'>
@@ -48,48 +94,7 @@ export const ManufacturerCRUD = () => {
                     </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                    {manufacturersList.map((object: ManufacturerResponse) => (
-                        <Table.Row key={object.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                {object.manufacturer}
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button color="blue" onClick={() => {
-                                    handleEditClick(object);
-                                }}>Editar</Button>
-                                <Modal show={modalStates[object.id]} size="md" onClose={onCloseModal} popup>
-                                    <Modal.Header />
-                                    <Modal.Body>
-                                        <div className="space-y-6">
-                                            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Editar</h3>
-                                            <div>
-                                                <div className="mb-2 block">
-                                                    <Label htmlFor="name" value="Fabricante" />
-                                                </div>
-                                                <TextInput id="name" type="text" value={manufacturerName} onChange={(e) => { setManufacturerName(e.target.value) }} />
-                                            </div>
-                                            <div className="w-full">
-                                                <Button onClick={() => {
-                                                    if (manufacturerName !== object.manufacturer) {
-                                                        const updatedObject = { ...object, manufacturer: manufacturerName }
-                                                        handleUpdate(updatedObject);
-                                                    }
-                                                    else {
-                                                        console.log('Sin cambios')
-                                                    }
-                                                }}>Actualizar</Button>
-                                            </div>
-                                        </div>
-                                    </Modal.Body>
-                                </Modal>
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Button color="failure" onClick={() => {
-                                    handleDelete(object.id);
-                                }}>Borrar</Button>
-                            </Table.Cell>
-                        </Table.Row>
-                    ))}
+                    {Mapeado}
                 </Table.Body>
             </Table>
             <div>
