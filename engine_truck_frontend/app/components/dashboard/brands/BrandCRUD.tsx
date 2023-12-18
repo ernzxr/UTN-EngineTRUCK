@@ -9,16 +9,15 @@ import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { AppDispatch } from '@/lib/redux/store';
 import { BrandCreateForm } from './BrandCreateForm'
 
-export const BrandCRUD = () => {
+interface BrandCRUDProps {
+  brandsList: BrandResponse[];
+}
+
+export const BrandCRUD: React.FC<BrandCRUDProps> = ({ brandsList }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { brandsList } = useSelector((state: any) => state.brandsReducers);
 
   const [brandName, setBrandName] = useState('');
   const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
-
-  useEffect(() => {
-    dispatch(fetchBrands());
-  }, [dispatch]);
 
   const onCloseModal = () => {
     setModalStates({});
@@ -45,6 +44,12 @@ export const BrandCRUD = () => {
       <Table className='w-[50%]'>
         <Table.Head>
           <Table.HeadCell>Marca</Table.HeadCell>
+          <Table.HeadCell>
+            <span className="sr-only">Editar</span>
+          </Table.HeadCell>
+          <Table.HeadCell>
+            <span className="sr-only">Borrar</span>
+          </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {brandsList.map((object: BrandResponse) => (

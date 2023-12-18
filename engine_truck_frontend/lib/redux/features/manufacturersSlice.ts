@@ -1,5 +1,5 @@
 import { getManufacturers, createManufacturer, updateManufacturer, deleteManufacturer } from "@/lib/services/modules/manufacturers";
-import { Manufacturer, ManufacturerCreate, ManufacturerResponse } from "@/lib/services/interfaces/manufacturers";
+import { ManufacturerCreate, ManufacturerResponse } from "@/lib/services/interfaces/manufacturers";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface ManufacturersState {

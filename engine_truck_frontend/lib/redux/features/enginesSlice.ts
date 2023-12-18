@@ -1,5 +1,5 @@
 import { getEngines, createEngine, updateEngine, deleteEngine } from "../../services/modules/engines";
-import { Engine, EngineCreate, EngineResponse } from "@/lib/services/interfaces/engines";
+import { EngineCreate, EngineResponse } from "@/lib/services/interfaces/engines";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface EnginesState {
