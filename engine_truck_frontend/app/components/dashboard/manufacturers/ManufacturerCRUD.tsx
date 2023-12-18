@@ -8,13 +8,9 @@ import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { AppDispatch } from '@/lib/redux/store';
 import { ManufacturerCreateForm } from './ManufacturerCreateForm';
 
-interface ManufacturerCRUDProps {
-    manufacturersList: ManufacturerResponse[];
-  }
-
-export const ManufacturerCRUD: React.FC<ManufacturerCRUDProps> = ({ manufacturersList }) => {
+export const ManufacturerCRUD = () => {
     const dispatch = useDispatch<AppDispatch>();
-    /*const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
+    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
     const [manufacturerName, setManufacturerName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});

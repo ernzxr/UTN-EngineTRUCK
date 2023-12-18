@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch } from 'flowbite-react'
-import { addEngine } from '@/lib/redux/features/enginesSlice';
-import { ErrorInputs } from '../../Errors';
+import { addEngine, fetchEngines } from '@/lib/redux/features/enginesSlice';
+import { ErrorInputs } from '@/app/components/Errors';
 import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
@@ -11,10 +11,10 @@ import { useFormik } from 'formik';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 
-
 const EngineCreateModal = () => {
 
     const dispatch = useDispatch<AppDispatch>();
+    const { loading, enginesList, error, updateState, response } = useSelector((state: any) => state.enginesReducers);
     const { brandsList } = useSelector((state: any) => state.brandsReducers);
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
@@ -119,7 +119,7 @@ const EngineCreateModal = () => {
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="available" value="Disponibilidad:"/>
-                            <ToggleSwitch id="available" checked={availableToggle ? true : false} label={!availableToggle ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
+                            <ToggleSwitch id="available" checked={availableToggle ? true : false} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>
@@ -132,7 +132,7 @@ const EngineCreateModal = () => {
                         <Button type="submit">Crear</Button>
                     </div>
                     <div className="w-full absolute left-[75%] bottom-[5%]">
-                        <Button type="submit" onClick={closeCreateModal}>Salir</Button>
+                        <Button type="button" onClick={closeCreateModal}>Salir</Button>
                     </div>
                 </form>
             </Modal.Body>

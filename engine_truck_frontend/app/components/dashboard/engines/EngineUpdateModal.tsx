@@ -7,15 +7,10 @@ import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 
-interface EngineUpdateModalProps {
-    manufacturersList: ManufacturerResponse[];
-    brandsList: BrandResponse[];
-  }
-
-const EngineUpdateModal: React.FC<EngineUpdateModalProps> = ({manufacturersList, brandsList}) => {
+const EngineUpdateModal = () => {
     const dispatch = useDispatch<AppDispatch>();
-    /*const { brandsList } = useSelector((state: any) => state.brandsReducers);
-    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
+    const { brandsList } = useSelector((state: any) => state.brandsReducers);
+    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
     const [engineName, setEngineName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});

@@ -9,17 +9,11 @@ import EngineUpdateModal from './EngineUpdateModal';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 
-interface EngineCRUDProps {
-  manufacturersList: ManufacturerResponse[];
-  brandsList: BrandResponse[];
-  enginesList: EngineResponse[];
-}
-
-export const EngineCRUD: React.FC<EngineCRUDProps> = ({ manufacturersList, brandsList, enginesList}) => {
+export const EngineCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
-  /*const { enginesList } = useSelector((state: any) => state.enginesReducers);
+  const { enginesList } = useSelector((state: any) => state.enginesReducers);
   const { brandsList } = useSelector((state: any) => state.brandsReducers);
-  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);*/
+  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
   const [switchAvailable, setSwitchAvailable] = useState(false);
   const [switchHidden, setSwitchHidden] = useState(false);
@@ -48,7 +42,7 @@ export const EngineCRUD: React.FC<EngineCRUDProps> = ({ manufacturersList, brand
         <ToggleSwitch checked={object.hidden ? true : false} onChange={(checked) => { setSwitchHidden(checked); }} />
       </Table.Cell>
       <Table.Cell>
-        <EngineUpdateModal manufacturersList={manufacturersList} brandsList={brandsList}/>
+        <EngineUpdateModal />
       </Table.Cell>
       <Table.Cell>
         <Button color="failure" onClick={() => {

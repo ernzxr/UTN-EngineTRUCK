@@ -23,7 +23,7 @@ export default function Page() {
     dispatch(fetchManufacturers());
     dispatch(fetchBrands());
     dispatch(fetchEngines());
-  }, [dispatch]);
+  }, []);
 
   const { enginesList } = useSelector((state: any) => state.enginesReducers);
   const { brandsList } = useSelector((state: any) => state.brandsReducers);
@@ -35,21 +35,26 @@ export default function Page() {
     }
   }, [router]);
 
+  console.log("ERROR")
+  console.log(enginesList);
+  console.log(manufacturersList);
+  console.log(brandsList);
+
   return (
     <>
     <AdminHeader />
     <Tabs aria-label="Tabs with icons" style="underline">
       <Tabs.Item active title="Engines" icon={HiUserCircle}>
-        <EngineCreateModal manufacturersList={manufacturersList} brandsList={brandsList}/>
-        <EngineCRUD manufacturersList={manufacturersList} brandsList={brandsList} enginesList={enginesList}/>
+        <EngineCreateModal />
+        <EngineCRUD />
       </Tabs.Item>
       <Tabs.Item title="Components" icon={HiAdjustments}>
       </Tabs.Item>
       <Tabs.Item title="Manufacturers" icon={MdDashboard}>
-        <ManufacturerCRUD manufacturersList={manufacturersList}/>
+        <ManufacturerCRUD />
       </Tabs.Item>
       <Tabs.Item title="Brands" icon={HiClipboardList}>
-        <BrandCRUD brandsList={brandsList}/>
+        <BrandCRUD />
       </Tabs.Item>
     </Tabs>
     </>

@@ -1,5 +1,3 @@
-
-
 import { Table, Button, Modal, TextInput, Label } from 'flowbite-react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,13 +7,9 @@ import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { AppDispatch } from '@/lib/redux/store';
 import { BrandCreateForm } from './BrandCreateForm'
 
-interface BrandCRUDProps {
-  brandsList: BrandResponse[];
-}
-
-export const BrandCRUD: React.FC<BrandCRUDProps> = ({ brandsList }) => {
+export const BrandCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
-  /*const { brandsList } = useSelector((state: any) => state.brandsReducers);*/
+  const { brandsList } = useSelector((state: any) => state.brandsReducers);
 
   const [brandName, setBrandName] = useState('');
   const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
