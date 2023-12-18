@@ -4,11 +4,11 @@ import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { ManufacturerCRUD } from '../../components/dashboard/manufacturers/ManufacturerCRUD';
-import AdminHeader from '@/app/components/dashboard/AdminHeader';
-import BrandCRUD from '@/app/components/dashboard/brands/BrandCRUD';
-import EngineCRUD from '@/app/components/dashboard/engines/EngineCRUD';
-import EngineCreateModal from '@/app/components/dashboard/engines/EngineCreateModal';
+import { ManufacturerCRUD } from './manufacturers/ManufacturerCRUD';
+import Header from './AdminHeader';
+import BrandCRUD from './brands/BrandCRUD';
+import EngineCRUD from './engines/EngineCRUD';
+import EngineCreateModal from './engines/EngineCreateModal';
 import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
 import { fetchBrands } from '@/lib/redux/features/brandsSlice';
 import { fetchEngines } from '@/lib/redux/features/enginesSlice';
@@ -42,7 +42,7 @@ export default function Page() {
 
   return (
     <>
-    <AdminHeader />
+    <Header />
     <Tabs aria-label="Tabs with icons" style="underline">
       <Tabs.Item active title="Engines" icon={HiUserCircle}>
         <EngineCreateModal />

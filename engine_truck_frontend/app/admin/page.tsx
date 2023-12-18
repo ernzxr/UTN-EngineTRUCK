@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "../components/dashboard/AdminHeader";
+import Header from "./dashboard/AdminHeader";
 import Login from "../components/Login";
 
 export default function Page() {
