@@ -5,17 +5,11 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
 import { BrandCreate } from '@/lib/services/interfaces/brands';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { addBrand, fetchBrands } from '@/lib/redux/features/brandsSlice';
+import { addBrand } from '@/lib/redux/features/brandsSlice';
 import { AppDispatch } from '@/lib/redux/store';
 
 export const BrandCreateForm = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { loading, brandsList, error, updateState, response } = useSelector((state: any) => state.brandsReducers);
-
-    useEffect(() => {
-        dispatch(fetchBrands());
-    }, [dispatch]);
 
     const validate = (values: any) => {
         const errors: any = {};

@@ -3,20 +3,20 @@ import { Button, Modal, Label, TextInput, Select, ToggleSwitch } from 'flowbite-
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEngines, modifiedEngine } from '@/lib/redux/features/enginesSlice';
-import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
-import { fetchBrands } from '@/lib/redux/features/brandsSlice';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 
 const EngineUpdateModal = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { enginesList } = useSelector((state: any) => state.enginesReducers);
     const { brandsList } = useSelector((state: any) => state.brandsReducers);
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
     const [engineName, setEngineName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
+    const [updateModal, setUpdateModal] = useState(false);
+    const [availableToggle, setAvailableToggle] = useState(0);
+    const [hiddenToggle, setHiddenToggle] = useState(0);
 
     useEffect(() => {
         dispatch(fetchEngines());
@@ -37,8 +37,6 @@ const EngineUpdateModal = () => {
         setEngineName(object.model);
     };
 
-    const [updateModal, setUpdateModal] = useState(false);
-
     const openUpdateModal = () => {
         setUpdateModal(true);
     };
@@ -47,13 +45,9 @@ const EngineUpdateModal = () => {
         setUpdateModal(false);
     };
 
-    const [hiddenToggle, setHiddenToggle] = useState(0);
-
     const handleHiddenToggleChange = () => {
         setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
     };
-
-    const [availableToggle, setAvailableToggle] = useState(0);
 
     const handleAvailableToggleChange = () => {
         setAvailableToggle((prevToggle) => (prevToggle ? 0 : 1));

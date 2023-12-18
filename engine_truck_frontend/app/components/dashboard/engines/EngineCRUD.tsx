@@ -31,6 +31,13 @@ export const EngineCRUD = () => {
           <Table.HeadCell>Fabricante</Table.HeadCell>
           <Table.HeadCell>Disponible</Table.HeadCell>
           <Table.HeadCell>Visible</Table.HeadCell>
+          <Table.HeadCell>Fabricante</Table.HeadCell>
+          <Table.HeadCell>
+            <span className="sr-only">Editar</span>
+          </Table.HeadCell>
+          <Table.HeadCell>
+            <span className="sr-only">Borrar</span>
+          </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {enginesList.map((object: EngineResponse) => (

@@ -4,18 +4,12 @@ import { useFormik } from 'formik';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { ErrorInputs } from '@/app/components/Errors';
 import { ManufacturerCreate } from '@/lib/services/interfaces/manufacturers';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { addManufacturer, fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
+import { useDispatch } from 'react-redux';
+import { addManufacturer } from '@/lib/redux/features/manufacturersSlice';
 import { AppDispatch } from '@/lib/redux/store';
 
 export const ManufacturerCreateForm = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { loading, manufacturersList, error, updateState, response } = useSelector((state: any) => state.manufacturersReducers);
-
-    useEffect(() => {
-        dispatch(fetchManufacturers());
-    }, [dispatch]);
 
     const validate = (values: any) => {
         const errors: any = {};

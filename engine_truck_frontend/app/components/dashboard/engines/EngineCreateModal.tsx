@@ -14,7 +14,6 @@ import { BrandResponse } from '@/lib/services/interfaces/brands';
 const EngineCreateModal = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-    const { loading, enginesList, error, updateState, response } = useSelector((state: any) => state.enginesReducers);
     const { brandsList } = useSelector((state: any) => state.brandsReducers);
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
@@ -123,7 +122,7 @@ const EngineCreateModal = () => {
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="available" value="Disponibilidad:"/>
-                            <ToggleSwitch id="available" checked={availableToggle ? true : false} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
+                            <ToggleSwitch id="available" checked={availableToggle ? true : false} label={!availableToggle ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>

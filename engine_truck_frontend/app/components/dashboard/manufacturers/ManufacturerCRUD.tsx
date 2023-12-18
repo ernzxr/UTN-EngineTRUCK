@@ -2,18 +2,16 @@
 
 import { Table, Button, Label, Modal, TextInput } from 'flowbite-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { fetchManufacturers, modifiedManufacturer, removeManufacturer } from '@/lib/redux/features/manufacturersSlice';
+import { useState } from 'react';
+import { modifiedManufacturer, removeManufacturer } from '@/lib/redux/features/manufacturersSlice';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { AppDispatch } from '@/lib/redux/store';
 import { ManufacturerCreateForm } from './ManufacturerCreateForm';
 
-interface ManufacturerCRUDProps {
-    manufacturersList: ManufacturerResponse[];
-}
-
-export const ManufacturerCRUD: React.FC<ManufacturerCRUDProps> = ({ manufacturersList }) => {
+export const ManufacturerCRUD = () => {
     const dispatch = useDispatch<AppDispatch>();
+
+    const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
     const [manufacturerName, setManufacturerName] = useState('');
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
