@@ -3,16 +3,17 @@ import { useDispatch } from 'react-redux'
 import manufacturersSlice from './features/manufacturersSlice';
 import brandsSlice from "./features/brandsSlice";
 import enginesSlice from "./features/enginesSlice";
+import mediaSlice from "./features/mediaSlice";
 
 const store = configureStore({
   reducer: {
     manufacturersReducers:manufacturersSlice,
     brandsReducers:brandsSlice,
     enginesReducers:enginesSlice,
+    mediaReducers:mediaSlice,
     /*componentsReducers:componentsSlice,
     featureDetailsReducers:featureDetailsSlice,
     featuresReducers:featuresSlice,
-    mediaReducers:mediaSlice,
     usersReducers:usersSlice,
     compatibleComponentsReducers:compatibleComponentsSlice*/
   }
