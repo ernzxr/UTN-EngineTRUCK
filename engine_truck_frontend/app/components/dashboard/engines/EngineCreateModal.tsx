@@ -3,10 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch } from 'flowbite-react'
 import { addEngine, fetchEngines } from '@/lib/redux/features/enginesSlice';
-import { fetchBrands } from '@/lib/redux/features/brandsSlice';
-import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
 import { ErrorInputs } from '../../Errors';
-import { EngineCreate, EngineResponse } from '@/lib/services/interfaces/engines';
+import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
 import { useFormik } from 'formik';
@@ -60,6 +58,8 @@ const EngineCreateModal = () => {
     };
 
     const [createModal, setCreateModal] = useState(false);
+    const [hiddenToggle, setHiddenToggle] = useState(0);
+    const [availableToggle, setAvailableToggle] = useState(0);
     
     const openCreateModal = () => {
         setHiddenToggle(0);
@@ -71,21 +71,15 @@ const EngineCreateModal = () => {
         setCreateModal(false);
       };
 
-      const [hiddenToggle, setHiddenToggle] = useState(0);
-
       const handleHiddenToggleChange = () => {
-        setHiddenToggle((prevToggle) => (prevToggle === 1 ? 0 : 1));
-        formik.setFieldValue('hidden', hiddenToggle === 0 ? 1 : 0);
+        setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
+        formik.setFieldValue('hidden', !hiddenToggle ? 1 : 0);
     };
-
-    const [availableToggle, setAvailableToggle] = useState(0);
 
     const handleAvailableToggleChange = () => {
-        setAvailableToggle((prevToggle) => (prevToggle === 1 ? 0 : 1));
-        formik.setFieldValue('available', availableToggle === 0 ? 1 : 0);
+        setAvailableToggle((prevToggle) => (prevToggle ? 0 : 1));
+        formik.setFieldValue('available', !availableToggle ? 1 : 0);
     };
-
-
 
     return (
     <>
@@ -129,13 +123,13 @@ const EngineCreateModal = () => {
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="available" value="Disponibilidad:"/>
-                            <ToggleSwitch id="available" checked={availableToggle} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
+                            <ToggleSwitch id="available" checked={availableToggle ? true : false} label={availableToggle === 0 ? "No disponible" : "Disponible"} onChange={handleAvailableToggleChange} />
                         </div>
                     </div>
                     <div>
                         <div className="mb-2 block">
                             <Label htmlFor="hidden" value="Visibilidad:"/>
-                            <ToggleSwitch id="hidden" checked={hiddenToggle} label={hiddenToggle === 0 ? "No visible" : "Visible"} onChange={handleHiddenToggleChange} />
+                            <ToggleSwitch id="hidden" checked={hiddenToggle ? true : false} label={!hiddenToggle ? "Oculto" : "Visible"} onChange={handleHiddenToggleChange} />
                         </div>
                     </div>
                     <div className="w-full">

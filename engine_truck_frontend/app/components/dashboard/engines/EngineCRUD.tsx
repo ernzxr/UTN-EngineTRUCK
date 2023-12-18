@@ -1,46 +1,26 @@
-import { Table, TableCell, Button, Modal, TextInput, Label, ToggleSwitch } from 'flowbite-react'
+import { Table, Button, ToggleSwitch } from 'flowbite-react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { fetchEngines, modifiedEngine, removeEngine } from '@/lib/redux/features/enginesSlice';
-import { fetchBrands } from '@/lib/redux/features/brandsSlice';
-import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
+import { fetchEngines, removeEngine } from '@/lib/redux/features/enginesSlice';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { AppDispatch } from '@/lib/redux/store';
-import EngineCreateModal from './EngineCreateModal';
 import EngineUpdateModal from './EngineUpdateModal';
-import { Brand } from '@/lib/services/interfaces/brands';
-import { Manufacturer } from '@/lib/services/interfaces/manufacturers';
 
 export const EngineCRUD = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { enginesList } = useSelector((state: any) => state.enginesReducers);
-  const { brandsList } = useSelector((state: any) => state.brandsReducers);
-  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
-  const [engineName, setEngineName] = useState('');
-  const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
   const [switchAvailable, setSwitchAvailable] = useState(false);
   const [switchHidden, setSwitchHidden] = useState(false);
-
-  const ToggleOnHidden = () => {
-    setSwitchHidden(true);
-  }
-  
-  const ToggleOfHidden = () => {
-    setSwitchHidden(false);
-  }
 
   useEffect(() => {
     dispatch(fetchEngines());
   }, [dispatch]);
 
-
   const handleDelete = (id: number) => {
     dispatch(removeEngine(id));
   }
-
- 
 
   return (
     <>
@@ -59,18 +39,18 @@ export const EngineCRUD = () => {
                 {object.model}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {brandsList.find((objectBrand: Brand) => objectBrand.id === object.brand_id)?.brand || 'marca no encontrada'}
+                {object.brand?.brand}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {manufacturersList.find((objectManufacturer: Manufacturer) => objectManufacturer.id === object.manufacturer_id)?.manufacturer || 'fabricante no encontrado'}
+                {object.manufacturer?.manufacturer}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              <ToggleSwitch checked={object.available} onChange={(checked) => { (checked === 1 ? setSwitchAvailable(true) : setSwitchAvailable(false));
-                  }} />
+                <ToggleSwitch checked={object.available ? true : false} onChange={(checked) => {
+                  (setSwitchAvailable(checked));
+                }} />
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              <ToggleSwitch checked={object.hidden} onChange={(checked) => {(checked === 1 ? ToggleOnHidden() : ToggleOfHidden());
-                  }}  />
+                <ToggleSwitch checked={object.hidden ? true : false} onChange={(checked) => { setSwitchHidden(checked); }} />
               </Table.Cell>
               <Table.Cell>
                 <EngineUpdateModal />

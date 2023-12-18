@@ -1,3 +1,6 @@
+import { BrandResponse } from "./brands";
+import { ManufacturerResponse } from "./manufacturers";
+
 export interface Engine {
   id?: number;
   model: string;
@@ -27,6 +30,6 @@ export interface EngineResponse {
   featured_details: [];
   compatibles_components: [];
   media: [];
-  manufacturer: [];
-  brand: [];
+  manufacturer: ManufacturerResponse;
+  brand: BrandResponse;
 }
