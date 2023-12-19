@@ -5,7 +5,7 @@ import { MdDashboard } from 'react-icons/md';
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { ManufacturerCRUD } from './manufacturers/ManufacturerCRUD';
-import Header from './AdminHeader';
+import Header from '../../components/AdminHeader';
 import BrandCRUD from './brands/BrandCRUD';
 import EngineCRUD from './engines/EngineCRUD';
 import EngineCreateModal from './engines/EngineCreateModal';
@@ -25,20 +25,12 @@ export default function Page() {
     dispatch(fetchEngines());
   }, []);
 
-  const { enginesList } = useSelector((state: any) => state.enginesReducers);
-  const { brandsList } = useSelector((state: any) => state.brandsReducers);
-  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       router.push('/admin');
     }
   }, [router]);
-
-  console.log("ERROR")
-  console.log(enginesList);
-  console.log(manufacturersList);
-  console.log(brandsList);
 
   return (
     <>
