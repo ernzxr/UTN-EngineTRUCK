@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 
 const getUsers = async (req, res) => {
     try {
-        const excludedAttributes = ['deletedAt','password'];
+        const excludedAttributes = ['deletedAt','createdAt','updatedAt','password'];
         let query = req.query;
         let optionsSql = [];
         let filter = {

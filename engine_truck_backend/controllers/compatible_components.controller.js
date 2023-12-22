@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 const getCompatibleComponents = async (req, res) => {
     try {
-        const excludedAttributes = ['deletedAt'];
+        const excludedAttributes = ['deletedAt','createdAt','updatedAt'];
         const associations = ['engine','component'];
         let query = req.query;
         let optionsSql = [];

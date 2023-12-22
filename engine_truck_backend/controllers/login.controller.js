@@ -6,7 +6,7 @@ const key = process.env.KEY || 'ABCD'
 
 const login = async (req, res) => {
     try {
-        const excludedAttributes = ['deletedAt'];
+        const excludedAttributes = ['deletedAt','createdAt','updatedAt'];
         let body = req.body;
         let optionsSql = [];
 

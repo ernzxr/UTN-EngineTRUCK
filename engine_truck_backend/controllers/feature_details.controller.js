@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 const getFeatureDetails = async (req, res) => {
     try {
-        const excludedAttributes = ['deletedAt'];
+        const excludedAttributes = ['deletedAt','createdAt','updatedAt'];
         const associations = ['engine','feature'];
         let query = req.query;
         let optionsSql = [];
