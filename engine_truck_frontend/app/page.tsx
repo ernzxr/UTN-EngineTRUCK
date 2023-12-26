@@ -3,15 +3,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Carousel from "./components/carousel";
-import NavCard from "./components/navCard";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Carousel from "./components/Carousel";
+import NavCard from "./components/NavCard";
 import LogoCard from "./components/LogoCard";
-import ChatWindow from "./components/chatWindow";
+import ChatWindow from "./components/ChatWindow";
+import { useSelector } from "react-redux";
 
 
 export default function Index(): JSX.Element {
+  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
+  console.log(manufacturersList)
   return (
     <main className="relative dark:bg-gray-700">
       <Header />
@@ -35,7 +38,6 @@ export default function Index(): JSX.Element {
             description="Los mejores repuestos para los mejores modelos. Calidad garantizada"
             imagen="./rep_t1.jpg"
             imagenFlip="./rep_t2.jpg"
-          
           />
         </div>
         <div className="absolute top-[50px] left-[920px] w-[450px] h-[650px]">

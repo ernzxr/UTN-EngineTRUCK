@@ -1,5 +1,5 @@
-import { BrandResponse } from "./brands";
-import { ManufacturerResponse } from "./manufacturers";
+import { BrandAssosiation, BrandResponse } from "./brands";
+import { ManufacturerAssosiation, ManufacturerResponse } from "./manufacturers";
 import { MediaResponse } from "./media";
 
 export interface Engine {
@@ -31,6 +31,6 @@ export interface EngineResponse {
   featured_details: [];
   compatibles_components: [];
   media: MediaResponse;
-  manufacturer: ManufacturerResponse;
-  brand: BrandResponse;
+  manufacturer: ManufacturerAssosiation;
+  brand: BrandAssosiation;
 }

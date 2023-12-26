@@ -14,3 +14,10 @@ export interface ManufacturerResponse {
   createdAt: string;
   engines: [];
 }
+
+export interface ManufacturerAssosiation {
+  id: number;
+  manufacturer: string;
+  updatedAt: string;
+  createdAt: string;
+}

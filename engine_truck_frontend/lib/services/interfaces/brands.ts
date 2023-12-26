@@ -14,3 +14,10 @@ export interface BrandResponse {
   createdAt: string;
   engines: [];
 }
+
+export interface BrandAssosiation {
+  id: number;
+  brand: string;
+  updatedAt: string;
+  createdAt: string;
+}

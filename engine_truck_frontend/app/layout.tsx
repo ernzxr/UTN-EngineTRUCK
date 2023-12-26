@@ -16,17 +16,20 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
-    <ReduxProvider>
-      <html lang="es">
-        <head>
-          <ThemeModeScript />
-        </head>
-        <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
-          <Flowbite theme={{ theme: flowbiteTheme }}>{children}</Flowbite >
-        </body>
-      </html>
-    </ReduxProvider>
- );
+    <html lang="es">
+      <head>
+        <ThemeModeScript />
+      </head>
+      <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
+
+        <ReduxProvider>
+          <Flowbite theme={{ theme: flowbiteTheme }}>
+            {children}
+          </Flowbite >
+        </ReduxProvider>
+      </body>
+    </html>
+  );
 };
 
 export default RootLayout;
