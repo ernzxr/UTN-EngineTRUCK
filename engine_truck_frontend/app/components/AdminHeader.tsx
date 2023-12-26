@@ -13,7 +13,6 @@ const Header: FC<Record<string, never>> = function () {
             height="24"
             src="/engine_truck_ovallogo.png"
             width="54"
-            
           />
           <span className="self-center whitespace-nowrap px-3 text-xl font-semibold text-white ml-3">
             EngineTRUCK

@@ -19,6 +19,10 @@ export default function Page() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
+  const { enginesList } = useSelector((state: any) => state.enginesReducers);
+  const { brandsList } = useSelector((state: any) => state.brandsReducers);
+  const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
+
   useEffect(() => {
     dispatch(fetchManufacturers());
     dispatch(fetchBrands());
@@ -26,11 +30,15 @@ export default function Page() {
   }, []);
 
 
+
+
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       router.push('/admin');
     }
   }, [router]);
+
+ 
 
   return (
     <>
