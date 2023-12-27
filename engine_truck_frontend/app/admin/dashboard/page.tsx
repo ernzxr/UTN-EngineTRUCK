@@ -14,6 +14,7 @@ import { fetchBrands } from '@/lib/redux/features/brandsSlice';
 import { fetchEngines } from '@/lib/redux/features/enginesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
+import { UploadImage } from '@/app/components/media/UploadImage';
 
 export default function Page() {
   const router = useRouter();
@@ -47,6 +48,7 @@ export default function Page() {
       <Tabs.Item active title="Engines" icon={HiUserCircle}>
         <EngineCreateModal />
         <EngineCRUD />
+        <UploadImage />
       </Tabs.Item>
       <Tabs.Item title="Components" icon={HiAdjustments}>
       </Tabs.Item>

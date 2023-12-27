@@ -3,10 +3,10 @@ const multer = require('multer');
 const uploadStorage = multer.diskStorage({
     destination:(req, file, callback) => {
         if(file.mimetype.includes("image")) {
-            callback(null, "public/images/");
+            callback(null, "uploads/images/");
         }
         else if(file.mimetype.includes("video")) {
-            callback(null, "public/videos/");
+            callback(null, "uploads/videos/");
         }
         else {
             callback(new Error("Unsupported file type"), null);
@@ -25,7 +25,7 @@ const validateTypeFile = (req, file, callback) => {
     }
     else {
         req.uploadError = {
-            error:`Unsupported file type ${mimeType}`
+            error:`Unsupported file type ${file.mimeType}`
         }
         return callback(null, false);
     }

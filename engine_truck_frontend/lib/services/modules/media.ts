@@ -5,7 +5,7 @@ export const getMedias = () => {
   return get("/api/media");
 };
 
-export const createMedia = (data: MediaCreate) => {
+export const createMedia = (data: FormData) => {
   return post("/api/media", data);
 };
 
