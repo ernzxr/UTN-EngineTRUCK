@@ -1,5 +1,4 @@
 'use client';
-
 import { Table, Button, Label, Modal, TextInput } from 'flowbite-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';

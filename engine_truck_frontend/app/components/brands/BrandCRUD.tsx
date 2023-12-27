@@ -1,3 +1,4 @@
+'use client'
 import { Table, TableCell, Button, Modal, TextInput, Label } from 'flowbite-react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';

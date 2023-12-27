@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import Header from "../components/AdminHeader";
 import Login from "../components/Login";
 
