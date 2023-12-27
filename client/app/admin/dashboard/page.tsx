@@ -7,12 +7,23 @@ import Header from '../../components/AdminHeader';
 import BrandCRUD from '@/app/components/brands/BrandCRUD';
 import EngineCRUD from '@/app/components/engines/EngineCRUD';
 import EngineCreateModal from '@/app/components/engines/EngineCreateModal';
-import { UploadImage } from '@/app/components/media/UploadImage';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { fetchBrands } from '@/lib/redux/features/brandsSlice';
+import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
+import { fetchEngines } from '@/lib/redux/features/enginesSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/lib/redux/store';
 
 export default function Page() {
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
+
+  useEffect(() => {
+    dispatch(fetchEngines());
+    dispatch(fetchBrands());
+    dispatch(fetchManufacturers());
+}, [dispatch]);
 
   useEffect(() => {
     if (!localStorage.getItem('token')) {
@@ -27,7 +38,6 @@ export default function Page() {
           <Tabs.Item active title="Engines" icon={HiUserCircle}>
             <EngineCreateModal />
             <EngineCRUD />
-            <UploadImage />
           </Tabs.Item>
           <Tabs.Item title="Components" icon={HiAdjustments}>
           </Tabs.Item>
