@@ -114,7 +114,7 @@ const EngineCreateModal = () => {
             <Button onClick={openCreateModal}>Crear</Button>
             <Modal show={createModal} size="md" onClose={closeCreateModal} popup>
                 <Modal.Header />
-                <Modal.Body>
+                <Modal.Body className="max-h-[80vh] overflow-y-auto">
                     <form className="space-y-6" onSubmit={formik.handleSubmit}>
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">Crear Motor</h3>
                         <div>
@@ -124,8 +124,8 @@ const EngineCreateModal = () => {
                             <TextInput id="model" type="text" placeholder='Ingrese el Modelo del Motor' onChange={formik.handleChange} value={formik.values.model} />
                             {formik.errors.model ? <ErrorInputs type={'failure'} message={formik.errors.model} title={undefined} /> : null}
                         </div>
-                        <div className="mb-2">
-                            <div>
+                        <div>
+                            <div className="mb-2 block">
                                 <Label htmlFor="default-file-upload" value="Imagen" />
                             </div>
                             <FileInput id="default-file-upload" onChange={(e) => { formik.setFieldValue('file', e.currentTarget.files?.[0]); }} />
@@ -166,11 +166,9 @@ const EngineCreateModal = () => {
                                 <ToggleSwitch id="hidden" checked={hiddenToggle ? true : false} label={!hiddenToggle ? "Oculto" : "Visible"} onChange={handleHiddenToggleChange} />
                             </div>
                         </div>
-                        <div className="w-full">
+                        <div className="w-full flex justify-between">
                             <Button type="submit">Crear</Button>
-                        </div>
-                        <div className="w-full absolute left-[75%] bottom-[5%]">
-                            <Button type="button" onClick={closeCreateModal}>Salir</Button>
+                            <Button type="button" color="failure" onClick={closeCreateModal}>Salir</Button>
                         </div>
                     </form>
                 </Modal.Body>
