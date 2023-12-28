@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch, FileInput } from 'flowbite-react'
-import { addEngine, fetchEngines } from '@/lib/redux/features/enginesSlice';
+import { addEngine } from '@/lib/redux/features/enginesSlice';
 import { ErrorInputs } from '@/app/components/Errors';
 import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,21 +11,12 @@ import { useFormik } from 'formik';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { MediaCreate } from '@/lib/services/interfaces/media';
-import { createMedia } from '@/lib/services/modules/media';
-import { fetchBrands } from '@/lib/redux/features/brandsSlice';
-import { fetchManufacturers } from '@/lib/redux/features/manufacturersSlice';
+import { addMedia } from '@/lib/redux/features/mediaSlice';
 
 const EngineCreateModal = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { loading, enginesList, error, updateState, response } = useSelector((state: any) => state.enginesReducers);
     const { brandsList } = useSelector((state: any) => state.brandsReducers);
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
-
-    useEffect(() => {
-        dispatch(fetchEngines());
-        dispatch(fetchBrands());
-        dispatch(fetchManufacturers());
-    }, [dispatch]);
 
     const validate = (values: any) => {
         const errors: any = {};
@@ -82,7 +73,7 @@ const EngineCreateModal = () => {
             formData.append('file', values.file as Blob);
             formData.append('media_type', String(values.media_type));
             formData.append('engine_id', String(values.engine_id));
-            await createMedia(formData);
+            await dispatch(addMedia(formData));
         }
         catch (error) {
             console.error(error);
