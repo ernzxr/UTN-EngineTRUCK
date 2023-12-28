@@ -9,7 +9,7 @@ export const createEngine = (data: EngineCreate) => {
   return post("/api/engines", data);
 };
 
-export const updateEngine = (data: EngineResponse) => {
+export const updateEngine = (data: any) => {
   return update("/api/engines/" + data.id, data);
 };
 

@@ -9,7 +9,7 @@ export const createMedia = (data: FormData) => {
   return post("/api/media", data);
 };
 
-export const updateMedia = (data: MediaResponse) => {
+export const updateMedia = (data: FormData) => {
   return update("/api/media/" + data.id, data);
 };
 

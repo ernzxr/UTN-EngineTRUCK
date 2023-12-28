@@ -62,6 +62,15 @@ const getMedia = async (req, res) => {
 
 const createMedia = async (req, res) => {
   try {
+    const excludedAttributes = ["deletedAt", "createdAt", "updatedAt"];
+    const associations = ["engine", "component"];
+    let filter = {
+      attributes: {
+        exclude: excludedAttributes,
+      },
+      include: associations,
+    };
+
     let body = req.body;
     if (req.uploadError) {
       return res.status(400).json({ error: true, message: req.uploadError });
@@ -82,7 +91,11 @@ const createMedia = async (req, res) => {
       }
     }
     const media = await db.media.create(body);
-    res.status(200).json({ error: false, data: media });
+    const createdMedia = await db.media.findOne({
+      where: { id: media.id },
+      ...filter
+    });
+    res.status(200).json({ error: false, data: createdMedia });
   } catch (e) {
     res.status(400).json({ error: true, message: e });
   }

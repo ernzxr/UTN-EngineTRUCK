@@ -28,7 +28,7 @@ export const fetchMedias = createAsyncThunk(
 
 export const addMedia = createAsyncThunk(
   "media/addMedia",
-  async (data:MediaCreate) => {
+  async (data:FormData) => {
       const response:any = await createMedia(data);
       return response.data;
   }
@@ -36,7 +36,7 @@ export const addMedia = createAsyncThunk(
 
 export const modifiedMedia = createAsyncThunk(
   "media/modifiedMedia",
-  async (data:MediaResponse) => {
+  async (data:FormData) => {
       await updateMedia(data);
       return data;
   }

@@ -7,9 +7,6 @@ const validateFeature = (req, res, next) => {
             "any.required":"El nombre de la caracteristica es requerida",
             "string.empty":"El campo no puede quedar vacio",
             "string.max":"El maximo de caracteres es 45"
-        }),
-        hidden: Joi.number().integer().required().messages({
-            "number.base":"El valor debe ser numérico"
         })
     });
 

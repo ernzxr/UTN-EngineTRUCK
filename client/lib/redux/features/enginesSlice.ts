@@ -37,9 +37,9 @@ export const addEngine = createAsyncThunk(
 
 export const modifiedEngine = createAsyncThunk(
   "engines/modifiedEngines",
-  async (data:EngineResponse) => {
-      await updateEngine(data);
-      return data;
+  async (data:any) => {
+      const response:any = await updateEngine(data);
+      return response.data;
   }
 );
 
