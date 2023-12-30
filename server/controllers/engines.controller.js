@@ -13,20 +13,12 @@ const getEngines = async (req, res) => {
     ];
     let query = req.query;
     let optionsSql = [];
-
     let filter = {
       attributes: {
         exclude: excludedAttributes,
       },
+      include: associations,
     };
-
-    filter.include = associations.map((association) => ({
-      model: db[association],
-      as: association,
-      attributes: {
-        exclude: excludedAttributes,
-      },
-    }));
 
     if (query.model) {
       optionsSql.push({
@@ -37,8 +29,14 @@ const getEngines = async (req, res) => {
     }
 
     if (optionsSql.length > 0) {
-      filter.where = {
-        [Op.or]: optionsSql,
+      filter = {
+        where: {
+          [Op.or]: optionsSql,
+        },
+        attributes: {
+          exclude: excludedAttributes,
+        },
+        include: associations,
       };
     }
 
@@ -60,20 +58,12 @@ const createEngine = async (req, res) => {
       "manufacturer",
       "brand",
     ];
-
     let filter = {
       attributes: {
         exclude: excludedAttributes,
       },
+      include: associations,
     };
-
-    filter.include = associations.map((association) => ({
-      model: db[association],
-      as: association,
-      attributes: {
-        exclude: excludedAttributes,
-      },
-    }));
 
     let body = req.body;
     const engine = await db.engine.create(body);
@@ -98,20 +88,12 @@ const updateEngine = async (req, res) => {
       "manufacturer",
       "brand",
     ];
-
     let filter = {
       attributes: {
         exclude: excludedAttributes,
       },
+      include: associations,
     };
-
-    filter.include = associations.map((association) => ({
-      model: db[association],
-      as: association,
-      attributes: {
-        exclude: excludedAttributes,
-      },
-    }));
 
     let id = req.params.id;
     await db.engine.findAll({ where: { id: id } }).then(async (result) => {
@@ -122,11 +104,7 @@ const updateEngine = async (req, res) => {
           where: { id: id },
           ...filter,
         });
-        res.status(200).json({
-          error: false,
-          data: updatedEngine,
-          message: `UPDATE engines.id ${id}`,
-        });
+        res.status(200).json({error: false, data: updatedEngine, message: `UPDATE engines.id ${id}`});
       } else {
         res.status(404).json({
           error: true,
