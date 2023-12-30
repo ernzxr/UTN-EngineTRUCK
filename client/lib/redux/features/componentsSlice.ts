@@ -1,58 +1,58 @@
-import { getManufacturers, createManufacturer, updateManufacturer, deleteManufacturer } from "@/lib/services/modules/manufacturers";
-import { ManufacturerCreate, ManufacturerResponse } from "@/lib/services/interfaces/manufacturers";
+import { getComponents, createComponent, updateComponent, deleteComponent } from "@/lib/services/modules/components";
+import { ComponentCreate, ComponentResponse } from "@/lib/services/interfaces/components";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface ManufacturersState {
+interface ComponentsState {
   updateState: boolean;
   loading: boolean;
-  manufacturersList: ManufacturerResponse[];
+  componentsList: ComponentResponse[];
   error: string;
   response: string;
 }
 
-const manufacturerState:ManufacturersState = {
+const componentState:ComponentsState = {
   updateState: false,
   loading: false,
-  manufacturersList: [],
+  componentsList: [],
   error: "",
   response: ""
 };
 
-export const fetchManufacturers = createAsyncThunk(
-  "manufacturers/fetchManufacturers",
+export const fetchComponents = createAsyncThunk(
+  "components/fetchComponents",
   async () => {
-      const response:any = await getManufacturers();
+      const response:any = await getComponents();
       return response.data;
   }
 );
 
-export const addManufacturer = createAsyncThunk(
-  "manufacturers/addManufacturer",
-  async (data:ManufacturerCreate) => {
-      const response:any = await createManufacturer(data);
+export const addComponent = createAsyncThunk(
+  "components/addComponent",
+  async (data:ComponentCreate) => {
+      const response:any = await createComponent(data);
       return response.data;
   }
 );
 
-export const modifiedManufacturer = createAsyncThunk(
-  "manufacturers/modifiedManufacturer",
-  async (data:ManufacturerResponse) => {
-      await updateManufacturer(data);
-      return data;
+export const modifiedComponent = createAsyncThunk(
+  "components/modifiedComponent",
+  async (data:any) => {
+    const response:any = await updateComponent(data);
+      return response.data;
   }
 );
 
-export const removeManufacturer = createAsyncThunk(
-  "manufacturers/removeManufacturer",
+export const removeComponent = createAsyncThunk(
+  "components/removeComponent",
   async (id:number) => {
-      await deleteManufacturer(id);
+      await deleteComponent(id);
       return id;
     }
 );
 
-const manufacturersSlice = createSlice({
-  name: "manufacturers",
-  initialState: manufacturerState,
+const componentsSlice = createSlice({
+  name: "components",
+  initialState: componentState,
   reducers: {
     changeStateTrue: (state) => {
       state.updateState = true;
@@ -66,71 +66,71 @@ const manufacturersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(fetchManufacturers.pending, (state) => { 
+    .addCase(fetchComponents.pending, (state) => { 
       state.loading = true;
       state.error = "";
     })
-    .addCase(fetchManufacturers.fulfilled, (state, action) => {
-      state.manufacturersList = action.payload;
+    .addCase(fetchComponents.fulfilled, (state, action) => {
+      state.componentsList = action.payload;
       state.response = "Get";
       state.loading = false;
       state.error = "";
     })
-    .addCase(fetchManufacturers.rejected, (state, action) => {
+    .addCase(fetchComponents.rejected, (state, action) => {
       state.error = "Error";
       state.loading = false;
     });
 
     builder
-    .addCase(addManufacturer.pending, (state) => { 
+    .addCase(addComponent.pending, (state) => { 
       state.loading = true;
     })
-    .addCase(addManufacturer.fulfilled, (state, action) => {
-      state.manufacturersList.push(action.payload);
+    .addCase(addComponent.fulfilled, (state, action) => {
+      state.componentsList.push(action.payload);
       state.loading = false; 
       state.response = "Add";
     })
-    .addCase(addManufacturer.rejected, (state, action) => {
+    .addCase(addComponent.rejected, (state, action) => {
       state.loading = false;
       state.error = "Error";
     });
 
     builder
-    .addCase(modifiedManufacturer.pending, (state, action) => {
+    .addCase(modifiedComponent.pending, (state, action) => {
      state.loading = true;
     })
-    .addCase(modifiedManufacturer.fulfilled, (state, action) => {
+    .addCase(modifiedComponent.fulfilled, (state, action) => {
       const data:any = action.payload;
-      const index = state.manufacturersList.findIndex((manufacturer) => {
-        return manufacturer.id === data.id
+      const index = state.componentsList.findIndex((component) => {
+        return component.id === data.id
       });
       if (index !== -1){
-        state.manufacturersList[index] = data;
+        state.componentsList[index] = data;
       }
       state.loading = false;
       state.response = "Update";
     })
-    .addCase(modifiedManufacturer.rejected, (state, action) => {
+    .addCase(modifiedComponent.rejected, (state, action) => {
       state.loading = false;
       state.error = "Error";
     });
 
     builder
-    .addCase(removeManufacturer.pending, (state) => { 
+    .addCase(removeComponent.pending, (state) => { 
       state.loading = true;
     })
-    .addCase(removeManufacturer.fulfilled, (state, action) => {
+    .addCase(removeComponent.fulfilled, (state, action) => {
       state.loading = false; 
-      state.manufacturersList = state.manufacturersList.filter((manufacturer) => {
-        return manufacturer.id !== action.payload;
+      state.componentsList = state.componentsList.filter((component) => {
+        return component.id !== action.payload;
       });
       state.response = "Delete";})
-    .addCase(removeManufacturer.rejected, (state, action) => {
+    .addCase(removeComponent.rejected, (state, action) => {
       state.loading = false;
       state.error = "Error";
     });
   }
 });
 
-export default manufacturersSlice.reducer;
-export const { changeStateTrue, changeStateFalse, clearResponse } = manufacturersSlice.actions;
+export default componentsSlice.reducer;
+export const { changeStateTrue, changeStateFalse, clearResponse } = componentsSlice.actions;

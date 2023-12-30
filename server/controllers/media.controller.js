@@ -9,12 +9,22 @@ const getMedia = async (req, res) => {
     const associations = ["engine", "component"];
     let query = req.query;
     let optionsSql = [];
+    
     let filter = {
       attributes: {
         exclude: excludedAttributes,
       },
-      include: associations,
     };
+
+    filter.include = associations.map((association) => ({
+      model: db[association],
+      as: association,
+      attributes: {
+        exclude: excludedAttributes,
+      },
+    }));
+
+    console.log(filter.include)
 
     if (query.engine_id) {
       optionsSql.push({
@@ -41,14 +51,8 @@ const getMedia = async (req, res) => {
     }
 
     if (optionsSql.length > 0) {
-      filter = {
-        where: {
-          [Op.or]: optionsSql,
-        },
-        attributes: {
-          exclude: excludedAttributes,
-        },
-        include: associations,
+      filter.where = {
+        [Op.or]: optionsSql,
       };
     }
 
@@ -64,12 +68,20 @@ const createMedia = async (req, res) => {
   try {
     const excludedAttributes = ["deletedAt", "createdAt", "updatedAt"];
     const associations = ["engine", "component"];
+
     let filter = {
       attributes: {
         exclude: excludedAttributes,
       },
-      include: associations,
     };
+
+    filter.include = associations.map((association) => ({
+      model: db[association],
+      as: association,
+      attributes: {
+        exclude: excludedAttributes,
+      },
+    }));
 
     let body = req.body;
     if (req.uploadError) {
@@ -93,8 +105,9 @@ const createMedia = async (req, res) => {
     const media = await db.media.create(body);
     const createdMedia = await db.media.findOne({
       where: { id: media.id },
-      ...filter
+      ...filter,
     });
+
     res.status(200).json({ error: false, data: createdMedia });
   } catch (e) {
     res.status(400).json({ error: true, message: e });
@@ -163,13 +176,11 @@ const deleteMedia = async (req, res) => {
           .status(200)
           .json({ error: false, data: null, message: `DELETE media.id ${id}` });
       } else {
-        res
-          .status(404)
-          .json({
-            error: true,
-            data: null,
-            message: `media.id ${id} not found`,
-          });
+        res.status(404).json({
+          error: true,
+          data: null,
+          message: `media.id ${id} not found`,
+        });
       }
     });
   } catch (e) {

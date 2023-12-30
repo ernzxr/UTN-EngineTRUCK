@@ -9,7 +9,7 @@ const getEngines = async (req, res) => {
       "compatibles_components",
       "media",
       "manufacturer",
-      "brand",
+      "brand"
     ];
     let query = req.query;
     let optionsSql = [];

@@ -1,4 +1,4 @@
-import { EngineCreate, EngineResponse } from "../interfaces/engines";
+import { EngineCreate } from "../interfaces/engines";
 import { post, get, update, eliminate } from "../config";
 
 export const getEngines = () => {

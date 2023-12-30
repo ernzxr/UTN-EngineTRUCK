@@ -1,7 +1,6 @@
 'use client'
 import { Tabs } from 'flowbite-react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
+import { HiClipboardList } from 'react-icons/hi';
 import { ManufacturerCRUD } from '@/app/components/manufacturers/ManufacturerCRUD';
 import Header from '../../components/AdminHeader';
 import BrandCRUD from '@/app/components/brands/BrandCRUD';
@@ -14,6 +13,8 @@ import { fetchEngines } from '@/lib/redux/features/enginesSlice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
 import { fetchMedias } from '@/lib/redux/features/mediaSlice';
+import ComponentCRUD from '@/app/components/components/ComponentCRUD';
+import { fetchComponents } from '@/lib/redux/features/componentsSlice';
 
 export default function Page() {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,6 +22,7 @@ export default function Page() {
 
   useEffect(() => {
     dispatch(fetchEngines());
+    dispatch(fetchComponents());
     dispatch(fetchBrands());
     dispatch(fetchManufacturers());
     dispatch(fetchMedias());
@@ -40,6 +42,7 @@ export default function Page() {
           <EngineCRUD />
         </Tabs.Item>
         <Tabs.Item title="Components" icon={HiClipboardList}>
+          <ComponentCRUD />
         </Tabs.Item>
         <Tabs.Item title="Manufacturers" icon={HiClipboardList}>
           <ManufacturerCRUD />
