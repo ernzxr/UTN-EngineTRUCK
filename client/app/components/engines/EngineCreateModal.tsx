@@ -35,7 +35,7 @@ const EngineCreateModal = () => {
     const formik = useFormik({
         initialValues: {
             model: '',
-            hidden: 0,
+            hidden: 1,
             available: 0,
             brand_id: 0,
             manufacturer_id: 0,
@@ -45,7 +45,11 @@ const EngineCreateModal = () => {
         validate,
         onSubmit: async (values) => {
             const engineId: number = await handleCreateEngine(values);
-            handleCreateMedia({ media_type: values.media_type, engine_id: engineId, file: values.file });
+            if (values.file) {
+                handleCreateMedia({ media_type: values.media_type, engine_id: engineId, file: values.file });
+            }
+            //const featureId: number = await handleCreateFeature();
+            //handleCreateFeatureDetail({engine_id: engineId, feature_id: featureId});
             setHiddenToggle(0);
             setAvailableToggle(0);
             formik.resetForm();
@@ -92,7 +96,7 @@ const EngineCreateModal = () => {
 
     const handleHiddenToggleChange = () => {
         setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
-        formik.setFieldValue('hidden', !hiddenToggle ? 1 : 0);
+        formik.setFieldValue('hidden', hiddenToggle ? 1 : 0);
     };
 
     const handleAvailableToggleChange = () => {

@@ -9,7 +9,6 @@ import EngineAvailableToggle from './EngineAvailableToggle';
 
 const EngineList = () => {
     const { enginesList } = useSelector((state: any) => state.enginesReducers);
-
     return (
         <>
             {enginesList.map((object: EngineResponse) => (
@@ -18,10 +17,10 @@ const EngineList = () => {
                 {object.model}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {object.brand.brand}
+                {object.brand.name}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {object.manufacturer.manufacturer}
+                {object.manufacturer.name}
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <EngineAvailableToggle object={object} />

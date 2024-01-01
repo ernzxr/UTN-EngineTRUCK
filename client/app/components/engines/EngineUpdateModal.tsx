@@ -36,23 +36,23 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const handleEditClick = (object: EngineResponse) => {
         setModalStates((prevStates) => ({ ...prevStates, [object.id]: true }));
         setEngineModel(object.model);
-        setManufacturerId(object.manufacturer_id);
-        setBrandId(object.brand_id);
+        setManufacturerId(object.manufacturer.id);
+        setBrandId(object.brand.id);
     };
 
     const handlePutClick = (object: EngineResponse, engineModel: string, brandId: number, manufacturerId: number) => {
-        const { id, model, brand_id, manufacturer_id } = object;
+        const { id, model, brand, manufacturer } = object;
         let updatedObject: any = {};
 
         if (engineModel !== model) {
             updatedObject.model = engineModel;    
         }
 
-        if (brandId !== brand_id) {
+        if (brandId !== brand.id) {
             updatedObject.brand_id = brandId;
         }
 
-        if (manufacturerId !== manufacturer_id) {
+        if (manufacturerId !== manufacturer.id) {
             updatedObject.manufacturer_id = manufacturerId;
         }
 

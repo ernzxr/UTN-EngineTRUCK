@@ -3,6 +3,11 @@ export interface Manufacturer {
   manufacturer: string;
 }
 
+export interface ManufacturerGet {
+  id: number;
+  name: string;
+}
+
 export interface ManufacturerCreate {
   manufacturer: string;
 }

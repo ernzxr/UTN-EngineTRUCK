@@ -3,6 +3,11 @@ export interface Brand {
   brand: string;
 }
 
+export interface BrandGet {
+  id: number;
+  name: string;
+}
+
 export interface BrandCreate {
   brand: string;
 }
