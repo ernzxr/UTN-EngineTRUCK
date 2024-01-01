@@ -35,8 +35,6 @@ const getComponents = async (req, res) => {
       ],
     });
 
-    console.log(filter.include);
-
     if (query.model) {
       optionsSql.push({
         model: {

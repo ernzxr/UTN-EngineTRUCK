@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch, FileInput } from 'flowbite-react'
-import { addEngine } from '@/lib/redux/features/enginesSlice';
+import { addEngine, setEngineMedia } from '@/lib/redux/features/enginesSlice';
 import { ErrorInputs } from '@/app/components/Errors';
 import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,7 +46,10 @@ const EngineCreateModal = () => {
         onSubmit: async (values) => {
             const engineId: number = await handleCreateEngine(values);
             if (values.file) {
-                handleCreateMedia({ media_type: values.media_type, engine_id: engineId, file: values.file });
+                const mediaObjectValues = { media_type: values.media_type, engine_id: engineId, file: values.file }
+                const {mediaId, mediaFile}: any = await handleCreateMedia(mediaObjectValues);
+                const mediaObject = { id:mediaId, media_type: values.media_type, engine_id: engineId, file: mediaFile }
+                dispatch(setEngineMedia(mediaObject));
             }
             //const featureId: number = await handleCreateFeature();
             //handleCreateFeatureDetail({engine_id: engineId, feature_id: featureId});
@@ -77,7 +80,10 @@ const EngineCreateModal = () => {
             formData.append('file', values.file as Blob);
             formData.append('media_type', String(values.media_type));
             formData.append('engine_id', String(values.engine_id));
-            await dispatch(addMedia(formData));
+            const data: any = await dispatch(addMedia(formData));
+            const mediaId = data.payload.id;
+            const mediaFile = data.payload.file;
+            return {mediaId, mediaFile};
         }
         catch (error) {
             console.error(error);

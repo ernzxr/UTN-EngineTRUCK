@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 
 export default function Index(): JSX.Element {
   const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
-  console.log(manufacturersList)
   return (
     <main className="relative dark:bg-gray-700">
       <Header />

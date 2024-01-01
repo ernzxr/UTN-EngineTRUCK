@@ -63,6 +63,17 @@ const enginesSlice = createSlice({
     },
     clearResponse: (state) => {
       state.response = "";
+    },
+    setEngineMedia: (state, action) => {
+      const data:any = action.payload;
+      const index = state.enginesList.findIndex((engine) => {
+        return engine.id === data.engine_id
+      });
+      if (index !== -1){
+        state.enginesList[index].media.push(data);
+      }
+      state.loading = false;
+      state.response = "Update";
     }
   },
   extraReducers: (builder) => {
@@ -135,4 +146,4 @@ const enginesSlice = createSlice({
 
 
 export default enginesSlice.reducer;
-export const { changeStateTrue, changeStateFalse, clearResponse } = enginesSlice.actions;
+export const { changeStateTrue, changeStateFalse, clearResponse, setEngineMedia } = enginesSlice.actions;
