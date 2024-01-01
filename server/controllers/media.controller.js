@@ -9,7 +9,7 @@ const getMedia = async (req, res) => {
     const associations = ["engine", "component"];
     let query = req.query;
     let optionsSql = [];
-    
+
     let filter = {
       attributes: {
         exclude: excludedAttributes,
@@ -23,8 +23,6 @@ const getMedia = async (req, res) => {
         exclude: excludedAttributes,
       },
     }));
-
-    console.log(filter.include)
 
     if (query.engine_id) {
       optionsSql.push({

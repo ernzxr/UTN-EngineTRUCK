@@ -8,26 +8,22 @@ const login = async (req, res) => {
   try {
     const excludedAttributes = ["deletedAt", "createdAt", "updatedAt"];
     let body = req.body;
-    let optionsSql = [];
-
-    if (body.user) {
-      optionsSql.push({
+    let optionsSql = [
+      {
         user: {
           [Op.eq]: `${body.user}`,
         },
-      });
-    }
+      },
+    ];
 
-    if (optionsSql.length > 0) {
-      let filter = {
-        where: {
-          [Op.or]: optionsSql,
-        },
-        attributes: {
-          exclude: excludedAttributes,
-        },
-      };
-    }
+    let filter = {
+      where: {
+        [Op.or]: optionsSql,
+      },
+      attributes: {
+        exclude: excludedAttributes,
+      },
+    };
 
     const user = await db.user.findOne(filter);
 
@@ -39,12 +35,10 @@ const login = async (req, res) => {
       let verifyPassword = Bcrypt.compareSync(req.body.password, user.password);
 
       if (!verifyPassword) {
-        return res
-          .status(401)
-          .json({
-            error: true,
-            message: "Los datos ingresados no son validos",
-          });
+        return res.status(401).json({
+          error: true,
+          message: "Los datos ingresados no son validos",
+        });
       } else {
         let token = jwt.sign({ id: user.id }, key, { expiresIn: "1h" });
         let data = { token, user };

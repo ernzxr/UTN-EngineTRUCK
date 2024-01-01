@@ -3,7 +3,10 @@ const validateRequest = require('../middlewares/validate.request.middleware');
 
 const validateMedia = (req, res, next) => {
     const Schema = Joi.object({
-        file: Joi.string(),
+        file: Joi.string().required().messages({
+            "any.required":"Campo requerido",
+            "string.empty":"El campo no puede quedar vacio"
+        }),
         engine_id: Joi.number().integer().required().messages({
             "any.required":"Campo requerido",
             "number.base":"El valor debe ser numérico"

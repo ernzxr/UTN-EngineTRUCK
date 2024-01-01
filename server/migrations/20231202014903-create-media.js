@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       file: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       media_type: {

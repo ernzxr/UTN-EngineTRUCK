@@ -22,17 +22,11 @@ const getFeatureDetails = async (req, res) => {
             });
         }
 
-        if(optionsSql.length>0) {
-            filter = {
-                where:{
-                    [Op.or]: optionsSql
-                },
-                attributes:{
-                    exclude:excludedAttributes
-                },
-                include:associations
+        if (optionsSql.length > 0) {
+            filter.where = {
+              [Op.or]: optionsSql,
             };
-        }
+          }
 
         const feature_detail = await db.feature_detail.findAll(filter);
          

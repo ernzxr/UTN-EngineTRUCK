@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const getComponents = async (req, res) => {
   try {
     const excludedAttributes = ["deletedAt", "createdAt", "updatedAt"];
-    const associations = ["media", "compatibles_components"];
+    const associations = ["media"];
     let query = req.query;
     let optionsSql = [];
 
@@ -12,8 +12,30 @@ const getComponents = async (req, res) => {
       attributes: {
         exclude: excludedAttributes,
       },
-      include: associations,
     };
+
+    filter.include = associations.map((association) => ({
+      model: db[association],
+      as: association,
+      attributes: {
+        exclude: excludedAttributes,
+      },
+    }));
+
+    filter.include.push({
+      model: db.compatible_component,
+      as: "compatibles_components",
+      attributes: ["engine_id"],
+      include: [
+        {
+          model: db.engine,
+          as: "engine",
+          attributes: ["id", "model", "hidden", "available"],
+        },
+      ],
+    });
+
+    console.log(filter.include);
 
     if (query.model) {
       optionsSql.push({
@@ -24,20 +46,28 @@ const getComponents = async (req, res) => {
     }
 
     if (optionsSql.length > 0) {
-      filter = {
-        where: {
-          [Op.or]: optionsSql,
-        },
-        attributes: {
-          exclude: excludedAttributes,
-        },
-        include: associations,
+      filter.where = {
+        [Op.or]: optionsSql,
       };
     }
 
     const component = await db.component.findAll(filter);
 
-    res.status(200).json({ error: false, data: component });
+    const transformedComponents = component.map((component) => {
+      const compatiblesEngines = component.compatibles_components.map(
+        (compatiblesComponent) => ({
+          id: compatiblesComponent.id,
+          ...compatiblesComponent.engine.toJSON(),
+        })
+      );
+      return {
+        ...component.toJSON(),
+        compatibles_engines: compatiblesEngines,
+        compatibles_components: undefined,
+      };
+    });
+
+    res.status(200).json({ error: false, data: transformedComponents });
   } catch (e) {
     res.status(400).json({ error: true, message: e });
   }
@@ -58,9 +88,9 @@ const createComponent = async (req, res) => {
     let body = req.body;
     const component = await db.component.create(body);
     const createdComponent = await db.component.findOne({
-        where: { id: component.id },
-        ...filter,
-      });
+      where: { id: component.id },
+      ...filter,
+    });
 
     res.status(200).json({ error: false, data: createdComponent });
   } catch (e) {
@@ -86,24 +116,20 @@ const updateComponent = async (req, res) => {
         let body = req.body;
         await db.component.update(body, { where: { id: id } });
         const updatedComponent = await db.component.findOne({
-            where: { id: id },
-            ...filter,
-          });
-        res
-          .status(200)
-          .json({
-            error: false,
-            data: updatedComponent,
-            message: `UPDATE component.id ${id}`,
-          });
+          where: { id: id },
+          ...filter,
+        });
+        res.status(200).json({
+          error: false,
+          data: updatedComponent,
+          message: `UPDATE component.id ${id}`,
+        });
       } else {
-        res
-          .status(404)
-          .json({
-            error: true,
-            data: null,
-            message: `component.id ${id} not found`,
-          });
+        res.status(404).json({
+          error: true,
+          data: null,
+          message: `component.id ${id} not found`,
+        });
       }
     });
   } catch (e) {
@@ -117,21 +143,17 @@ const deleteComponent = async (req, res) => {
     await db.component.findAll({ where: { id: id } }).then(async (result) => {
       if (result.length) {
         await db.component.destroy({ where: { id: id } });
-        res
-          .status(200)
-          .json({
-            error: false,
-            data: null,
-            message: `DELETE components.id ${id}`,
-          });
+        res.status(200).json({
+          error: false,
+          data: null,
+          message: `DELETE components.id ${id}`,
+        });
       } else {
-        res
-          .status(404)
-          .json({
-            error: true,
-            data: null,
-            message: `components.id ${id} not found`,
-          });
+        res.status(404).json({
+          error: true,
+          data: null,
+          message: `components.id ${id} not found`,
+        });
       }
     });
   } catch (e) {
