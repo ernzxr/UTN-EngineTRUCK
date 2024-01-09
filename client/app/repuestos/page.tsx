@@ -2,6 +2,7 @@
 
 import Header from "../components/Header";
 import ComponentCard from "../components/ComponentCard";
+import Footer from "../components/Footer";
 
 export default function Page() {
     return (
@@ -17,6 +18,9 @@ export default function Page() {
           <ComponentCard />
           <ComponentCard />
         </section>
+        <footer className="w-full ">
+          <Footer />
+        </footer>
       </main>
     );
   }
