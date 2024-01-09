@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button, Label, Modal, TextInput, Select, ToggleSwitch, FileInput } from 'flowbite-react'
-import { addEngine, setEngineMedia } from '@/lib/redux/features/enginesSlice';
+import { addEngine } from '@/lib/redux/features/enginesSlice';
 import { ErrorInputs } from '@/app/components/Errors';
 import { EngineCreate } from '@/lib/services/interfaces/engines';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { MediaCreate } from '@/lib/services/interfaces/media';
 import { addMedia } from '@/lib/redux/features/mediaSlice';
+import FeatureCreateModal from '../features/FeatureCreateModal';
 
 const EngineCreateModal = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +36,7 @@ const EngineCreateModal = () => {
     const formik = useFormik({
         initialValues: {
             model: '',
-            hidden: 1,
+            hidden: 0,
             available: 0,
             brand_id: 0,
             manufacturer_id: 0,
@@ -45,14 +46,7 @@ const EngineCreateModal = () => {
         validate,
         onSubmit: async (values) => {
             const engineId: number = await handleCreateEngine(values);
-            if (values.file) {
-                const mediaObjectValues = { media_type: values.media_type, engine_id: engineId, file: values.file }
-                const {mediaId, mediaFile}: any = await handleCreateMedia(mediaObjectValues);
-                const mediaObject = { id:mediaId, media_type: values.media_type, engine_id: engineId, file: mediaFile }
-                dispatch(setEngineMedia(mediaObject));
-            }
-            //const featureId: number = await handleCreateFeature();
-            //handleCreateFeatureDetail({engine_id: engineId, feature_id: featureId});
+            handleCreateMedia({ media_type: values.media_type, engine_id: engineId, file: values.file });
             setHiddenToggle(0);
             setAvailableToggle(0);
             formik.resetForm();
@@ -60,6 +54,7 @@ const EngineCreateModal = () => {
     });
 
     const [createModal, setCreateModal] = useState(false);
+    const [featureCreateModal, setFeatureCreateModal] = useState(false);
     const [hiddenToggle, setHiddenToggle] = useState(0);
     const [availableToggle, setAvailableToggle] = useState(0);
 
@@ -80,10 +75,7 @@ const EngineCreateModal = () => {
             formData.append('file', values.file as Blob);
             formData.append('media_type', String(values.media_type));
             formData.append('engine_id', String(values.engine_id));
-            const data: any = await dispatch(addMedia(formData));
-            const mediaId = data.payload.id;
-            const mediaFile = data.payload.file;
-            return {mediaId, mediaFile};
+            await dispatch(addMedia(formData));
         }
         catch (error) {
             console.error(error);
@@ -100,9 +92,14 @@ const EngineCreateModal = () => {
         setCreateModal(false);
     };
 
+    const handleFeatureCreateModal = () => {
+        //setCreateModal(false);
+        setFeatureCreateModal(true);
+    }
+
     const handleHiddenToggleChange = () => {
         setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
-        formik.setFieldValue('hidden', hiddenToggle ? 1 : 0);
+        formik.setFieldValue('hidden', !hiddenToggle ? 1 : 0);
     };
 
     const handleAvailableToggleChange = () => {
@@ -168,7 +165,8 @@ const EngineCreateModal = () => {
                             </div>
                         </div>
                         <div className="w-full flex justify-between">
-                            <Button type="submit">Crear</Button>
+                            <Button type="submit" onClick={handleFeatureCreateModal}>Crear</Button>
+                            <FeatureCreateModal featureCreateModal={featureCreateModal} closeFeatureCreateModal={() => setFeatureCreateModal(false)} />
                             <Button type="button" color="failure" onClick={closeCreateModal}>Salir</Button>
                         </div>
                     </form>
