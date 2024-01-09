@@ -93,8 +93,8 @@ const EngineCreateModal = () => {
     };
 
     const handleFeatureCreateModal = () => {
-        //setCreateModal(false);
         setFeatureCreateModal(true);
+        //setCreateModal(false);
     }
 
     const handleHiddenToggleChange = () => {
@@ -166,12 +166,12 @@ const EngineCreateModal = () => {
                         </div>
                         <div className="w-full flex justify-between">
                             <Button type="submit" onClick={handleFeatureCreateModal}>Crear</Button>
-                            <FeatureCreateModal featureCreateModal={featureCreateModal} closeFeatureCreateModal={() => setFeatureCreateModal(false)} />
                             <Button type="button" color="failure" onClick={closeCreateModal}>Salir</Button>
                         </div>
                     </form>
                 </Modal.Body>
             </Modal>
+            <FeatureCreateModal featureCreateModal={featureCreateModal} closeFeatureCreateModal={() => setFeatureCreateModal(false)} />
         </>
     )
 }
