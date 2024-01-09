@@ -4,10 +4,10 @@ import React from 'react'
 import { Modal } from 'flowbite-react'
 
 
-const FeatureCreateModal = ({ handleFeatureCreateModal}) => {
+const FeatureCreateModal = ({ closeFeatureCreateModal, featureCreateModal}) => {
   return (
     <form>
-        <Modal show={createModal} size="md" onClose={closeCreateModal} popup>
+        <Modal show={featureCreateModal} size="md" onClose={closeFeatureCreateModal} popup>
                 <Modal.Header />
                 <Modal.Body className="max-h-[80vh] overflow-y-auto">
                     <form className="space-y-6">
