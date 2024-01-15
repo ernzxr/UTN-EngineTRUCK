@@ -8,10 +8,11 @@ export default function Page() {
     return (
       <main className="relative dark:bg-gray-700">
         <Header />
-        <div className="flex flex-col justify-center items-center mt-[40px] font-raleway font-bold">
-        <p className="text-xl text-center mt-[40px]">En EngineTRUCK no solo vendemos motores semi armados, además brindamos soluciones como repuestos y partes esenciales para la colocacion de su motor.</p>
-        <p className="mb-8 text-6xl mt-[40px]">Listado de Repuestos</p>
-        </div>
+        <img src="/cam_t1.jpg" alt="" className="w-full h-[450px]"/>
+        <section className="relative h-full w-[1200px] bg-blue-100 rounded-[5px] shadow-lg m-auto mt-[10px] p-[75px] bottom-10">
+        <p className="text-5xl font-raleway text-center font-bold text-blue-900">NUESTRO LISTADO DE REPUESTOS</p>
+        <p className="text-xl mt-[40px] font-raleway text-center font-bold">En EngineTRUCK no solo vendemos motores semi armados, además brindamos soluciones como repuestos y partes esenciales para la colocacion de su motor</p>
+        </section>
         <section className="flex flex-wrap justify-start h-full w-[1200px] bg-blue-100 rounded-[1%] shadow-lg m-auto mt-[100px] px-1">
           <ComponentCard />
           <ComponentCard />
