@@ -2,7 +2,7 @@
 "use client";
 
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Footer from "../components/FooterReact";
 import EngineCard from "../components/EngineCard";
 
 

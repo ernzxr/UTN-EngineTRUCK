@@ -1,24 +1,20 @@
 
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";
+import { Footer } from 'flowbite-react';
 
-const Footer = () => {
+const FooterReact = () => {
   return (
-    <div className="flex w-[100%] h-[100%] bg-blue-950 m-auto justify-center mt-[3%] ">
-      
-      <div className="flex  items-center">
-        <div className="flex space-x-20 font-raleway text-base font-bold text-white justify-center">
-          <Link href={"/motores"}>MOTORES</Link>
-          <Link href={"/repuestos"}>REPUESTOS</Link>
-          <Link href={"/nosotros"}>NOSOTROS</Link>
-          <Link href={"/contacto"}>CONTACTO</Link>
-        </div>
-        <div className="flex text-white space-x-20 mt-[3%] mb-[3%] ml-[200px]">
-          <a href="https://wa.me/541158961457" target="_blank" rel="noopener noreferrer">
+    <Footer container>
+      <Footer.Copyright href="#" by="EngineTRUCK" year={2024} />
+      <Footer.LinkGroup>
+        <Footer.Link href={"/motores"}>MOTORES</Footer.Link>
+        <Footer.Link href={"/repuestos"}>REPUESTOS</Footer.Link>
+        <Footer.Link href={"/nosotros"}>NOSOTROS</Footer.Link>
+        <Footer.Link href={"/contacto"}>CONTACTO</Footer.Link>
+        <a href="https://wa.me/541158961457" target="_blank" rel="noopener noreferrer">
             <IoLogoWhatsapp size={32} className="cursor-pointer"/>
           </a>
           <a href="https://www.facebook.com/motores.semiarmados" target="_blank" rel="noopener noreferrer">
@@ -30,10 +26,9 @@ const Footer = () => {
           <a href="https://www.instagram.com/enginetruck7/?hl=es" target="_blank" rel="noopener noreferrer">
              <BiLogoInstagramAlt size={34} className="cursor-pointer"/>
           </a>
-        </div>
-      </div>
-    </div>
+      </Footer.LinkGroup>
+    </Footer>
   );
 };
 
-export default Footer;
+export default FooterReact;

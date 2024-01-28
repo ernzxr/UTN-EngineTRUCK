@@ -2,7 +2,7 @@
 
 import Header from "../components/Header";
 import ComponentCard from "../components/ComponentCard";
-import Footer from "../components/Footer";
+import Footer from "../components/FooterReact";
 
 export default function Page() {
     return (

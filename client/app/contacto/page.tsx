@@ -3,7 +3,7 @@
 import ContactForm from "../components/ContactForm";
 import Header from "../components/Header";
 import { Label, TextInput } from 'flowbite-react';
-import Footer from "../components/Footer";
+import Footer from "../components/FooterReact";
 
 export default function Page() {
     return (
