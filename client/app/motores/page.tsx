@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 "use client";
 
 import Header from "../components/Header";
@@ -17,9 +17,6 @@ export default function Page() {
         </section>
         
         <div className="flex flex-wrap justify-start h-full w-[1200px] bg-blue-100 rounded-[1%] shadow-lg m-auto mt-[100px] px-1">
-        <EngineCard />
-        <EngineCard />
-        <EngineCard />
         <EngineCard />
         </div>
       <footer className="w-full ">
