@@ -21,12 +21,46 @@ const Reviews: FC<Record<string, never>> = function () {
         </p>
       </Blockquote>
       <figcaption className="mt-6 flex items-center justify-center space-x-3">
-        <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-          <cite className="pr-3 font-medium text-gray-900 dark:text-white">Lucas Montiel</cite>
-          <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">CEO at VOLVO</cite>
+        <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700 mb-16">
+          <cite className="pr-3 font-medium text-gray-900 dark:text-white">Joaqui Correa</cite>
+          <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">Conductor</cite>
+        </div>
+      </figcaption>
+      <Blockquote>
+        <p className="text-2xl font-medium italic text-gray-900 dark:text-white">
+          "Me pasaron el precio super rápido y me explicaron todo. Muy conforme con mi semiarmado. Gracias por todo!"
+        </p>
+      </Blockquote>
+      <figcaption className="mt-6 flex items-center justify-center space-x-3">
+        <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700 mb-16">
+          <cite className="pr-3 font-medium text-gray-900 dark:text-white">Mario Rojas</cite>
+          <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">Dueño de camiones</cite>
+        </div>
+      </figcaption>
+      <Blockquote>
+        <p className="text-2xl font-medium italic text-gray-900 dark:text-white">
+          "Gracias por la atención. Muy buena onda!"
+        </p>
+      </Blockquote>
+      <figcaption className="mt-6 flex items-center justify-center space-x-3">
+        <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700 mb-16">
+          <cite className="pr-3 font-medium text-gray-900 dark:text-white">Javi Rojas</cite>
+          <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">Conductor</cite>
+        </div>
+      </figcaption>
+      <Blockquote>
+        <p className="text-2xl font-medium italic text-gray-900 dark:text-white">
+          "Rápidos en responder, muy conforme con el producto. Gracias!"
+        </p>
+      </Blockquote>
+      <figcaption className="mt-6 flex items-center justify-center space-x-3">
+        <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700 ">
+          <cite className="pr-3 font-medium text-gray-900 dark:text-white">Miguel Salinas</cite>
+          <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">Conductor</cite>
         </div>
       </figcaption>
     </figure>
+    
   );
 }
 

@@ -19,11 +19,11 @@ export default function Index(): JSX.Element {
           <TripleLayout />
         </section>
         <section>
-          <h1 className="text-center sm:mt-[10%] sm:mb[10%] xl:mt-[5%] xl:mb-[5%] text-4xl font-bold">EMPRESAS QUE CONFIAN EN NOSOTROS</h1>
+          <h1 className="text-center sm:mt-[10%] sm:mb[10%] xl:mt-[5%] xl:mb-[5%] text-4xl font-raleway font-bold">EMPRESAS QUE CONFIAN EN NOSOTROS</h1>
           <WorkingBrands />
         </section>
-        <section>
-          <h1 className="text-center text-4xl font-bold">OPINIONES</h1>
+        <section className="mt-[30%] mb-[30%] xl:mb-[10%] xl:mt-[10%]">
+          <h1 className="text-center mb-[20%] xl:mb-[7%] text-4xl  font-raleway font-bold  ">OPINIONES</h1>
           <Reviews />
         </section>
       </main>
