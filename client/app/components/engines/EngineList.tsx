@@ -9,6 +9,7 @@ import EngineAvailableToggle from './EngineAvailableToggle';
 
 const EngineList = () => {
     const { enginesList } = useSelector((state: any) => state.enginesReducers);
+    console.log(enginesList);
     return (
         <>
             {enginesList.map((object: EngineResponse) => (
