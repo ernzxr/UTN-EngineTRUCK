@@ -41,7 +41,7 @@ const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
         validate,
         onSubmit: async (values) => {
             const engineId: number = await handleCreateEngine(values);
-            setEngineId = engineId;
+            setEngineId(engineId);
             onNext();
             setHiddenToggle(0);
             setAvailableToggle(0);
