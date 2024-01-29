@@ -8,21 +8,20 @@ import { useDispatch } from "react-redux";
 const EngineHiddenToggle = ({ object }: { object: EngineResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const [hiddenToggle, setHiddenToggle] = useState(0);
-    const [switchHidden, setSwitchHidden] = useState(false);
+    const [hiddenToggle, setHiddenToggle] = useState(object.hidden ? 1 : 0);
 
-    const handleHiddenToggleChange = (object: EngineResponse, checked: boolean) => {
+    const handleHiddenToggleChange = async (object: EngineResponse) => {
         const { id } = object;
         let updatedObject: any = { id: id };
 
         setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
-        updatedObject.hidden = hiddenToggle;
 
-        dispatch(modifiedEngine(updatedObject));
+        updatedObject.hidden = hiddenToggle;
+        await dispatch(modifiedEngine(updatedObject));
     };
 
     return (
-        <ToggleSwitch checked={object.hidden ? false : true} onChange={(checked) => { handleHiddenToggleChange(object, checked); }} />
+        <ToggleSwitch checked={hiddenToggle ? false : true} onChange={() => { handleHiddenToggleChange(object) }} />
     )
 }
 

@@ -14,10 +14,11 @@ const EngineCreateImage = ({ engineId, onFinish }) => {
     const formik = useFormik({
         initialValues: {
             media_type: 1,
-            file: null
+            file: null,
+            engine_id: engineId
         },
         onSubmit: async (values) => {
-            handleCreateMedia({ media_type: values.media_type, engine_id: engineId, file: values.file });
+            handleCreateMedia(values);
             onFinish();
             formik.resetForm();
         }

@@ -13,18 +13,9 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);
 
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});
-    const [updateModal, setUpdateModal] = useState(false);
     const [engineModel, setEngineModel] = useState('');
     const [brandId, setBrandId] = useState(0);
     const [manufacturerId, setManufacturerId] = useState(0);
-
-    const openUpdateModal = () => {
-        setUpdateModal(true);
-    };
-
-    const closeUpdateModal = () => {
-        setUpdateModal(false);
-    };
 
     const onCloseModal = () => {
         setModalStates({});

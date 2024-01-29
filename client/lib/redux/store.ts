@@ -6,6 +6,8 @@ import enginesSlice from "./features/enginesSlice";
 import mediaSlice from "./features/mediaSlice";
 import componentsSlice from "./features/componentsSlice";
 import featuresSlice from "./features/featuresSlice";
+import featureDetailsSlice from "./features/featureDetailsSlice";
+import compatibleComponentsSlice from "./features/compatibleComponentsSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,9 +17,11 @@ const store = configureStore({
     mediaReducers:mediaSlice,
     componentsReducers:componentsSlice,
     featuresReducers:featuresSlice,
-    /*featureDetailsReducers:featureDetailsSlice,
+    compatibleComponentsReducers:compatibleComponentsSlice,
+    featureDetailsReducers:featureDetailsSlice,
+    /*
     usersReducers:usersSlice,
-    compatibleComponentsReducers:compatibleComponentsSlice*/
+    */
   }
 });
 

@@ -31,12 +31,11 @@ export const UploadImage = () => {
             formData.append('file', values.file as Blob);
             formData.append('media_type', String(values.media_type));
             formData.append('engine_id', String(values.engine_id));
-            await createMedia(formData);
+            await dispatch(addMedia(formData));
         }
         catch (error) {
             console.error(error);
         }
-        //dispatch(addMedia(values));
     };
 
     return (

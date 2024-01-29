@@ -50,7 +50,6 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
             for (const feature in values) {
                 const payload = {
                     feature_name: features[i],
-                    hidden: 0
                 }
                 const data: any = await dispatch(addFeature(payload));
                 const featureId = data.payload.id;

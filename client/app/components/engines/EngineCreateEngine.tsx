@@ -33,7 +33,7 @@ const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
     const formik = useFormik({
         initialValues: {
             model: '',
-            hidden: 0,
+            hidden: 1,
             available: 0,
             brand_id: 0,
             manufacturer_id: 0,
@@ -72,7 +72,7 @@ const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
 
     const handleHiddenToggleChange = () => {
         setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
-        formik.setFieldValue('hidden', !hiddenToggle ? 1 : 0);
+        formik.setFieldValue('hidden', !hiddenToggle ? 0 : 1);
     };
 
     const handleAvailableToggleChange = () => {

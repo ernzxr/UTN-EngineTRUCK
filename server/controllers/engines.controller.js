@@ -38,7 +38,7 @@ const getEngines = async (req, res) => {
       {
         model: db.feature_detail,
         as: "features_details",
-        attributes: ["id", "feature_value"],
+        attributes: ["id", "feature_value", "feature_id"],
         include: [
           {
             model: db.feature,
@@ -76,6 +76,7 @@ const getEngines = async (req, res) => {
         id: featureDetail.id,
         value: featureDetail.feature_value,
         feature: featureDetail.feature.feature_name,
+        feature_id: featureDetail.feature_id
       }));
       const manufacturer = {
         name: engine.manufacturer.manufacturer,
