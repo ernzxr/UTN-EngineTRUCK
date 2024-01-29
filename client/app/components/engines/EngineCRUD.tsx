@@ -2,12 +2,12 @@
 import { Table } from 'flowbite-react'
 import React from 'react'
 import EngineList from './EngineList';
-import EngineCreateModal from './EngineCreateModal';
+import EngineOpenModal from './EngineOpenModal';
 
 export const EngineCRUD = () => {
   return (
     <>
-      <EngineCreateModal />
+      <EngineOpenModal />
       <Table>
         <Table.Head>
           <Table.HeadCell>Modelo</Table.HeadCell>
