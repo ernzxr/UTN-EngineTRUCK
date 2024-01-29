@@ -6,7 +6,7 @@ const TripleLayout: FC<Record<string, never>> = function () {
     return (
         <>
             <Card
-                className="max-w-sm"
+                className="w-[10px] xl:w-[200px] sm:w-[50px]"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 imgSrc="/images/blog/image-1.jpg"
             >
@@ -14,24 +14,7 @@ const TripleLayout: FC<Record<string, never>> = function () {
                     MOTORES
                 </h5>
             </Card>
-            <Card
-                className="max-w-sm"
-                imgAlt="Meaningful alt text for an image that is not purely decorative"
-                imgSrc="/images/blog/image-1.jpg"
-            >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    REPUESTOS
-                </h5>
-            </Card>
-            <Card
-                className="max-w-sm"
-                imgAlt="Meaningful alt text for an image that is not purely decorative"
-                imgSrc="/images/blog/image-1.jpg"
-            >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    CONTACTO
-                </h5>
-            </Card>
+           
         </>
     );
 };

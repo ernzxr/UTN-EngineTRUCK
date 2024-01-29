@@ -15,7 +15,7 @@ export default function Index(): JSX.Element {
         <section>
           <Carousel />
         </section>
-        <section>
+        <section className="w-[80%] h-max bg-black m-auto mt-10">
           <TripleLayout />
         </section>
         <section>
