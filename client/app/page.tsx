@@ -7,15 +7,16 @@ import TripleLayout from "./components/home/TripleLayout";
 import Reviews from "./components/home/Reviews";
 import WorkingBrands from "./components/home/WorkingBrands";
 
+
 export default function Index(): JSX.Element {
   return (
     <>
       <Header />
       <main>
-        <section>
+        <section className="mt-[-20%] md:mt-[-4%]  lg:mt-[-2%]  xl:mt-[0%]">
           <Carousel />
         </section>
-        <section className="w-[80%] h-max  m-auto mt-10">
+        <section className="w-[100%] h-max  m-auto ">
           <TripleLayout />
         </section>
         <section>
