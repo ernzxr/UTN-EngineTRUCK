@@ -9,7 +9,7 @@ export default function Page() {
     return (
       <main className="relative dark:bg-gray-700">
         <Header />
-        <div className="flex w-[1200px] h-[500px] m-auto mt-[60px] mb-[200px]">
+        <div className="flex w-[200%] h-[100%] xl:w-[80%] xl:h-[80%] m-auto xl:mt-[8%] xl:mb-[10%] mt-[25%] mb-[27%] ">
         <div className="flex w-[45%] h-[90%] m-auto bg-blue-200 rounded-[1%] shadow-lg">
           <ContactForm />
         </div>

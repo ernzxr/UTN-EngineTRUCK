@@ -38,7 +38,7 @@ const ContactForm = () => {
       </div>
     </div>
     <div className='mt-3'>
-    <Button type="submit" className='bg-blue-800'>Enviar</Button>
+    <Button type="submit" className='bg-blue-800 bottom-1'>Enviar</Button>
     </div>
   </form>
   )
