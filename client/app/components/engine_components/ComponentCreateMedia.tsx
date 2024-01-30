@@ -8,14 +8,14 @@ import { addMedia } from '@/lib/redux/features/mediaSlice';
 import { AppDispatch } from '@/lib/redux/store';
 import { useDispatch } from 'react-redux';
 
-const EngineCreateImage = ({ engineId, onFinish }) => {
+const ComponentCreateMedia = ({ componentId, onFinish }) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const formik = useFormik({
         initialValues: {
             media_type: 1,
             file: null,
-            engine_id: engineId
+            component_id: componentId
         },
         onSubmit: async (values) => {
             handleCreateMedia(values);
@@ -29,7 +29,7 @@ const EngineCreateImage = ({ engineId, onFinish }) => {
             const formData = new FormData();
             formData.append('file', values.file as Blob);
             formData.append('media_type', String(values.media_type));
-            formData.append('engine_id', String(values.engine_id));
+            formData.append('component_id', String(values.component_id));
             await dispatch(addMedia(formData));
         }
         catch (error) {
@@ -59,4 +59,4 @@ const EngineCreateImage = ({ engineId, onFinish }) => {
     )
 }
 
-export default EngineCreateImage
+export default ComponentCreateMedia

@@ -9,7 +9,6 @@ const ComponentHiddenToggle = ({ object }: { object: ComponentResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [hiddenToggle, setHiddenToggle] = useState(0);
-    const [switchHidden, setSwitchHidden] = useState(false);
 
     const handleHiddenToggleChange = (object: ComponentResponse, checked: boolean) => {
         const { id } = object;

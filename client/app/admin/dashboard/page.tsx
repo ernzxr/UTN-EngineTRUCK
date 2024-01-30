@@ -13,7 +13,7 @@ import { fetchEngines } from '@/lib/redux/features/enginesSlice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
 import { fetchMedias } from '@/lib/redux/features/mediaSlice';
-import ComponentCRUD from '@/app/components/components/ComponentCRUD';
+import ComponentCRUD from '@/app/components/engine_components/ComponentCRUD';
 import { fetchComponents } from '@/lib/redux/features/componentsSlice';
 
 export default function Page() {

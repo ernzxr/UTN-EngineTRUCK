@@ -9,7 +9,6 @@ const ComponentAvailableToggle = ({ object }: { object: ComponentResponse }) => 
     const dispatch = useDispatch<AppDispatch>();
 
     const [availableToggle, setAvailableToggle] = useState(0);
-    const [switchAvailable, setSwitchAvailable] = useState(false);
 
     const handleAvailableToggleChange = (object: ComponentResponse, checked: boolean) => {
         const { id } = object;

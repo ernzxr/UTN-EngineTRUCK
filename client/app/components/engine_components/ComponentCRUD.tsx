@@ -1,17 +1,18 @@
 'use client'
 import { Table } from 'flowbite-react'
 import React from 'react'
-import ComponentCreateModal from './ComponentCreateModal';
+import ComponentOpenModal from './ComponentOpenModal';
 import ComponentList from './ComponentList';
 
 export const ComponentCRUD = () => {
   return (
     <>
-      <ComponentCreateModal />
+      <ComponentOpenModal />
       <Table>
         <Table.Head>
           <Table.HeadCell>Componente</Table.HeadCell>
           <Table.HeadCell>Descripción</Table.HeadCell>
+          <Table.HeadCell>Motores</Table.HeadCell>
           <Table.HeadCell>Disponible</Table.HeadCell>
           <Table.HeadCell>Visible</Table.HeadCell>
           <Table.HeadCell>

@@ -1,4 +1,3 @@
-import { MediaCreate, MediaResponse } from "../interfaces/media";
 import { post, get, update, eliminate } from "../config";
 
 export const getMedias = () => {

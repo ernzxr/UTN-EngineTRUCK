@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react'
-import EngineCreateEngine from './EngineCreateEngine';
-import EngineCreateMedia from './EngineCreateMedia';
-import EngineCreateFeatures from './EngineCreateFeatures';
+import ComponentCreateComponent from './ComponentCreateComponent';
+import ComponentCreateMedia from './ComponentCreateMedia';
 import { Button, Modal } from 'flowbite-react';
+import ComponentCompatibleEngines from './ComponentCompatibleEngines';
 
-const EngineOpenModal = () => {
-    const [engineId, setEngineId] = useState(0);
+const ComponentOpenModal = () => {
+    const [componentId, setComponentId] = useState(0);
     const [openModal, setOpenModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -23,11 +23,11 @@ const EngineOpenModal = () => {
     const renderCurrentStep = () => {
         switch (currentStep) {
             case 1:
-                return <EngineCreateEngine setEngineId={setEngineId} onNext={handleNext} onCancel={handleCloseModal} />;
+                return <ComponentCreateComponent setComponentId={setComponentId} onNext={handleNext} onCancel={handleCloseModal} />;
             case 2:
-                return <EngineCreateFeatures engineId={engineId} onNext={handleNext} onCancel={handleCloseModal} />;
+                return <ComponentCompatibleEngines componentId={componentId} onNext={handleNext} onCancel={handleCloseModal} />;
             case 3:
-                return <EngineCreateMedia engineId={engineId} onFinish={handleCloseModal} />;
+                return <ComponentCreateMedia componentId={componentId} onFinish={handleCloseModal} />;
             default:
                 return null;
         }
@@ -46,4 +46,4 @@ const EngineOpenModal = () => {
     )
 }
 
-export default EngineOpenModal
+export default ComponentOpenModal
