@@ -44,7 +44,7 @@ const Header: FC<Record<string, never>> = function () {
 
       <style jsx>{`
         .menu-link {
-          color: white !important; /* Cambia el color de texto en modo normal */
+          color: white !important;   
         }
       `}</style>
     </header>
