@@ -1,29 +1,36 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Table, ToggleSwitch } from 'flowbite-react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
 import { addCompatibleComponent, removeCompatibleComponent } from '@/lib/redux/features/compatibleComponentsSlice';
 
-const ComponentCompatibleEngineToggle = ({ componentId, engineId }) => {
+const ComponentCompatibleEngineToggle = ({ component, engineId }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const [compatible, setCompatible] = useState(0);
-    const [compatibleId, setCompatibleId] = useState(0);
+    let initialValue = 0;
+
+    if(component.compatibles_engines.length > 0) {
+        const compatibleComponent = component.compatibles_engines.find(e => e.id === engineId);
+        initialValue = compatibleComponent.compatible_component_id;
+    }
+
+    const [compatible, setCompatible] = useState(initialValue ? 1 : 0);
+    const [compatibleId, setCompatibleId] = useState(initialValue);
 
     const handleCompatibleEngine = async () => {
         try {
             if (!compatible) {
                 const payload = {
-                    component_id: componentId,
+                    component_id: component.id,
                     engine_id: engineId
                 }
                 const data = await dispatch(addCompatibleComponent(payload));
                 setCompatibleId(data.payload.id);
             }
             else {
-                await dispatch(removeCompatibleComponent(compatibleId))
+                dispatch(removeCompatibleComponent(compatibleId))
             }
             compatible ? setCompatible(0) : setCompatible(1);
         }
@@ -37,7 +44,6 @@ const ComponentCompatibleEngineToggle = ({ componentId, engineId }) => {
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <ToggleSwitch checked={compatible ? true : false} onChange={handleCompatibleEngine} />
             </Table.Cell>
-
         </ >
     )
 }
