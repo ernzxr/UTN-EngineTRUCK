@@ -34,6 +34,9 @@ export const ManufacturerCRUD = () => {
 
     return (
         <>
+            <div>
+                <ManufacturerCreateForm />
+            </div>
             <Table className='w-[70%]'>
                 <Table.Head>
                     <Table.HeadCell>Fabricante</Table.HeadCell>
@@ -89,9 +92,6 @@ export const ManufacturerCRUD = () => {
                     ))}
                 </Table.Body>
             </Table>
-            <div>
-                <ManufacturerCreateForm />
-            </div>
         </>
     );
 }

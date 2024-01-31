@@ -11,7 +11,7 @@ const ComponentCompatibleEngineToggle = ({ component, engineId }) => {
 
     let initialValue = 0;
 
-    if(component.compatibles_engines.length > 0) {
+    if(component.compatibles_engines?.length > 0) {
         const compatibleComponent = component.compatibles_engines.find(e => e.id === engineId);
         initialValue = compatibleComponent.compatible_component_id;
     }

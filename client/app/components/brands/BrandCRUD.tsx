@@ -37,6 +37,9 @@ export const BrandCRUD = () => {
 
   return (
     <>
+    <div>
+        <BrandCreateForm />
+      </div>
       <Table className='w-[50%]'>
         <Table.Head>
           <Table.HeadCell>Marca</Table.HeadCell>
@@ -92,9 +95,6 @@ export const BrandCRUD = () => {
           ))}
         </Table.Body>
       </Table>
-      <div>
-        <BrandCreateForm />
-      </div>
     </>
   )
 }
