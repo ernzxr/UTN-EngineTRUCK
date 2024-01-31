@@ -13,7 +13,7 @@ export default function Index(): JSX.Element {
     <>
       <Header />
       <main>
-        <section className="mt-[-20%] md:mt-[-4%]  lg:mt-[-2%]  xl:mt-[0%]">
+        <section className="">
           <Carousel />
         </section>
         <section className="w-[100%] h-max  m-auto ">
