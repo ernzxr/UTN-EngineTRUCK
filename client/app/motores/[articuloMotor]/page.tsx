@@ -19,9 +19,13 @@ export default function Page({params}: any) {
   }, [])
 
   const { enginesList } = useSelector((state: any) => state.enginesReducers);
-  const model = params.articuloMotor;
+  const model = parseInt(params.articuloMotor, 10);
+  console.log("/////////////")
+  console.log(model);
+  console.log(enginesList);
   
-  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.model === model);
+  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);
+  
  
 
   if(motorSeleccionado) {
@@ -37,7 +41,7 @@ export default function Page({params}: any) {
         />
         <div className="flex flex-col justify-evenly w-[45%] h-[75%] m-10">
           <p className="text-4xl font-raleway font-bold">
-            {motorSeleccionado.brand.name}
+            {motorSeleccionado.model}
           </p>
           <p className="text-2xl font-raleway">
             Principales Caracteristicas:
@@ -45,7 +49,7 @@ export default function Page({params}: any) {
           <table>
             <tbody>
               <tr className="flex flex-col text-xl font-raleway">
-                <td className="p-[10px]">{motorSeleccionado.features_details}</td>
+                <td className="p-[10px]"></td>
                 <td className="p-[10px]">Caracteristica</td>
                 <td className="p-[10px]">Caracteristica</td>
                 <td className="p-[10px]">Caracteristica</td>
