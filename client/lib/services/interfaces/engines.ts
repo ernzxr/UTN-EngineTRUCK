@@ -1,4 +1,6 @@
 import { BrandGet } from "./brands";
+import { FeatureDetailsGet} from "./featureDetails";
+import { Feature } from "./features";
 import { ManufacturerGet } from "./manufacturers";
 import { MediaResponse } from "./media";
 
@@ -24,7 +26,8 @@ export interface EngineResponse {
   model: string;
   hidden: number;
   available: number;
-  features_details: [];
+  features_details: FeatureDetailsGet;
+  features: Feature;
   compatibles_components: [];
   media: MediaResponse[];
   manufacturer: ManufacturerGet,

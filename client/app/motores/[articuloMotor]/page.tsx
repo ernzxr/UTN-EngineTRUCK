@@ -3,15 +3,31 @@
 
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/FooterReact";
-import { useRouter } from 'next/router';
+import { EngineResponse } from "@/lib/services/interfaces/engines";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "@/lib/redux/store";
+import { fetchEngines } from "@/lib/redux/features/enginesSlice";
 
-export default function id() {
-    const router = useRouter();
-    const { id } = router.query;  
+import { useEffect } from "react";
 
-    
-  return (
-    <main className="relative dark:bg-gray-700">
+export default function Page({params}: any) {
+ 
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchEngines());
+  }, [])
+
+  const { enginesList } = useSelector((state: any) => state.enginesReducers);
+  const model = params.articuloMotor;
+  
+  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.model === model);
+ 
+
+  if(motorSeleccionado) {
+    return (
+      <>
+      <main className="relative dark:bg-gray-700">
       <Header />
       <section className="flex w-[1200px] h-[600px] m-auto mt-[10px] bg-blue-100 rounded-[30px] shadow-lg">
         <img
@@ -21,7 +37,7 @@ export default function id() {
         />
         <div className="flex flex-col justify-evenly w-[45%] h-[75%] m-10">
           <p className="text-4xl font-raleway font-bold">
-            Bloco PA (Pistão e Anéis) + Bomba de Óleo
+            {motorSeleccionado.brand.name}
           </p>
           <p className="text-2xl font-raleway">
             Principales Caracteristicas:
@@ -29,7 +45,7 @@ export default function id() {
           <table>
             <tbody>
               <tr className="flex flex-col text-xl font-raleway">
-                <td className="p-[10px]">Caracteristica</td>
+                <td className="p-[10px]">{motorSeleccionado.features_details}</td>
                 <td className="p-[10px]">Caracteristica</td>
                 <td className="p-[10px]">Caracteristica</td>
                 <td className="p-[10px]">Caracteristica</td>
@@ -64,12 +80,21 @@ export default function id() {
           Engranaje de 40mm Com saída para Conta-Giros With exit to Account
           turns Con salida para Cuenta giros.
         </p>
-        <p>Detalles del motor con ID: {id}</p>
+        
+        
       </section>
 
       <footer className="w-full ">
         <Footer />
       </footer>
     </main>
-  );
+    </>
+    )
+  }
+ 
+  else {
+    return (
+      <p>Motor No Encontrado</p>
+    )
+  }
 }

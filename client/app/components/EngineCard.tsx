@@ -12,12 +12,13 @@ const EngineCard = () => {
     dispatch(fetchEngines());
    
   }, [])
+  
   const { enginesList } = useSelector((state: any) => state.enginesReducers);
-  console.log(enginesList);
+
   return (
     <>
     {enginesList.map((object: EngineResponse) => (
-      <Link href={`/motores/articuloMotor/${object.id}`} className="flex flex-col items-center w-[300px] h-[450px] shadow-lg bg-white m-[4%] rounded-[10px] cursor-pointer hover:shadow-2xl hover:shadow-blue-900 duration-300 dark:hover:shadow-2xl dark:hover:shadow-blue-200 hover:scale-105">
+      <Link href={`/motores/${object.model}`} className="flex flex-col items-center w-[300px] h-[450px] shadow-lg bg-white m-[4%] rounded-[10px] cursor-pointer hover:shadow-2xl hover:shadow-blue-900 duration-300 dark:hover:shadow-2xl dark:hover:shadow-blue-200 hover:scale-105">
       <div className="flex w-[70%] h-[45%] mt-16">
         <img src="/prueba_motor_card.jpg" alt="" className='rounded-[10px]'/>
       </div>

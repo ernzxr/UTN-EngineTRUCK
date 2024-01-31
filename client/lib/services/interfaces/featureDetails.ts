@@ -22,3 +22,10 @@ export interface FeatureDetailResponse {
   engine_id: number;
   feature_id: number;
 }
+
+export interface FeatureDetailsGet {
+  id: number;
+  feature_value: string;
+  engine_id: number;
+  feature_id: number;
+}
