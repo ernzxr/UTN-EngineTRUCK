@@ -20,13 +20,9 @@ export default function Page({params}: any) {
 
   const { enginesList } = useSelector((state: any) => state.enginesReducers);
   const model = parseInt(params.articuloMotor, 10);
-  console.log("/////////////")
-  console.log(model);
-  console.log(enginesList);
   
-  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);
-  
- 
+  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);  
+  console.log(motorSeleccionado);
 
   if(motorSeleccionado) {
     return (
@@ -49,11 +45,10 @@ export default function Page({params}: any) {
           <table>
             <tbody>
               <tr className="flex flex-col text-xl font-raleway">
-                <td className="p-[10px]"></td>
-                <td className="p-[10px]">Caracteristica</td>
-                <td className="p-[10px]">Caracteristica</td>
-                <td className="p-[10px]">Caracteristica</td>
-                <td className="p-[10px]">Caracteristica</td>
+                <td className="p-[10px]">{motorSeleccionado.features_details[0].feature}</td>
+                <td className="p-[10px]">{motorSeleccionado.features_details[0].value}</td>
+                <td className="p-[10px]">{motorSeleccionado.features_details[1].feature}</td>
+                <td className="p-[10px]">{motorSeleccionado.features_details[1].value}</td>
               </tr>
             </tbody>
           </table>
@@ -66,28 +61,6 @@ export default function Page({params}: any) {
           Consultar
         </button>
       </section>
-      <section className="w-[800px] h-full m-auto mt-[20px] p-5 bg-blue-100 rounded-[30px] shadow-lg">
-        <p className="py-[5px]">Informacion Tecnica</p>
-        <div className="w-full border-2 border-blue-300"></div>
-        <p className="p-[10px] my-[10px]">
-          Bloco de Motor: Com furação para esguicho / Compressor de ar fechado
-          With drilling to Jet cooler / air compressor closed / Con orificio
-          para inyector de aceite / compresor de aire cerrado.
-        </p>
-        <p className="p-[10px] my-[10px]">
-          Característica do Pistão Ø 97,50mm 63,00 – 22,20 X 108,00 (Biela
-          Trapezoidal Euro I) (Trapezoidal Connecting Rod Euro I) (Biela
-          Trapezoidal Euro I) 3 Canaletas Channels / Canales.
-        </p>
-        <p className="p-[10px] my-[10px]">
-          Característica da Bomba de Óleo Engrenagem de 50mm 40mm gear /
-          Engranaje de 40mm Com saída para Conta-Giros With exit to Account
-          turns Con salida para Cuenta giros.
-        </p>
-        
-        
-      </section>
-
       <footer className="w-full ">
         <Footer />
       </footer>
