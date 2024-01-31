@@ -3,7 +3,7 @@ import { Card } from "flowbite-react";
 
 const TripleLayout: FC<Record<string, never>> = function () {
     return (
-        <div className="flex flex-wrap justify-center xl:justify-between xl:mx-[15%] sm:justify-start mb-[20%] mt-[20%] xl:mt-[10%] xl:mb-[10%]">
+        <div className="flex flex-wrap justify-center xl:justify-between xl:mx-[15%] sm:justify-start mb-[20%] mt-[5%] xl:mt-[5%] xl:mb-[10%]">
             <Card
                 className="w-full sm:w-[45%] md:w-[30%] lg:w-[25%] xl:w-[300px] m-2 text-center shadow-sm "
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
