@@ -15,6 +15,9 @@ import { AppDispatch } from '@/lib/redux/store';
 import { fetchMedias } from '@/lib/redux/features/mediaSlice';
 import ComponentCRUD from '@/app/components/engine_components/ComponentCRUD';
 import { fetchComponents } from '@/lib/redux/features/componentsSlice';
+import { fetchCompatibleComponents } from '@/lib/redux/features/compatibleComponentsSlice';
+import { fetchFeatureDetails } from '@/lib/redux/features/featureDetailsSlice';
+import { fetchFeatures } from '@/lib/redux/features/featuresSlice';
 
 export default function Page() {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,6 +29,9 @@ export default function Page() {
     dispatch(fetchBrands());
     dispatch(fetchManufacturers());
     dispatch(fetchMedias());
+    dispatch(fetchCompatibleComponents());
+    dispatch(fetchFeatureDetails());
+    dispatch(fetchFeatures());
   }, [dispatch]);
 
   useEffect(() => {

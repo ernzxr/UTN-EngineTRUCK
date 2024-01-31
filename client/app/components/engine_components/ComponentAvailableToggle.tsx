@@ -8,21 +8,21 @@ import { useDispatch } from "react-redux";
 const ComponentAvailableToggle = ({ object }: { object: ComponentResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const [availableToggle, setAvailableToggle] = useState(0);
+    const [availableToggle, setAvailableToggle] = useState(object.available);
 
-    const handleAvailableToggleChange = (object: ComponentResponse, checked: boolean) => {
+    const handleAvailableToggleChange = (object: ComponentResponse) => {
         const { id } = object;
         let updatedObject: any = { id: id };
 
-        setAvailableToggle((prevToggle) => (prevToggle ? 0 : 1));
-        updatedObject.available = availableToggle;
-
+        updatedObject.available = availableToggle ? 0 : 1;
         dispatch(modifiedComponent(updatedObject));
+
+        availableToggle ? setAvailableToggle(0) : setAvailableToggle(1);
     };
 
     return (
-        <ToggleSwitch checked={object.available ? true : false} onChange={(checked) => {
-            (handleAvailableToggleChange(object, checked));
+        <ToggleSwitch checked={availableToggle ? true : false} onChange={() => {
+            (handleAvailableToggleChange(object));
         }} />
     )
 }

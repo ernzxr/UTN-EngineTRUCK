@@ -14,8 +14,8 @@ export interface ComponentResponse {
   description: string;
   hidden: number;
   available: number;
-  compatibles_components: [];
-  media: MediaResponse;
+  compatibles_engines: [];
+  media: MediaResponse[];
 }
 
 export interface ComponentCreate {

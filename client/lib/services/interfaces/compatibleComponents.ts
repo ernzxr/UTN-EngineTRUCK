@@ -14,3 +14,12 @@ export interface CompatibleComponentResponse {
   engine_id: number;
   component_id: number;
 }
+
+
+export interface CompatibleEngine {
+  id: number;
+  model: string;
+  compatible_component_id: number;
+  hidden: number;
+  available: number;
+}

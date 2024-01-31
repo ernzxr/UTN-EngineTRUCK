@@ -25,7 +25,7 @@ const getComponents = async (req, res) => {
     filter.include.push({
       model: db.compatible_component,
       as: "compatibles_components",
-      attributes: ["engine_id"],
+      attributes: ["id"],
       include: [
         {
           model: db.engine,
@@ -54,7 +54,7 @@ const getComponents = async (req, res) => {
     const transformedComponents = component.map((component) => {
       const compatiblesEngines = component.compatibles_components.map(
         (compatiblesComponent) => ({
-          id: compatiblesComponent.id,
+          compatible_component_id: compatiblesComponent.id,
           ...compatiblesComponent.engine.toJSON(),
         })
       );

@@ -8,16 +8,16 @@ import { useDispatch } from "react-redux";
 const EngineHiddenToggle = ({ object }: { object: EngineResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const [hiddenToggle, setHiddenToggle] = useState(object.hidden ? 1 : 0);
+    const [hiddenToggle, setHiddenToggle] = useState(object.hidden);
 
-    const handleHiddenToggleChange = async (object: EngineResponse) => {
+    const handleHiddenToggleChange = (object: EngineResponse) => {
         const { id } = object;
         let updatedObject: any = { id: id };
 
-        setHiddenToggle((prevToggle) => (prevToggle ? 0 : 1));
-
-        updatedObject.hidden = hiddenToggle;
-        await dispatch(modifiedEngine(updatedObject));
+        updatedObject.hidden = hiddenToggle ? 0 : 1;
+        dispatch(modifiedEngine(updatedObject));
+        
+        hiddenToggle ? setHiddenToggle(0) : setHiddenToggle(1);
     };
 
     return (

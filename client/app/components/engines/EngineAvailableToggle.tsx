@@ -8,16 +8,16 @@ import { useDispatch } from "react-redux";
 const EngineAvailableToggle = ({ object }: { object: EngineResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const [availableToggle, setAvailableToggle] = useState(object.available ? 1 : 0);
+    const [availableToggle, setAvailableToggle] = useState(object.available);
 
     const handleAvailableToggleChange = (object: EngineResponse) => {
         const { id } = object;
         let updatedObject: any = { id: id };
 
-        setAvailableToggle((prevToggle) => (prevToggle ? 0 : 1));
-
-        updatedObject.available = availableToggle;
+        updatedObject.available = availableToggle ? 0 : 1;
         dispatch(modifiedEngine(updatedObject));
+
+        availableToggle ? setAvailableToggle(0) : setAvailableToggle(1);
     };
 
     return (
