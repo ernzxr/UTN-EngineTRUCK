@@ -11,3 +11,4 @@ export interface User {
   email: string;
   type_user: string;
 }
+
