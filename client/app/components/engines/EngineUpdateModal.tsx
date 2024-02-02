@@ -6,6 +6,8 @@ import { modifiedEngine } from '@/lib/redux/features/enginesSlice';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
+import { modifiedFeatureDetail } from '@/lib/redux/features/featureDetailsSlice';
+import { update } from '@/lib/services/config';
 
 const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const dispatch = useDispatch<AppDispatch>();
@@ -16,10 +18,14 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const [engineModel, setEngineModel] = useState('');
     const [brandId, setBrandId] = useState(0);
     const [manufacturerId, setManufacturerId] = useState(0);
+    const [power, setPower] = useState('');
+    const [consumption, setConsumption] = useState('');
 
     const onCloseModal = () => {
         setModalStates({});
         setEngineModel('');
+        setConsumption('');
+        setPower('');
         setBrandId(0);
         setManufacturerId(0);
     }
@@ -29,11 +35,15 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
         setEngineModel(object.model);
         setManufacturerId(object.manufacturer.id);
         setBrandId(object.brand.id);
+        setPower(object.features_details[0].value);
+        setConsumption(object.features_details[1].value);
     };
 
-    const handlePutClick = (object: EngineResponse, engineModel: string, brandId: number, manufacturerId: number) => {
-        const { id, model, brand, manufacturer } = object;
+    const handlePutClick = (object: EngineResponse, engineModel: string, brandId: number, manufacturerId: number, consumption: string, power: string) => {
+        const { id, model, brand, manufacturer, features_details } = object;
         let updatedObject: any = {};
+        let updateFeatureDetailPower: any = {};
+        let updateFeatureDetailConsumption: any = {};
 
         if (engineModel !== model) {
             updatedObject.model = engineModel;    
@@ -47,17 +57,37 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
             updatedObject.manufacturer_id = manufacturerId;
         }
 
+        if (power !== features_details[0].value) {
+            updateFeatureDetailPower.value = power;
+        }
+
+        if (consumption !== features_details[1].value) {
+            updateFeatureDetailConsumption.value = consumption;
+        }
+
+        if (Object.keys(updateFeatureDetailPower).length > 0) {
+            updateFeatureDetailPower.id = features_details[0].id;
+            handleUpdateFeature(updateFeatureDetailPower);
+        }
+
+        if (Object.keys(updateFeatureDetailConsumption).length > 0) {
+            updateFeatureDetailConsumption.id = features_details[1].id;
+            handleUpdateFeature(updateFeatureDetailConsumption);
+        }
+
         if (Object.keys(updatedObject).length > 0) {
             updatedObject.id = id;
-            handleUpdate(updatedObject);
-        }
-        else {
-            console.log('Sin cambios')
+            handleUpdateEngine(updatedObject);
         }
     }
 
-    const handleUpdate = (data: EngineResponse) => {
+    const handleUpdateEngine = (data: EngineResponse) => {
         dispatch(modifiedEngine(data));
+        setModalStates({});
+    }
+
+    const handleUpdateFeature = (data: any) => {
+        dispatch(modifiedFeatureDetail(data));
         setModalStates({});
     }
 
@@ -97,9 +127,21 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
                                 ))}
                             </Select>
                         </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="power" value="Potencia" />
+                            </div>
+                            <TextInput id="power" type="text" placeholder='Ingrese el Modelo del Motor' value={power} onChange={(e) => { setPower(e.target.value) }} />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="consumption" value="Consumo" />
+                            </div>
+                            <TextInput id="consumption" type="text" placeholder='Ingrese el Modelo del Motor' value={consumption} onChange={(e) => { setConsumption(e.target.value) }} />
+                        </div>
                         <div className="w-full">
                             <Button onClick={() => {
-                                handlePutClick(object, engineModel, brandId, manufacturerId)
+                                handlePutClick(object, engineModel, brandId, manufacturerId, consumption, power)
                             }}>Actualizar</Button>
                         </div>
                     </div>

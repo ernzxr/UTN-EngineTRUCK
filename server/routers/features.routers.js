@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const {getFeatures, createFeature, updateFeature, deleteFeature} = require('../controllers/features.controller');
 const validateFeature = require('../request/feature.request');
+const verifyToken = require('../middlewares/auth.jwt.middleware');
 
 router.get('/', getFeatures);
 
-router.post('/', validateFeature, createFeature);
+router.post('/', verifyToken, validateFeature, createFeature);
 
-router.put('/:id', updateFeature);
+router.put('/:id', verifyToken, updateFeature);
 
-router.delete('/:id', deleteFeature);
+router.delete('/:id', verifyToken, deleteFeature);
 
 module.exports = router;

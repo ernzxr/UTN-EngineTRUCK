@@ -40,7 +40,7 @@ const login = async (req, res) => {
           message: "Los datos ingresados no son validos",
         });
       } else {
-        let token = jwt.sign({ id: user.id }, key, { expiresIn: "1h" });
+        let token = jwt.sign({ id: user.id }, key, { expiresIn: "12h" });
         let data = { token, user };
 
         res.status(200).json({ error: false, data: data });

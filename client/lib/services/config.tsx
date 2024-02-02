@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { CustomAxiosResponse } from "./axios";
 
 const url = "http://localhost:5500";
@@ -14,6 +14,16 @@ service.interceptors.request.use((config) => {
 service.interceptors.response.use((data) => {
     return data.data;
 })
+
+service.interceptors.request.use((config: AxiosRequestConfig) => {
+    const token = localStorage.getItem('token');
+
+    if (token && !config.url?.endsWith('/')) {
+        config.headers['x-access-token'] = token;
+    }
+
+    return config;
+});
 
 export const get = (url: string, params: any = {}) => {
     return new Promise((resolve, reject) => {

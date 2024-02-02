@@ -5,7 +5,6 @@ import { LoginUser } from '../../lib/services/interfaces/users';
 import { useRouter } from 'next/navigation';
 
 const Login = () => {
-
   const router = useRouter();
 
   const loginFormik = useFormik({
@@ -14,7 +13,6 @@ const Login = () => {
       password: '',
     },
     onSubmit: values => {
-      console.log(values);
       login(values);
     }
   });

@@ -22,7 +22,6 @@ export default function Page({params}: any) {
   const model = parseInt(params.articuloMotor, 10);
   
   const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);  
-  console.log(motorSeleccionado);
 
   if(motorSeleccionado) {
     return (
