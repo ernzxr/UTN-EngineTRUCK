@@ -7,9 +7,9 @@ const verifyToken = require('../middlewares/auth.jwt.middleware');
 
 router.get('/', getMedia);
 
-router.post('/', verifyToken, validateMedia, uploadSingleFile.single("file"), createMedia);
+router.post('/', verifyToken, /*validateMedia,*/ uploadSingleFile.single("file"), createMedia);
 
-router.put('/:id', verifyToken, validateMedia, uploadSingleFile.single("file"), updateMedia);
+router.put('/:id', verifyToken, /*validateMedia,*/ uploadSingleFile.single("file"), updateMedia);
 
 router.delete('/:id', verifyToken, deleteMedia);
 

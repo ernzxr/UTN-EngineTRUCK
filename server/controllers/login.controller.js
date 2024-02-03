@@ -2,7 +2,7 @@ const db = require("../models");
 const Bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
-const key = process.env.KEY || "ABCD";
+const key = process.env.KEY;
 
 const login = async (req, res) => {
   try {
@@ -33,7 +33,7 @@ const login = async (req, res) => {
         .json({ error: true, message: "Los datos ingresados no son validos" });
     } else {
       let verifyPassword = Bcrypt.compareSync(req.body.password, user.password);
-
+  
       if (!verifyPassword) {
         return res.status(401).json({
           error: true,
@@ -42,7 +42,6 @@ const login = async (req, res) => {
       } else {
         let token = jwt.sign({ id: user.id }, key, { expiresIn: "12h" });
         let data = { token, user };
-
         res.status(200).json({ error: false, data: data });
       }
     }

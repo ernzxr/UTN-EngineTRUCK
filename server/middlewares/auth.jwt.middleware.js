@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const db = require("../models");
-const key = process.env.KEY || 'ABCD'
+const key = process.env.KEY
 const verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'];
 

@@ -1,4 +1,4 @@
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button, Label, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
 import { userLogin } from '../../lib/services/modules/users';
 import { LoginUser } from '../../lib/services/interfaces/users';
@@ -38,10 +38,6 @@ const Login = () => {
           <Label htmlFor="password" value="Your password" />
         </div>
         <TextInput id="password" type="password" name="password" required onChange={loginFormik.handleChange} value={loginFormik.values.password} />
-      </div>
-      <div className="flex items-center gap-2">
-        <Checkbox id="remember" />
-        <Label htmlFor="remember">Remember me</Label>
       </div>
       <Button type="submit">Submit</Button>
     </form>
