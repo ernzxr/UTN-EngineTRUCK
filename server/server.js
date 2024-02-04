@@ -17,7 +17,6 @@ const featureDetailsRouter = require('./routers/feature_details.routers');
 const compatibleComponentsRouter = require('./routers/compatible_components.routers');
 const loginRouter = require('./routers/login.routers');
 
-
 app.listen(port, () => {
     console.log("Server running http://localhost:"+port);
 });
@@ -26,7 +25,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// statics paths from back to front
+app.use('/images', express.static(path.join(__dirname, '/uploads/images')));
+app.use('/videos', express.static(path.join(__dirname, '/uploads/videos')));
 
 app.use('/api/engines', enginesRouter);
 app.use('/api/components', componentsRouter);
