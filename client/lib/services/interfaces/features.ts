@@ -6,7 +6,8 @@ export interface Feature {
 }
 
 export interface FeatureCreate {
-  feature_name: string;
+  power: string;
+  consumption: string;
 }
 
 export interface FeatureResponse {

@@ -65,6 +65,7 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
 
     const handleLinkFeatures = async (engineId: number, featuresIds: FeatureIds, values: any) => {
         try {
+            const dispatchPromises = [];
             for (const feature in values) {
                 const value = values[feature];
                 const featureId = featuresIds[feature];
@@ -73,8 +74,9 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
                     feature_id: featureId,
                     feature_value: value
                 }
-                await dispatch(addFeatureDetail(payload));
+                dispatchPromises.push(dispatch(addFeatureDetail(payload)));
             }
+            await Promise.all(dispatchPromises);
         } catch (e) {
             console.log(e);
         }

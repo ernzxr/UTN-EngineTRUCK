@@ -8,8 +8,8 @@ export const createMedia = (data: FormData) => {
   return post("/api/media", data);
 };
 
-export const updateMedia = (data: FormData) => {
-  return update("/api/media/" + data.id, data);
+export const updateMedia = (id:number, data: FormData) => {
+  return update("/api/media/" + id, data);
 };
 
 export const deleteMedia = (id: number) => {

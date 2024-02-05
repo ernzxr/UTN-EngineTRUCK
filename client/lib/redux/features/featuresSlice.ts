@@ -1,5 +1,5 @@
 import { getFeatures, createFeature, updateFeature, deleteFeature } from "../../services/modules/features";
-import { FeatureCreate, FeatureResponse } from "@/lib/services/interfaces/features";
+import { Feature, FeatureResponse } from "@/lib/services/interfaces/features";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface FeaturesState {
@@ -29,7 +29,7 @@ export const fetchFeatures = createAsyncThunk(
 
 export const addFeature = createAsyncThunk(
   "manufacturers/addFeatures",
-  async (data:FeatureCreate) => {
+  async (data:Feature) => {
       const response:any = await createFeature(data);
       return response.data;
   }

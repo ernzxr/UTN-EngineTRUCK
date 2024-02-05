@@ -11,6 +11,7 @@ export const ComponentCRUD = () => {
       <Table>
         <Table.Head>
           <Table.HeadCell>Componente</Table.HeadCell>
+          <Table.HeadCell>Imagen</Table.HeadCell>
           <Table.HeadCell>Descripción</Table.HeadCell>
           <Table.HeadCell>Motores</Table.HeadCell>
           <Table.HeadCell>Disponible</Table.HeadCell>

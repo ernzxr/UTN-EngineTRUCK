@@ -11,6 +11,7 @@ export const EngineCRUD = () => {
       <Table>
         <Table.Head>
           <Table.HeadCell>Modelo</Table.HeadCell>
+          <Table.HeadCell>Imagen</Table.HeadCell>
           <Table.HeadCell>Marca</Table.HeadCell>
           <Table.HeadCell>Fabricante</Table.HeadCell>
           <Table.HeadCell>Disponible</Table.HeadCell>

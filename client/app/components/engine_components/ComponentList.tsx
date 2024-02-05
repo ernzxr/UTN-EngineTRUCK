@@ -7,6 +7,7 @@ import ComponentDeleteButton from './ComponentDeleteButton';
 import ComponentHiddenToggle from './ComponentHiddenToggle';
 import ComponentAvailableToggle from './ComponentAvailableToggle';
 import ComponentCompatibleUpdate from './ComponentCompatibleUpdate';
+import ComponentUpdateMedia from './ComponentUpdateMedia';
 
 const ComponentList = () => {
   const { componentsList } = useSelector((state: any) => state.componentsReducers);
@@ -17,6 +18,9 @@ const ComponentList = () => {
         <Table.Row key={object.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
           <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
             {object.component}
+          </Table.Cell>
+          <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+            <ComponentUpdateMedia object={object} />
           </Table.Cell>
           <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
             {object.description}

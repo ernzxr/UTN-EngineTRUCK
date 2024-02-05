@@ -24,6 +24,12 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      router.push('/admin');
+    }
+  }, [router]);
+
+  useEffect(() => {
     dispatch(fetchEngines());
     dispatch(fetchComponents());
     dispatch(fetchBrands());
@@ -33,12 +39,6 @@ export default function Page() {
     dispatch(fetchFeatureDetails());
     dispatch(fetchFeatures());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      router.push('/admin');
-    }
-  }, [router]);
 
   return (
     <>
