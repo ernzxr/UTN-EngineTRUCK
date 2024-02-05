@@ -96,7 +96,7 @@ const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
                 </div>
                 <Select id="brand_id" name="brand_id" required onChange={formik.handleChange} value={formik.values.brand_id}>
                     {formik.errors.brand_id ? <ErrorInputs type={'failure'} message={formik.errors.brand_id} title={undefined} /> : null}
-                    <option value="">Seleccione Marca</option>
+                    <option value='0' disabled>Seleccione Marca</option>
                     {brandsList.map((object: BrandResponse) => (
                         <option key={object.id} value={object.id}>{object.brand}</option>
                     ))}
@@ -108,7 +108,7 @@ const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
                 </div>
                 <Select id="manufacturer_id" name="manufacturer_id" required onChange={formik.handleChange} value={formik.values.manufacturer_id}>
                     {formik.errors.manufacturer_id ? <ErrorInputs type={'failure'} message={formik.errors.manufacturer_id} title={undefined} /> : null}
-                    <option value="">Seleccione Fabricante</option>
+                    <option value='0' disabled>Seleccione Fabricante</option>
                     {manufacturersList.map((object: ManufacturerResponse) => (
                         <option key={object.id} value={object.id}>{object.manufacturer}</option>
                     ))}

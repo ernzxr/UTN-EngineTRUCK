@@ -1,9 +1,18 @@
 'use client'
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import { FC } from "react";
 
-const Header: FC<Record<string, never>> = function () {
+const Header: FC<{}> = function () {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+
+    router.push('/');
+  };
+
   return (
     <header className="sticky top-0 z-20 border-b-[1px] border-gray-700 dark:border-blue-700 ">
       <Navbar fluid className="bg-blue-950 ">
@@ -24,9 +33,8 @@ const Header: FC<Record<string, never>> = function () {
         </div>
         <Navbar.Collapse>
           <div className="flex space-x-20 font-raleway font-bold  ">
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/" /*active*/ >DASHBOARD</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/motores">PANEL DE CONTROL</Navbar.Link>
-          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/contacto">SALIR</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="/admin/dashboard" /*active*/ >DASHBOARD</Navbar.Link>
+          <Navbar.Link className="hover:border-white hover:border-b-[1px] hover:dark:border-white  text-white dark:text-white " href="" onClick={handleLogout}>SALIR</Navbar.Link>
           </div>
         </Navbar.Collapse>
       </Navbar>

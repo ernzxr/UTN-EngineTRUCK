@@ -1,6 +1,7 @@
 import { EngineResponse } from "./engines";
 
 export interface MediaCreate {
+  id?: number;
   file?: File | null;
   media_type: number;
   engine_id?: number;

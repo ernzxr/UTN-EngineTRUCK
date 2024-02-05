@@ -142,10 +142,16 @@ const updateMedia = async (req, res) => {
           }
         }
       }
-      await db.media.update(body, { where: { id: id } });
+
+      const [, updatedMedia] = await db.media.update(body, {
+        where: { id: id },
+        returning: true, // Add this option to get the updated record
+        plain: true, // Set to true to get only the updated record, not an array
+      });
+
       res
         .status(200)
-        .json({ error: false, data: null, message: `UPDATE media.id ${id}` });
+        .json({ error: false, data: updatedMedia, message: `UPDATE media.id ${id}` });
     } else {
       res
         .status(404)

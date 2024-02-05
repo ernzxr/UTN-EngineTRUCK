@@ -7,7 +7,6 @@ import { EngineResponse } from '@/lib/services/interfaces/engines';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { modifiedFeatureDetail } from '@/lib/redux/features/featureDetailsSlice';
-import { update } from '@/lib/services/config';
 
 const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const dispatch = useDispatch<AppDispatch>();

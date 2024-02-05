@@ -36,9 +36,9 @@ export const addMedia = createAsyncThunk(
 
 export const modifiedMedia = createAsyncThunk(
   "media/modifiedMedia",
-  async (data:FormData) => {
-      await updateMedia(data);
-      return data;
+  async (data:any) => {
+    const response:any =await updateMedia(data.id, data.formData);
+    return response.data;
   }
 );
 
