@@ -24,7 +24,6 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(router)
     if (!localStorage.getItem('token')) {
       router.push('/admin');
     }

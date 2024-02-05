@@ -26,7 +26,7 @@ export interface EngineResponse {
   model: string;
   hidden: number;
   available: number;
-  features_details: FeatureDetailsGet;
+  features_details: FeatureDetailsGet[];
   features: Feature;
   compatibles_components: [];
   media: MediaResponse[];
