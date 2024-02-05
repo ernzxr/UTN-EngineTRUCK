@@ -3,9 +3,6 @@ import { useState } from 'react';
 import { Button, Label, TextInput, Textarea } from 'flowbite-react';
 import { getRandomValues } from 'crypto';
 
-
-
-
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
