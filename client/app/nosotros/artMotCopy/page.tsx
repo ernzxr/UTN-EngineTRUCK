@@ -25,31 +25,38 @@ export default function Page({params}: any) {
   const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);  
 
  
-    return (///mt-[10px]///
+    return (
       <>
       <main className="relative dark:bg-gray-700">
-      <Header />
-      <section className="flex xl:w-[70%] xl:h-[600px] sm:h-[100%] sm:w[100%] m-auto mt-10 mb-10  bg-blue-100 rounded-[30px] shadow-lg">
-      <Card className="max-w-sm" imgSrc="MOT_CARD.jpg" horizontal>
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-        </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-        </p>
-      </Card>
-        <div className="absolute top-[80%] left-[20%] m-auto w-[58%] border-blue-300 border-2"></div>
-        <button className="absolute top-[74%] left-[20%] mt-auto ml-4 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-          Volver
-        </button>
-        <button className="absolute top-[74%] left-[65%] mt-auto ml-4 px-12 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-          Consultar
-        </button>
-      </section>
-      <footer className="w-full ">
-        <Footer />
-      </footer>
-    </main>
+        <Header />
+        <section className="flex flex-col items-center justify-center mt-10 mb-10 xl:mt-[8%] xl:mb-[8%]">
+          <Card className="w-full xl:max-w-[80%] sm:max-w-[90%] p-8 mb-8 bg-blue-100 rounded-lg shadow-lg">
+            <div className="flex flex-col md:flex-row items-center">
+              <img
+                src="/mot_t2.jpg"
+                alt="Motor"
+                className="w-full md:w-[70%] h-[300px] md:h-auto rounded-lg object-cover mb-4 md:mb-0 md:mr-8"
+              />
+              <div className="flex flex-col flex-grow">
+                <h2 className="xl:text-3xl text-xl font-raleway font-semibold mb-4">Título que corresponda al motor seleccionado o repuesto</h2>
+                <p className="xl:text-lg text-l font-raleway mb-6">Descripción del producto, ya semiarmados o repuestos. Dependiendo de que producto sea la 
+                descripcion va a variar. Esque texto es un relleno para visualizar como se vera el espacio segun la catidad de descripcion que posea el articulo en cuestion.</p>
+                <div className="flex justify-end">
+                  <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mr-4">
+                    Volver
+                  </button>
+                  <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                    Más Información
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </section>
+        <footer>
+          <Footer />
+        </footer>
+      </main>
     </>
     )
   
