@@ -7,6 +7,7 @@ import { EngineResponse } from "@/lib/services/interfaces/engines";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/lib/redux/store";
 import { fetchEngines } from "@/lib/redux/features/enginesSlice";
+import { Card } from 'flowbite-react';
 
 import { useEffect } from "react";
 
@@ -28,37 +29,29 @@ export default function Page({params}: any) {
       <>
       <main className="relative dark:bg-gray-700">
       <Header />
-      <section className="flex w-[1200px] h-[600px] m-auto mt-[10px] bg-blue-100 rounded-[30px] shadow-lg">
+      <section className="flex flex-col items-center justify-center mt-10 mb-10 xl:mt-[8%] xl:mb-[8%]">
+        <Card className="w-full xl:max-w-[80%] sm:max-w-[90%] p-8 mb-8 bg-blue-100 rounded-lg shadow-lg"> 
+        <div className="flex flex-col md:flex-row items-center">
         <img
           src="/mot_t2.jpg"
           alt="Motor"
-          className="w-[50%] h-[450px] m-10 rounded-[20px] shadow-md"
+          className="w-full md:w-[70%] h-[300px] md:h-auto rounded-lg object-cover mb-4 md:mb-0 md:mr-8"
         />
-        <div className="flex flex-col justify-evenly w-[45%] h-[75%] m-10">
-          <p className="text-4xl font-raleway font-bold">
-            {motorSeleccionado.model}
-          </p>
-          <p className="text-2xl font-raleway">
-            Principales Caracteristicas:
-          </p>
-          <table>
-            <tbody>
-              <tr className="flex flex-col text-xl font-raleway">
-                <td className="p-[10px]">{motorSeleccionado.features_details[0].feature}</td>
-                <td className="p-[10px]">{motorSeleccionado.features_details[0].value}</td>
-                <td className="p-[10px]">{motorSeleccionado.features_details[1].feature}</td>
-                <td className="p-[10px]">{motorSeleccionado.features_details[1].value}</td>
-              </tr>
-            </tbody>
-          </table>
+       <div className="flex flex-col flex-grow">
+                <h2 className="xl:text-3xl text-xl font-raleway font-semibold mb-4">{motorSeleccionado.model}</h2>
+                <p className="xl:text-lg text-l font-raleway mb-6">Descripción del producto, ya semiarmados o repuestos. Dependiendo de que producto sea la 
+                descripcion va a variar. Esque texto es un relleno para visualizar como se vera el espacio segun la catidad de descripcion que posea el articulo en cuestion.</p>
+                <div className="flex justify-end">
+                  <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mr-4">
+                    Volver
+                  </button>
+                  <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                    Consultar
+                  </button>
+                </div>
+              </div>
         </div>
-        <div className="absolute top-[580px] left-[20%] m-auto w-[58%] border-blue-300 border-2"></div>
-        <button className="absolute top-[600px] left-[20%] mt-auto ml-4 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-          Volver
-        </button>
-        <button className="absolute top-[600px] left-[65%] mt-auto ml-4 px-12 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-          Consultar
-        </button>
+        </Card>
       </section>
       <footer className="w-full ">
         <Footer />

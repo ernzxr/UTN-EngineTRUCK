@@ -6,12 +6,9 @@ export async function POST(request) {
 
     const transporter = nodemailer.createTransport({
         service: 'hotmail',
-        host: 'smtp-mail.outlook.com',
-        secure: false,
-        port: 587,
         auth: {
-            user: 'facuchena@hotmail.com',
-            pass: 'password'
+            user: 'mail',
+            pass: 'pass'
         },
 
     })
