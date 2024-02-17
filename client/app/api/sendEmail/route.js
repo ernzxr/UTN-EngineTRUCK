@@ -7,7 +7,7 @@ export async function POST(request) {
     const transporter = nodemailer.createTransport({
         service: 'hotmail',
         auth: {
-            user: 'mail',
+            user: 'facuchena@hotmail.com',
             pass: 'pass'
         },
 

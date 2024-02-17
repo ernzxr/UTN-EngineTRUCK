@@ -9,7 +9,7 @@ import { AppDispatch } from '@/lib/redux/store';
 import { useDispatch } from 'react-redux';
 import { EngineResponse } from '@/lib/services/interfaces/engines';
 
-const EngineUpdateMedia = ({ object }) => {
+const EngineUpdateMedia = ({ object }: any) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [modalStates, setModalStates] = useState<{ [key: number]: boolean }>({});

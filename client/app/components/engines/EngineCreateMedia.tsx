@@ -8,7 +8,7 @@ import { addMedia } from '@/lib/redux/features/mediaSlice';
 import { AppDispatch } from '@/lib/redux/store';
 import { useDispatch } from 'react-redux';
 
-const EngineCreateMedia = ({ engineId, onFinish }) => {
+const EngineCreateMedia = ({ engineId, onFinish }: any) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const formik = useFormik({
@@ -26,11 +26,15 @@ const EngineCreateMedia = ({ engineId, onFinish }) => {
 
     const handleCreateMedia = async (values: MediaCreate) => {
         try {
-            const formData = new FormData();
-            formData.append('file', values.file as Blob);
-            formData.append('media_type', String(values.media_type));
-            formData.append('engine_id', String(values.engine_id));
-            await dispatch(addMedia(formData));
+            if(values.file != null) {
+                const formData = new FormData();
+                formData.append('file', values.file as Blob);
+                formData.append('media_type', String(values.media_type));
+                formData.append('engine_id', String(values.engine_id));
+                await dispatch(addMedia(formData));
+            }
+            window.location.reload();
+            
         }
         catch (error) {
             console.error(error);
@@ -40,6 +44,7 @@ const EngineCreateMedia = ({ engineId, onFinish }) => {
     const handleOmit = () => {
         formik.resetForm();
         onFinish();
+        window.location.reload();
     };
 
     return (

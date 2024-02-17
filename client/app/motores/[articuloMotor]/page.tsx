@@ -23,6 +23,7 @@ export default function Page({params}: any) {
   const model = parseInt(params.articuloMotor, 10);
   
   const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);  
+  const backendURL = "http://localhost:5500/";
 
   if(motorSeleccionado) {
     return (
@@ -33,14 +34,14 @@ export default function Page({params}: any) {
         <Card className="w-full xl:max-w-[80%] sm:max-w-[90%] p-8 mb-8 bg-blue-100 rounded-lg shadow-lg"> 
         <div className="flex flex-col md:flex-row items-center">
         <img
-          src="/mot_t2.jpg"
+          src={`${backendURL}${motorSeleccionado.media[0]?.file}`}
           alt="Motor"
           className="w-full md:w-[70%] h-[300px] md:h-auto rounded-lg object-cover mb-4 md:mb-0 md:mr-8"
         />
        <div className="flex flex-col flex-grow">
                 <h2 className="xl:text-3xl text-xl font-raleway font-semibold mb-4">{motorSeleccionado.model}</h2>
-                <p className="xl:text-lg text-l font-raleway mb-6">Descripción del producto, ya semiarmados o repuestos. Dependiendo de que producto sea la 
-                descripcion va a variar. Esque texto es un relleno para visualizar como se vera el espacio segun la catidad de descripcion que posea el articulo en cuestion.</p>
+                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[0].feature}: {motorSeleccionado.features_details[0].value}</p>
+                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[1].feature}: {motorSeleccionado.features_details[1].value}</p>
                 <div className="flex justify-end">
                   <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mr-4">
                     Volver

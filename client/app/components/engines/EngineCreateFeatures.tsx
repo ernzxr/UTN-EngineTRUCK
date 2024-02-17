@@ -10,7 +10,7 @@ import { FeatureCreate } from '@/lib/services/interfaces/features';
 import { addFeature } from '@/lib/redux/features/featuresSlice';
 import { addFeatureDetail } from '@/lib/redux/features/featureDetailsSlice';
 
-const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
+const EngineCreateFeatures = ({ engineId, onNext, onCancel }: any) => {
     const dispatch = useDispatch<AppDispatch>();
 
     interface FeatureIds {
@@ -25,6 +25,18 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
         else if (!values.consumption) {
             errors.consumption = 'El consumo es requerido'
         }
+        else if (!values.cilinder) {
+            errors.cilinder = 'La cantidad de cilindros es requerida'
+        }
+        else if (!values.weight) {
+            errors.weight = 'El peso es requerido'
+        }
+        else if (!values.bearing) {
+            errors.bearing = 'La cantidad de cojinetes es requerido'
+        }
+        else if (!values.valves) {
+            errors.valves = 'La cantidad de valvulas es requerida'
+        }
         return errors;
     }
 
@@ -32,10 +44,14 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
         initialValues: {
             power: '',
             consumption: '',
+            cilinder: 0,
+            weight: '',
+            bearing: 0,
+            valves: 0,
         },
         validate,
         onSubmit: async (values) => {
-            const featuresIds = await handleCreateFeature(values);
+            const featuresIds: any = await handleCreateFeature(values);
             await handleLinkFeatures(engineId, featuresIds, values);
             onNext();
             formik.resetForm();
@@ -45,7 +61,7 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
     const handleCreateFeature = async (values: FeatureCreate) => {
         try {
             const featuresIds: FeatureIds = {};
-            const features = ['Potencia', 'Consumo']
+            const features = ['Potencia', 'Consumo', 'Cilindros', 'Peso', 'Cojinetes', 'Valvulas']
             let i = 0;
             for (const feature in values) {
                 const payload = {
@@ -103,6 +119,34 @@ const EngineCreateFeatures = ({ engineId, onNext, onCancel }) => {
                 </div>
                 <TextInput id="consumption" type="text" placeholder='Ingrese el Consumo del Motor' onChange={formik.handleChange} value={formik.values.consumption} />
                 {formik.errors.consumption ? <ErrorInputs type={'failure'} message={formik.errors.consumption} title={undefined} /> : null}
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="cilinder" value="Cilindros" />
+                </div>
+                <TextInput id="cilinder" type="text" placeholder='Ingrese la Cantidad de Cilindros' onChange={formik.handleChange} value={formik.values.cilinder} />
+                {formik.errors.cilinder ? <ErrorInputs type={'failure'} message={formik.errors.cilinder} title={undefined} /> : null}
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="weight" value="Peso" />
+                </div>
+                <TextInput id="weight" type="text" placeholder='Ingrese el Peso del Motor' onChange={formik.handleChange} value={formik.values.weight} />
+                {formik.errors.weight ? <ErrorInputs type={'failure'} message={formik.errors.weight} title={undefined} /> : null}
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="bearing" value="Cojinetes" />
+                </div>
+                <TextInput id="bearing" type="text" placeholder='Ingrese la Cantidad de Cojinetes' onChange={formik.handleChange} value={formik.values.bearing} />
+                {formik.errors.bearing ? <ErrorInputs type={'failure'} message={formik.errors.bearing} title={undefined} /> : null}
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="valves" value="Valvulas" />
+                </div>
+                <TextInput id="valves" type="text" placeholder='Ingrese la Cantidad de Valvulas' onChange={formik.handleChange} value={formik.values.valves} />
+                {formik.errors.valves ? <ErrorInputs type={'failure'} message={formik.errors.valves} title={undefined} /> : null}
             </div>
             <div className="w-full flex justify-between">
                 <Button type="button" color="failure" onClick={handleCancel}>Cancelar</Button>

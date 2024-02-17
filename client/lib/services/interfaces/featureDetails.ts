@@ -24,6 +24,7 @@ export interface FeatureDetailResponse {
 }
 
 export interface FeatureDetailsGet {
+  value: string;
   id: number;
   feature_value: string;
   engine_id: number;

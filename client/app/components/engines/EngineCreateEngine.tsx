@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import { ManufacturerResponse } from '@/lib/services/interfaces/manufacturers';
 import { BrandResponse } from '@/lib/services/interfaces/brands';
 
-const EngineCreateEngine = ({ setEngineId, onNext, onCancel }) => {
+const EngineCreateEngine = ({ setEngineId, onNext, onCancel }: any) => {
     const dispatch = useDispatch<AppDispatch>();
     const { brandsList } = useSelector((state: any) => state.brandsReducers);
     const { manufacturersList } = useSelector((state: any) => state.manufacturersReducers);

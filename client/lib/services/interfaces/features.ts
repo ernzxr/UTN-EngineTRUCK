@@ -8,6 +8,10 @@ export interface Feature {
 export interface FeatureCreate {
   power: string;
   consumption: string;
+  cilinder: number;
+  weight: string;
+  bearing: number;
+  valves: number;
 }
 
 export interface FeatureResponse {
