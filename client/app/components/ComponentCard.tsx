@@ -1,13 +1,33 @@
-import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { ComponentResponse } from '@/lib/services/interfaces/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchComponents } from '@/lib/redux/features/componentsSlice';
+import { AppDispatch } from '@/lib/redux/store';
 
-const ComponentCard = () => {
+const EngineCard = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchComponents());
+  }, [])
+
+  const { componentsList } = useSelector((state: any) => state.componentsReducers);
+  const backendURL = "http://localhost:5500/";
+  
   return (
-    <Link href="/repuestos/articuloRepuesto" className="flex flex-col items-center xl:w-[20%] w-[80%] h-[300px] shadow-lg bg-white m-[4%] rounded-[10px] cursor-pointer hover:shadow-2xl hover:shadow-blue-900 duration-300 dark:hover:shadow-2xl dark:hover:shadow-blue-200 hover:scale-105">
-        <div className="flex w-[70%] h-[60%]  border-black border-2 rounded-[10px] mt-[14%]"></div>
-        <div className="mt-[5%] dark:text-white">NOMBRE DE REPUESTO</div> 
-    </Link>
-  )
-}
+    <>
+      {componentsList.map((object: ComponentResponse) => (
+        <Link href={`/repuestos/${object.id}`} className="flex flex-col items-center w-[300px] h-[450px] shadow-lg bg-white m-[4%] rounded-[10px] cursor-pointer hover:shadow-2xl hover:shadow-blue-900 duration-300 dark:hover:shadow-2xl dark:hover:shadow-blue-200 hover:scale-105">
+          <div className="flex w-[70%] h-[45%] mt-16">
+            <img src={`${backendURL}${object.media[0]?.file}`} alt="" className='rounded-[10px]' />
+          </div>
+          <div className="mt-16 dark:text-white">{object.component}</div>
+          <div className="mt-auto ml-4 px-4 py-2 mb-7 bg-blue-400 text-white rounded-md">Mas Info</div>
+        </Link>
+      ))}
+    </>
+  );
+};
 
-export default ComponentCard
+export default EngineCard;

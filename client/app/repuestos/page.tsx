@@ -15,9 +15,6 @@ export default function Page() {
         </section>
         <section className="flex flex-wrap justify-center items-center h-full w-[90%] xl:w-[80%] bg-blue-100 rounded-[5px] shadow-lg m-auto mt-[10%] px-1">
           <ComponentCard />
-          <ComponentCard />
-          <ComponentCard />
-          <ComponentCard />
         </section>
 
         <footer className="w-full ">

@@ -3,10 +3,10 @@
 
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/FooterReact";
-import { EngineResponse } from "@/lib/services/interfaces/engines";
+import { ComponentResponse } from "@/lib/services/interfaces/components";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/lib/redux/store";
-import { fetchEngines } from "@/lib/redux/features/enginesSlice";
+import { fetchComponents } from "@/lib/redux/features/componentsSlice";
 import { Card } from 'flowbite-react';
 
 import { useEffect } from "react";
@@ -16,16 +16,16 @@ export default function Page({params}: any) {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchEngines());
+    dispatch(fetchComponents());
   }, [])
 
-  const { enginesList } = useSelector((state: any) => state.enginesReducers);
-  const model = parseInt(params.articuloMotor, 10);
+  const { componentsList } = useSelector((state: any) => state.componentsReducers);
+  const model = parseInt(params.articuloRepuesto, 10);
   
-  const motorSeleccionado = enginesList.find((motor: EngineResponse) => motor.id === model);  
+  const componenteSeleccionado = componentsList.find((componente: ComponentResponse) => componente.id === model);  
   const backendURL = "http://localhost:5500/";
 
-  if(motorSeleccionado) {
+  if(componenteSeleccionado) {
     return (
       <>
       <main className="relative dark:bg-gray-700">
@@ -34,18 +34,13 @@ export default function Page({params}: any) {
         <Card className="w-full xl:max-w-[80%] sm:max-w-[90%] p-8 mb-8 bg-blue-100 rounded-lg shadow-lg"> 
         <div className="flex flex-col md:flex-row items-center">
         <img
-          src={`${backendURL}${motorSeleccionado.media[0]?.file}`}
+          src={`${backendURL}${componenteSeleccionado.media[0]?.file}`}
           alt="Motor"
           className="w-full md:w-[70%] h-[300px] md:h-auto rounded-lg object-cover mb-4 md:mb-0 md:mr-8"
         />
        <div className="flex flex-col flex-grow">
-                <h2 className="xl:text-3xl text-xl font-raleway font-semibold mb-4">{motorSeleccionado.model}</h2>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[0].feature}: {motorSeleccionado.features_details[0].value}</p>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[1].feature}: {motorSeleccionado.features_details[1].value}</p>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[2].feature}: {motorSeleccionado.features_details[2].value}</p>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[3].feature}: {motorSeleccionado.features_details[3].value}</p>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[4].feature}: {motorSeleccionado.features_details[4].value}</p>
-                <p className="xl:text-lg text-l font-raleway mb-6">{motorSeleccionado.features_details[5].feature}: {motorSeleccionado.features_details[5].value}</p>
+                <h2 className="xl:text-3xl text-xl font-raleway font-semibold mb-4">{componenteSeleccionado.component}</h2>
+                <p className="xl:text-lg text-l font-raleway mb-6">{componenteSeleccionado.description}</p>
                 <div className="flex justify-end">
                   <button className="px-6 py-3 bg-blue-800 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mr-4">
                     Volver

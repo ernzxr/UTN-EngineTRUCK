@@ -19,12 +19,20 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const [manufacturerId, setManufacturerId] = useState(0);
     const [power, setPower] = useState('');
     const [consumption, setConsumption] = useState('');
+    const [cilinder, setCilinder] = useState(0)
+    const [weight, setWeight] = useState('')
+    const [bearing, setBearing] = useState(0)
+    const [valves, setValves] = useState(0)
 
     const onCloseModal = () => {
         setModalStates({});
         setEngineModel('');
         setConsumption('');
         setPower('');
+        setCilinder(0);
+        setWeight('');
+        setBearing(0);
+        setValves(0);
         setBrandId(0);
         setManufacturerId(0);
     }
@@ -36,13 +44,23 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
         setBrandId(object.brand.id);
         setPower(object.features_details[0].value);
         setConsumption(object.features_details[1].value);
+        setCilinder(object.features_details[2].value);
+        setWeight(object.features_details[3].value);
+        setBearing(object.features_details[4].value);
+        setValves(object.features_details[5].value);
+        
     };
 
-    const handlePutClick = (object: EngineResponse, engineModel: string, brandId: number, manufacturerId: number, consumption: string, power: string) => {
+    const handlePutClick = (object: EngineResponse, engineModel: string, brandId: number, manufacturerId: number, consumption: string, power: string, cilinder: number, weight: string,
+        bearing: number, valves: number) => {
         const { id, model, brand, manufacturer, features_details } = object;
         let updatedObject: any = {};
         let updateFeatureDetailPower: any = {};
         let updateFeatureDetailConsumption: any = {};
+        let updateFeatureDetailCilinder: any = {};
+        let updateFeatureDetailWeight: any = {};
+        let updateFeatureDetailBearing: any = {};
+        let updateFeatureDetailValves: any = {};
 
         if (engineModel !== model) {
             updatedObject.model = engineModel;    
@@ -63,6 +81,18 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
         if (consumption !== features_details[1].value) {
             updateFeatureDetailConsumption.value = consumption;
         }
+        if (cilinder !== features_details[2].value) {
+            updateFeatureDetailCilinder.value = cilinder;
+        }
+        if (weight !== features_details[3].value) {
+            updateFeatureDetailWeight.value = weight;
+        }
+        if (bearing !== features_details[4].value) {
+            updateFeatureDetailBearing.value = bearing;
+        }
+        if (valves !== features_details[5].value) {
+            updateFeatureDetailValves.value = valves;
+        }
 
         if (Object.keys(updateFeatureDetailPower).length > 0) {
             updateFeatureDetailPower.id = features_details[0].id;
@@ -72,6 +102,22 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
         if (Object.keys(updateFeatureDetailConsumption).length > 0) {
             updateFeatureDetailConsumption.id = features_details[1].id;
             handleUpdateFeature(updateFeatureDetailConsumption);
+        }
+        if (Object.keys(updateFeatureDetailCilinder).length > 0) {
+            updateFeatureDetailCilinder.id = features_details[0].id;
+            handleUpdateFeature(updateFeatureDetailCilinder);
+        }
+        if (Object.keys(updateFeatureDetailWeight).length > 0) {
+            updateFeatureDetailWeight.id = features_details[0].id;
+            handleUpdateFeature(updateFeatureDetailWeight);
+        }
+        if (Object.keys(updateFeatureDetailBearing).length > 0) {
+            updateFeatureDetailBearing.id = features_details[0].id;
+            handleUpdateFeature(updateFeatureDetailBearing);
+        }
+        if (Object.keys(updateFeatureDetailValves).length > 0) {
+            updateFeatureDetailValves.id = features_details[0].id;
+            handleUpdateFeature(updateFeatureDetailValves);
         }
 
         if (Object.keys(updatedObject).length > 0) {
@@ -88,6 +134,7 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const handleUpdateFeature = (data: any) => {
         dispatch(modifiedFeatureDetail(data));
         setModalStates({});
+        console.log(data);
     }
 
     return (
@@ -138,9 +185,33 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
                             </div>
                             <TextInput id="consumption" type="text" placeholder='Ingrese el Modelo del Motor' value={consumption} onChange={(e) => { setConsumption(e.target.value) }} />
                         </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="cilinder" value="Cilindros" />
+                            </div>
+                            <TextInput id="cilinder" type="text" placeholder='Ingrese la Cantidad de Cilindros' value={cilinder} onChange={(e) => { setCilinder(Number(e.target.value)) }} />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="weight" value="Peso" />
+                            </div>
+                            <TextInput id="weight" type="text" placeholder='Ingrese el Peso del Motor' value={weight} onChange={(e) => { setWeight(e.target.value) }} />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="bearing" value="Cojinetes" />
+                            </div>
+                            <TextInput id="bearing" type="text" placeholder='Ingrese la Cantidad de Cojinetes' value={bearing} onChange={(e) => { setBearing(Number(e.target.value)) }} />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label htmlFor="valves" value="Valvulas" />
+                            </div>
+                            <TextInput id="valves" type="text" placeholder='Ingrese la Cantidad de Valvulas' value={valves} onChange={(e) => { setValves(Number(e.target.value)) }} />
+                        </div>
                         <div className="w-full">
                             <Button onClick={() => {
-                                handlePutClick(object, engineModel, brandId, manufacturerId, consumption, power)
+                                handlePutClick(object, engineModel, brandId, manufacturerId, consumption, power, cilinder, weight, bearing, valves)
                             }}>Actualizar</Button>
                         </div>
                     </div>
