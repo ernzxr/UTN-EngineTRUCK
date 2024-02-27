@@ -75,23 +75,23 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
         }
 
         if (power !== features_details[0].value) {
-            updateFeatureDetailPower.value = power;
+            updateFeatureDetailPower.feature_value = power;
         }
 
         if (consumption !== features_details[1].value) {
-            updateFeatureDetailConsumption.value = consumption;
+            updateFeatureDetailConsumption.feature_value = consumption;
         }
         if (cilinder !== features_details[2].value) {
-            updateFeatureDetailCilinder.value = cilinder;
+            updateFeatureDetailCilinder.feature_value = cilinder;
         }
         if (weight !== features_details[3].value) {
-            updateFeatureDetailWeight.value = weight;
+            updateFeatureDetailWeight.feature_value = weight;
         }
         if (bearing !== features_details[4].value) {
-            updateFeatureDetailBearing.value = bearing;
+            updateFeatureDetailBearing.feature_value = bearing;
         }
         if (valves !== features_details[5].value) {
-            updateFeatureDetailValves.value = valves;
+            updateFeatureDetailValves.feature_value = valves;
         }
 
         if (Object.keys(updateFeatureDetailPower).length > 0) {
@@ -104,19 +104,19 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
             handleUpdateFeature(updateFeatureDetailConsumption);
         }
         if (Object.keys(updateFeatureDetailCilinder).length > 0) {
-            updateFeatureDetailCilinder.id = features_details[0].id;
+            updateFeatureDetailCilinder.id = features_details[2].id;
             handleUpdateFeature(updateFeatureDetailCilinder);
         }
         if (Object.keys(updateFeatureDetailWeight).length > 0) {
-            updateFeatureDetailWeight.id = features_details[0].id;
+            updateFeatureDetailWeight.id = features_details[3].id;
             handleUpdateFeature(updateFeatureDetailWeight);
         }
         if (Object.keys(updateFeatureDetailBearing).length > 0) {
-            updateFeatureDetailBearing.id = features_details[0].id;
+            updateFeatureDetailBearing.id = features_details[4].id;
             handleUpdateFeature(updateFeatureDetailBearing);
         }
         if (Object.keys(updateFeatureDetailValves).length > 0) {
-            updateFeatureDetailValves.id = features_details[0].id;
+            updateFeatureDetailValves.id = features_details[5].id;
             handleUpdateFeature(updateFeatureDetailValves);
         }
 
@@ -124,6 +124,7 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
             updatedObject.id = id;
             handleUpdateEngine(updatedObject);
         }
+        window.location.reload();
     }
 
     const handleUpdateEngine = (data: EngineResponse) => {
@@ -134,7 +135,6 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
     const handleUpdateFeature = (data: any) => {
         dispatch(modifiedFeatureDetail(data));
         setModalStates({});
-        console.log(data);
     }
 
     return (

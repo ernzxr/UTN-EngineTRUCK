@@ -38,7 +38,6 @@ export const modifiedFeatureDetail = createAsyncThunk(
   "featureDetails/modifiedFeatureDetails",
   async (data:any) => {
       const response:any = await updateFeatureDetail(data);
-      console.log(response.data);
       return response.data;
   }
 );

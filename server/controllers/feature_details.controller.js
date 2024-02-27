@@ -54,11 +54,14 @@ const updateFeatureDetail = async (req, res) => {
         await db.feature_detail.findAll({where:{id:id}}).then(async (result) => {
             if(result.length) {
                 let body = req.body;
+                console.log("ENTRO, " + body);
                 await db.feature_detail.update(body, {where:{id:id}});
                 const updatedFeatureDetail = await db.feature_detail.findOne({
                     where: { id: id },
                   });
-        
+                  console.log(updateFeatureDetail);
+                  
+                  
                   res
                     .status(200)
                     .json({
