@@ -69,7 +69,7 @@ const EngineUpdateMedia = ({ object }: any) => {
                 <Modal.Body>
                     <form className="space-y-6" onSubmit={formik.handleSubmit}>
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">Cambiar Imagen</h3>
-                        <img src={`${backendURL}${object.media[0]?.file}`} width="200px" alt="" className='rounded-[10px]' />
+                        <img src={`${backendURL}${object.media[0]?.file}`} style={{ maxWidth: '100%', maxHeight: '400px' }} width="200px" alt="" className='rounded-[10px]' />
                         <div>
                             <div className="mb-2 block">
                                 <Label htmlFor="default-file-upload" />

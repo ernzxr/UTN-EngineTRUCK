@@ -144,7 +144,7 @@ const EngineUpdateModal = ({ object }: { object: EngineResponse }) => {
             }}>Editar</Button>
             <Modal show={modalStates[object.id]} size="md" onClose={onCloseModal} popup>
                 <Modal.Header />
-                <Modal.Body>
+                <Modal.Body style={{ top: '10%', maxHeight: '80%', overflowY: 'auto' }}>
                     <div className="space-y-6">
                         <h3 className="text-xl font-medium text-gray-900 dark:text-white">Editar</h3>
                         <div>
