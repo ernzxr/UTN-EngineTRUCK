@@ -38,6 +38,7 @@ export const modifiedFeatureDetail = createAsyncThunk(
   "featureDetails/modifiedFeatureDetails",
   async (data:any) => {
       const response:any = await updateFeatureDetail(data);
+      console.log(response.data);
       return response.data;
   }
 );
@@ -102,7 +103,6 @@ const featureDetailsSlice = createSlice({
     .addCase(modifiedFeatureDetail.fulfilled, (state, action) => {
       const data:any = action.payload;
       const index = state.featureDetailsList.findIndex((featureDetail) => {
-        console.log(data);
         return featureDetail.id === data.id
       });
       if (index !== -1){

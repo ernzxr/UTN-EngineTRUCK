@@ -55,8 +55,18 @@ const updateFeatureDetail = async (req, res) => {
             if(result.length) {
                 let body = req.body;
                 await db.feature_detail.update(body, {where:{id:id}});
-                res.status(200).json({'error':false, data:null, message:`UPDATE feature_details.id ${id}`});
-            }
+                const updatedFeatureDetail = await db.feature_detail.findOne({
+                    where: { id: id },
+                  });
+        
+                  res
+                    .status(200)
+                    .json({
+                      error: false,
+                      data: updatedFeatureDetail,
+                      message: `UPDATE feature_details.id ${id}`,
+                    });
+                }
             else {
                 res.status(404).json({'error':true, data:null, message:`feature_details.id ${id} not found`});
             }
